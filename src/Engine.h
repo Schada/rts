@@ -12,22 +12,31 @@ class Engine
         Engine(Game* game);
         ~Engine();
 
-        // accepter les messages des autres moteurs
+        /**
+        * Accepter les messages des autres moteurs.
+        */
         void push_event(Engine_Event& e);
-
-        // traite la file des messages
+        /**
+        * Traite la file des messages.
+        */
         void process_queue();
-
-        // traitement propre à chaque moteur
+        /**
+        * Traitement propre à chaque moteur.
+        */
         virtual void frame() = 0;
+
     protected:
-        //Pointeur vers l'objet parent
+        /**
+        * Pointeur vers l'objet parent.
+        */
         Game *_parent;
-
-        //file des messages à traiter
+        /**
+        * File des messages à traiter.
+        */
         std::queue< Engine_Event > _events_queue;
-
-        //// traitement d'un message, propre à chaque moteur
+        /**
+        * Traitement d'un message, propre à chaque moteur.
+        */
         virtual void _process_event(Engine_Event&) = 0;
 
 };
