@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1326826266 source:c:\users\schada\rts\src\game.cpp
+	"Game.h"
+
+1326826549 c:\users\schada\rts\src\game.h
+	"Engine.h"
+
+1326826803 c:\users\schada\rts\src\engine.h
+	<queue>
+	"Engine_Event.h"
+
+1326826790 source:c:\users\schada\rts\src\engine_event.cpp
+	"Engine_Event.h"
+
+1326826737 c:\users\schada\rts\src\engine_event.h
+
+1326826854 source:c:\users\schada\rts\src\engine.cpp
+	"Engine.h"
+
