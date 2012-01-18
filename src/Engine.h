@@ -11,7 +11,6 @@ class Engine
     public:
         Engine(Game* game);
         ~Engine();
-
         /**
         * Accepter les messages des autres moteurs.
         */
