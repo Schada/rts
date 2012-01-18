@@ -6,13 +6,17 @@
 #include <iostream>
 #include "Engine_Event.h"
 
+
+class Engine_Game;
+class Engine_Graphics;
+class Engine_Sound;
 class Game;
 
 class Engine : public sf::Thread
 {
     public:
         Engine(Game* game);
-        ~Engine();
+        virtual ~Engine();
         /**
         * Accepter les messages des autres moteurs.
         */
@@ -24,23 +28,47 @@ class Engine : public sf::Thread
         /**
         * Traitement propre à chaque moteur.
         */
-        //virtual void frame() = 0;
+        virtual void frame() = 0;
 
         /**
-        * Permet de terminer un Thread
+        * Permet de lancer/terminer un Thread
         */
+        void lancer();
         void finir();
 
+        /**
+        * Permet l'envoit aux différents engines
+        */
+        void send_message_to_graphics(Engine_Event& e);
+        void send_message_to_game(Engine_Event& e);
+        void send_message_to_sound(Engine_Event& e);
+
+        /**
+        * Permet de relier les Engines entre eux
+        */
+        void attach_engine_game(Engine_Game* eng_game);
+        void attach_engine_graphics(Engine_Graphics* eng_gfx);
+        void attach_engine_sound(Engine_Sound* eng_son);
+
+
     protected:
+
+        /**
+        * Liste des différents Engines
+        */
+        Engine_Game *_eng_game;
+        Engine_Graphics *_eng_gfx;
+        Engine_Sound *_eng_son;
+
         /**
         * Traitement d'un message, propre à chaque moteur.
         */
-        virtual void process_event(Engine_Event& e);
+        virtual void process_event(Engine_Event& e) = 0;
 
         /**
         * Fonction "main" du Thread
         */
-        virtual void Run();
+        virtual void Run() = 0;
 
         /**
         * Pointeur vers l'objet parent.
@@ -54,7 +82,7 @@ class Engine : public sf::Thread
         /**
         * Booleen pour savoir si le thread doit se terminer
         */
-        bool encours;
+        bool _encours;
 
 
 };

@@ -1,8 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Engine.h"
+#include "constantes.h"
+#include "Engine_Game.h"
+#include "Engine_Graphics.h"
+#include "Engine_Sound.h"
+
 #include <iostream>
+#include <string>
 #include <SFML/Graphics.hpp>
 
 
@@ -12,16 +17,16 @@ class Game{
 	Game();
 	~Game();
 
-	void test();
-	void fin();
 	/**
 	* Permet d'afficher à l'écran un menu principal.
 	* @fixme
 	*/
     void mainMenu();
+
     private:
-	Engine* _engine1;
-	Engine* _engine2;
+	Engine_Game *_eng_game;
+	Engine_Graphics *_eng_gfx;
+	Engine_Sound *_eng_son;
 
 
 };

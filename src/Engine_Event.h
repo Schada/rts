@@ -1,15 +1,17 @@
 #ifndef ENGINE_EVENT_H
 #define ENGINE_EVENT_H
 
+#include <string>
+
 class Engine_Event{
     public:
-	Engine_Event(int nb);
+	Engine_Event(std::string nb);
 	~Engine_Event();
 
-	int get_nb();
+	std::string get_nb();
 
     private:
-        int _nb;
+        std::string _nb;
 
 
 };

@@ -2,38 +2,38 @@
 
 Game::Game()
 {
-    _engine1 = new Engine(this);
-	_engine2 = new Engine(this);
+    _eng_game = new Engine_Game(this);
+	_eng_gfx = new Engine_Graphics(this);
+	_eng_son = new Engine_Sound(this);
+
+
+
+	_eng_game->attach_engine_graphics(_eng_gfx);
+	_eng_game->attach_engine_sound(_eng_son);
+
+	_eng_gfx->attach_engine_game(_eng_game);
+	_eng_gfx->attach_engine_sound(_eng_son);
+
+	_eng_son->attach_engine_game(_eng_game);
+	_eng_son->attach_engine_graphics(_eng_gfx);
+
+	_eng_game->Launch();
+	_eng_gfx->Launch();
+	_eng_son->Launch();
+	_eng_game->lancer();
+	_eng_gfx->lancer();
+	_eng_son->lancer();
 }
 
 Game::~Game()
 {
-    delete _engine1;
-    delete _engine2;
-}
+    _eng_game->finir();
+    _eng_gfx->finir();
+    _eng_son->finir();
 
-void Game::test()
-{
-    Engine_Event *p0 = new Engine_Event(0);
-    Engine_Event *p1 = new Engine_Event(1);
-    Engine_Event *p2 = new Engine_Event(2);
-
-    std::cout<<"Ouverture Threads"<<std::endl;
-    _engine1->Launch();
-    _engine2->Launch();
-
-	_engine1->push_event(*p0);
-	_engine2->push_event(*p1);
-	_engine1->push_event(*p2);
-
-}
-
-void Game::fin()
-{
-
-    _engine1->finir();
-    _engine2->finir();
-    std::cout<<"Fermeture Threads"<<std::endl;
+    delete _eng_game;
+    delete _eng_gfx;
+    delete _eng_son;
 }
 
 void Game::mainMenu()
@@ -43,7 +43,10 @@ void Game::mainMenu()
     sf::Sprite buttonPlay;
     sf::Sprite buttonQuit;
 
-    if (!image.LoadFromFile("IMG_DOSSIER\\buttons.png"))
+    std::string lien = IMG_DOSSIER;
+    lien = lien + "buttons.png";
+
+    if (!image.LoadFromFile(lien.c_str()))
     {
         std::cout<<"Erreur durant le chargement de l'image"<<std::endl;
     }
