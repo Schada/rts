@@ -13,7 +13,7 @@ class Game{
 	~Game();
 	/**
 	* Permet d'afficher à l'écran un menu principal.
-	* @fixme !
+	* @fixme
 	*/
     void mainMenu();
     private:
