@@ -1,12 +1,42 @@
 #include "Game.h"
 
 Game::Game()
-{}
+{
+    _engine1 = new Engine(this);
+	_engine2 = new Engine(this);
+}
 
 Game::~Game()
-{}
+{
+    delete _engine1;
+    delete _engine2;
+}
 
-void mainMenu()
+void Game::test()
+{
+    Engine_Event *p0 = new Engine_Event(0);
+    Engine_Event *p1 = new Engine_Event(1);
+    Engine_Event *p2 = new Engine_Event(2);
+
+    std::cout<<"Ouverture Threads"<<std::endl;
+    _engine1->Launch();
+    _engine2->Launch();
+
+	_engine1->push_event(*p0);
+	_engine2->push_event(*p1);
+	_engine1->push_event(*p2);
+
+}
+
+void Game::fin()
+{
+
+    _engine1->finir();
+    _engine2->finir();
+    std::cout<<"Fermeture Threads"<<std::endl;
+}
+
+void Game::mainMenu()
 {
     sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Land of Martyrs");
     sf::Image image;

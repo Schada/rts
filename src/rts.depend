@@ -1,20 +1,24 @@
 # depslib dependency file v1.0
-1326826266 source:c:\users\schada\rts\src\game.cpp
+1326910944 source:c:\users\schada\rts\src\game.cpp
 	"Game.h"
 
-1326826549 c:\users\schada\rts\src\game.h
+1326910209 c:\users\schada\rts\src\game.h
 	"Engine.h"
+	<iostream>
+	<SFML/Graphics.hpp>
 
-1326826803 c:\users\schada\rts\src\engine.h
+1326910873 c:\users\schada\rts\src\engine.h
+	<SFML/System.hpp>
 	<queue>
+	<iostream>
 	"Engine_Event.h"
 
-1326826790 source:c:\users\schada\rts\src\engine_event.cpp
+1326909243 source:c:\users\schada\rts\src\engine_event.cpp
 	"Engine_Event.h"
 
-1326826737 c:\users\schada\rts\src\engine_event.h
+1326909243 c:\users\schada\rts\src\engine_event.h
 
-1326826854 source:c:\users\schada\rts\src\engine.cpp
+1326910962 source:c:\users\schada\rts\src\engine.cpp
 	"Engine.h"
 
 1326838613 source:c:\users\thierry\autres\travail\rts\src\engine_event.cpp
@@ -37,4 +41,7 @@
 
 1326838613 source:c:\users\thierry\autres\travail\rts\src\engine.cpp
 	"Engine.h"
+
+1326910209 source:c:\users\schada\rts\src\main.cpp
+	"Game.h"
 

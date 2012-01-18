@@ -3,11 +3,13 @@
 
 class Engine_Event{
     public:
-	Engine_Event();
+	Engine_Event(int nb);
 	~Engine_Event();
 
-    private:
+	int get_nb();
 
+    private:
+        int _nb;
 
 
 };

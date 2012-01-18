@@ -1,12 +1,14 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
+#include <SFML/System.hpp>
 #include <queue>
+#include <iostream>
 #include "Engine_Event.h"
 
 class Game;
 
-class Engine
+class Engine : public sf::Thread
 {
     public:
         Engine(Game* game);
@@ -22,9 +24,24 @@ class Engine
         /**
         * Traitement propre à chaque moteur.
         */
-        virtual void frame() = 0;
+        //virtual void frame() = 0;
+
+        /**
+        * Permet de terminer un Thread
+        */
+        void finir();
 
     protected:
+        /**
+        * Traitement d'un message, propre à chaque moteur.
+        */
+        virtual void process_event(Engine_Event& e);
+
+        /**
+        * Fonction "main" du Thread
+        */
+        virtual void Run();
+
         /**
         * Pointeur vers l'objet parent.
         */
@@ -33,10 +50,12 @@ class Engine
         * File des messages à traiter.
         */
         std::queue< Engine_Event > _events_queue;
+
         /**
-        * Traitement d'un message, propre à chaque moteur.
+        * Booleen pour savoir si le thread doit se terminer
         */
-        virtual void _process_event(Engine_Event&) = 0;
+        bool encours;
+
 
 };
 

@@ -11,6 +11,9 @@ class Game{
     public:
 	Game();
 	~Game();
+
+	void test();
+	void fin();
 	/**
 	* Permet d'afficher à l'écran un menu principal.
 	* @fixme
