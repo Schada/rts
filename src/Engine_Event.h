@@ -1,3 +1,9 @@
+/**
+*   Auteur : Schada
+*   Classe : Engine_Event
+*   Role : Classe des messages échangés par les différents moteurs
+*/
+
 #ifndef ENGINE_EVENT_H
 #define ENGINE_EVENT_H
 

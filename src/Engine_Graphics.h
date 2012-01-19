@@ -1,3 +1,10 @@
+/**
+*   Auteur : Schada
+*   Classe : Engine_Graphics
+*   Role : Classe du Moteur Graphique
+*          Gere les éléments Graphiques du jeu
+*/
+
 #ifndef ENGINE_GRAPHICS_H
 #define ENGINE_GRAPHICS_H
 

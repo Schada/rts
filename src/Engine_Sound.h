@@ -1,3 +1,10 @@
+/**
+*   Auteur : Schada
+*   Classe : Engine_Graphics
+*   Role : Classe du Moteur Son
+*          Gere les éléments Sonore du jeu
+*/
+
 #ifndef ENGINE_SOUND_H
 #define ENGINE_SOUND_H
 

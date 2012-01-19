@@ -1,3 +1,9 @@
+/**
+*   Auteur : Schada
+*   Classe : Engine (abstraite)
+*   Role : Classe Générique des Moteurs
+*/
+
 #ifndef ENGINE_H
 #define ENGINE_H
 
@@ -31,9 +37,13 @@ class Engine : public sf::Thread
         virtual void frame() = 0;
 
         /**
-        * Permet de lancer/terminer un Thread
+        * Permet de lancer un Thread
         */
         void lancer();
+
+        /**
+        * Permet de terminer un Thread
+        */
         void finir();
 
         /**

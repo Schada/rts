@@ -1,3 +1,10 @@
+/**
+*   Auteur : Schada
+*   Classe : Engine_Game
+*   Role : Classe du Moteur de Jeu
+*          Gere les différents éléments du jeu
+*/
+
 #ifndef ENGINE_GAME_H
 #define ENGINE_GAME_H
 

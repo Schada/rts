@@ -6,8 +6,6 @@ Game::Game()
 	_eng_gfx = new Engine_Graphics(this);
 	_eng_son = new Engine_Sound(this);
 
-
-
 	_eng_game->attach_engine_graphics(_eng_gfx);
 	_eng_game->attach_engine_sound(_eng_son);
 
@@ -20,6 +18,9 @@ Game::Game()
 	_eng_game->Launch();
 	_eng_gfx->Launch();
 	_eng_son->Launch();
+
+	//Permet de syncroniser les moteurs entre eux
+
 	_eng_game->lancer();
 	_eng_gfx->lancer();
 	_eng_son->lancer();

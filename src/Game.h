@@ -1,3 +1,10 @@
+/**
+*   Auteur : Schada
+*   Classe : Game
+*   Role : Classe Principale du Jeu
+*          Gere les ressources du jeu
+*/
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -10,8 +17,6 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-
-
 class Game{
     public:
 	Game();
@@ -19,7 +24,6 @@ class Game{
 
 	/**
 	* Permet d'afficher à l'écran un menu principal.
-	* @fixme
 	*/
     void mainMenu();
 
