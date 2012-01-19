@@ -8,6 +8,7 @@
 #define ENGINE_H
 
 #include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 #include <queue>
 #include <iostream>
 #include "Engine_Event.h"
@@ -21,7 +22,7 @@ class Game;
 class Engine : public sf::Thread
 {
     public:
-        Engine(Game* game);
+        Engine(Game* game, sf::RenderWindow* app);
         virtual ~Engine();
         /**
         * Accepter les messages des autres moteurs.
@@ -62,6 +63,10 @@ class Engine : public sf::Thread
 
 
     protected:
+        /**
+        * Pointeur sur la fenetre de rendu
+        */
+        sf::RenderWindow *_app;
 
         /**
         * Liste des différents Engines

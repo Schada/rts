@@ -14,7 +14,7 @@
 class Engine_Sound : public Engine
 {
     public:
-        Engine_Sound(Game* game);
+        Engine_Sound(Game* game, sf::RenderWindow* app);
         virtual ~Engine_Sound();
 
         virtual void frame();

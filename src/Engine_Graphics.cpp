@@ -1,9 +1,9 @@
 #include "Engine_Graphics.h"
 
 
-Engine_Graphics::Engine_Graphics(Game* game) : Engine(game)
+Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app) : Engine(game, app)
 {
-
+    _sceneActive = NULL;
 }
 
 Engine_Graphics::~Engine_Graphics()
@@ -36,5 +36,9 @@ void Engine_Graphics::Run()
     while(_encours)
     {
         process_queue();
+        if(_sceneActive)
+        {
+            _sceneActive->run(_app);
+        }
     }
 }

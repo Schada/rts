@@ -2,9 +2,11 @@
 
 Game::Game()
 {
-    _eng_game = new Engine_Game(this);
-	_eng_gfx = new Engine_Graphics(this);
-	_eng_son = new Engine_Sound(this);
+    _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
+
+    _eng_game = new Engine_Game(this, _app);
+	_eng_gfx = new Engine_Graphics(this, _app);
+	_eng_son = new Engine_Sound(this, _app);
 
 	_eng_game->attach_engine_graphics(_eng_gfx);
 	_eng_game->attach_engine_sound(_eng_son);
@@ -37,10 +39,19 @@ Game::~Game()
     delete _eng_son;
 }
 
+void Game::run()
+{
+
+    while(_encours)
+    {
+
+    }
+}
+
 void Game::mainMenu()
 {
-    sf::RenderWindow app(sf::VideoMode(800, 600, 32), "Land of Martyrs");
-    sf::Image image;
+
+    /*sf::Image image;
     sf::Sprite buttonPlay;
     sf::Sprite buttonQuit;
 
@@ -62,7 +73,7 @@ void Game::mainMenu()
     buttonPlay.SetPosition(sf::Vector2f(0 ,0));
     buttonQuit.SetPosition(sf::Vector2f(120 ,120));
 
-    while (app.IsOpened())
+    while (_app->IsOpened())
     {
         sf::Event event;
         while (app.GetEvent(event))
@@ -74,5 +85,5 @@ void Game::mainMenu()
         app.Draw(buttonQuit);
         app.Clear();
         app.Display();
-    }
+    }*/
 }

@@ -1,7 +1,7 @@
 #include "Engine_Game.h"
 
 
-Engine_Game::Engine_Game(Game* game) : Engine(game)
+Engine_Game::Engine_Game(Game* game, sf::RenderWindow* app) : Engine(game, app)
 {
 
 }

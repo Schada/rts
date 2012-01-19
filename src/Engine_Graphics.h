@@ -9,11 +9,12 @@
 #define ENGINE_GRAPHICS_H
 
 #include "Engine.h"
+#include "Scene.h"
 
 class Engine_Graphics : public Engine
 {
     public:
-        Engine_Graphics(Game* game);
+        Engine_Graphics(Game* game, sf::RenderWindow* app);
         virtual ~Engine_Graphics();
 
         virtual void frame();
@@ -30,6 +31,8 @@ class Engine_Graphics : public Engine
         * Fonction "main" du Thread
         */
         virtual void Run();
+
+        Scene* _sceneActive;
 
 
 };

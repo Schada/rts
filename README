@@ -3,3 +3,9 @@ La krakoukass-Team aime le caca !!!
 Bibliotheques utilisées :
  * Sfml
  * Qt
+
+Explications sur les Threads :
+ * Thread Principal : Initialise et demarre les autres Threads puis regarde les entrées (clavier et souris) et les stock dans un buffer
+ * Thread Engine_Game : Manipule les différents éléments du jeu (pathfinding ...)
+ * Thread Engine_Graphics : Gere l'affichage du jeu (Ecrans)
+ * Thread Engine_Sound : Gere le son dans le jeu

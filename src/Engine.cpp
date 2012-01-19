@@ -4,15 +4,17 @@
 #include "Engine_Graphics.h"
 #include "Engine_Sound.h"
 
-Engine::Engine(Game* game) : sf::Thread()
+Engine::Engine(Game* game, sf::RenderWindow* app) : sf::Thread()
 {
     _parent = game;
+    _app = app;
     _encours = false;
 }
 
 Engine::~Engine()
 {
     _parent = NULL;
+    _app = NULL;
 }
 
 void Engine::push_event(Engine_Event& e)

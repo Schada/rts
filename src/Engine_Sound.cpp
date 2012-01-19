@@ -1,6 +1,6 @@
 #include "Engine_Sound.h"
 
-Engine_Sound::Engine_Sound(Game* game) : Engine(game)
+Engine_Sound::Engine_Sound(Game* game, sf::RenderWindow* app) : Engine(game, app)
 {
 
 }

@@ -13,7 +13,7 @@
 class Engine_Game : public Engine
 {
     public:
-        Engine_Game(Game* game);
+        Engine_Game(Game* game, sf::RenderWindow* app);
         virtual ~Engine_Game();
 
         virtual void frame();

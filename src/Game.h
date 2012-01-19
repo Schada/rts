@@ -23,6 +23,11 @@ class Game{
 	~Game();
 
 	/**
+	* Permet de demarrer le jeu
+	*/
+	void run();
+
+	/**
 	* Permet d'afficher à l'écran un menu principal.
 	*/
     void mainMenu();
@@ -31,6 +36,10 @@ class Game{
 	Engine_Game *_eng_game;
 	Engine_Graphics *_eng_gfx;
 	Engine_Sound *_eng_son;
+
+	bool _encours;
+
+	sf::RenderWindow *_app;
 
 
 };
