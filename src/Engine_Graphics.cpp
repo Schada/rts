@@ -32,7 +32,7 @@ void Engine_Graphics::Run()
     }
     _app->SetActive(true);
     Gestionnaire_Images gi;
-    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(&gi);
+    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(&gi, _app);
     _sceneActive = scene;
     while(_encours)
     {

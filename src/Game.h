@@ -26,7 +26,6 @@ class Game{
 	* Permet de demarrer le jeu
 	*/
 	void run();
-
 	/**
 	* Permet d'afficher à l'écran un menu principal.
 	*/
