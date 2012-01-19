@@ -19,6 +19,11 @@ void Engine_Game::frame()
 void Engine_Game::process_event(Engine_Event& e)
 {
     std::cout << "Game : " << e.get_nb() << std::endl;
+    if(e.get_nb() == "QUIT")
+    {
+        _encours = false;
+
+    }
 }
 
 void Engine_Game::Run()
@@ -31,5 +36,6 @@ void Engine_Game::Run()
     {
 
         process_queue();
+
     }
 }

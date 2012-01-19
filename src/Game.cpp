@@ -33,6 +33,7 @@ Game::~Game()
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
+    delete _app;
 }
 
 void Game::run()
@@ -47,52 +48,12 @@ void Game::run()
             {
                 Engine_Event e("QUIT");
                 _eng_gfx->push_event(e);
+                _eng_game->push_event(e);
+                _eng_son->push_event(e);
+                _eng_game->Wait();
+                _eng_gfx->Wait();
+                _eng_son->Wait();
             }
-
-
         }
     }
-    _eng_game->finir();
-    _eng_gfx->finir();
-    _eng_son->finir();
-}
-
-void Game::mainMenu()
-{
-
-    /*sf::Image image;
-    sf::Sprite buttonPlay;
-    sf::Sprite buttonQuit;
-
-    std::string lien = IMG_DOSSIER;
-    lien = lien + "buttons.png";
-
-    if (!image.LoadFromFile(lien.c_str()))
-    {
-        std::cout<<"Erreur durant le chargement de l'image"<<std::endl;
-    }
-    else
-    {
-        buttonPlay.SetImage(image);
-        buttonQuit.SetImage(image);
-    }
-    buttonPlay.SetSubRect(sf::IntRect(0,0,150,80));
-    buttonQuit.SetSubRect(sf::IntRect(40,0,150,65));
-
-    buttonPlay.SetPosition(sf::Vector2f(0 ,0));
-    buttonQuit.SetPosition(sf::Vector2f(120 ,120));
-
-    while (_app->IsOpened())
-    {
-        sf::Event event;
-        while (app.GetEvent(event))
-        {
-            if (event.Type == sf::Event::Closed)
-                app.Close();
-        }
-        app.Draw(buttonPlay);
-        app.Draw(buttonQuit);
-        app.Clear();
-        app.Display();
-    }*/
 }
