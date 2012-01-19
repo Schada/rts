@@ -30,10 +30,6 @@ Game::Game()
 
 Game::~Game()
 {
-    _eng_game->finir();
-    _eng_gfx->finir();
-    _eng_son->finir();
-
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
@@ -41,16 +37,24 @@ Game::~Game()
 
 void Game::run()
 {
-
+    _app->SetActive(false);
     while (_app->IsOpened())
     {
         sf::Event event;
         while (_app->GetEvent(event))
         {
             if (event.Type == sf::Event::Closed)
-                _app->Close();
+            {
+                Engine_Event e("QUIT");
+                _eng_gfx->push_event(e);
+            }
+
+
         }
     }
+    _eng_game->finir();
+    _eng_gfx->finir();
+    _eng_son->finir();
 }
 
 void Game::mainMenu()

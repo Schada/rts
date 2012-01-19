@@ -25,11 +25,7 @@ void Engine_Sound::Run()
     while(!_encours)
     {
     }
-    Engine_Event e1("Sound to Game 1/1");
-    Engine_Event e2("Sound to Graphics 1/1");
-    send_message_to_game(e1);
-    send_message_to_graphics(e2);
-    std::cout << "Sound Go !" << std::endl;
+
     while(_encours)
     {
 

@@ -4,6 +4,7 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi) : Scene(gi)
 {
     std::string lien = IMG_DOSSIER;
     lien = lien + "buttons.png";
+    std::cout<<lien<<std::endl;
 
     if (!image.LoadFromFile(lien.c_str()))
     {
@@ -23,9 +24,8 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi) : Scene(gi)
 
 void Scene_MenuPrincipal::run(sf::RenderWindow* app)
 {
-    //(*app).Draw(buttonPlay);
-    //(*app).Draw(buttonQuit);
-
+    (*app).Draw(buttonPlay);
+    (*app).Draw(buttonQuit);
     (*app).Clear();
     (*app).Display();
 }
