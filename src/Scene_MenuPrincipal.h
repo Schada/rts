@@ -17,6 +17,10 @@ class Scene_MenuPrincipal : public Scene
     public:
         Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWindow* app);
         void run(sf::RenderWindow* app);
+        /**
+        *   Permet de gérer les animations du menu principal en fonction des messages passées en paramètres.
+        */
+        void animation(sf::RenderWindow* app, std::string mess);
         sf::Image image;
         sf::Sprite buttonPlay;
         sf::Sprite buttonQuit;

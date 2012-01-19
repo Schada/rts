@@ -18,11 +18,11 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWind
         buttonPlay.SetImage(image);
         buttonQuit.SetImage(image);
     }
-    buttonPlay.SetSubRect(sf::IntRect(0,0,150,60));
-    buttonQuit.SetSubRect(sf::IntRect(0,100, 150,160));
+    buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
+    buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
 
-    buttonPlay.SetPosition(sf::Vector2f(x/2-50,y/2+100));
-    buttonQuit.SetPosition(sf::Vector2f(x/2-50, y/2-50));
+    buttonPlay.SetPosition(sf::Vector2f(x/2-50, y/2-50));
+    buttonQuit.SetPosition(sf::Vector2f(x/2-50,y/2+100));
 }
 
 void Scene_MenuPrincipal::run(sf::RenderWindow* app)
@@ -31,4 +31,16 @@ void Scene_MenuPrincipal::run(sf::RenderWindow* app)
     (*app).Draw(buttonPlay);
     (*app).Draw(buttonQuit);
     (*app).Display();
+}
+
+void Scene_MenuPrincipal::animation(sf::RenderWindow* app, std::string mess)
+{
+    if(mess == "MOUSEOVERPLAY")
+    {
+        buttonPlay.SetSubRect(sf::IntRect(200,100, 350,160));
+    }
+        if(mess == "MOUSEOVERQUIT")
+    {
+        buttonQuit.SetSubRect(sf::IntRect(200,0,350,60));
+    }
 }

@@ -3,7 +3,7 @@
 Game::Game()
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
-
+    _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
     _eng_game = new Engine_Game(this, _app);
 	_eng_gfx = new Engine_Graphics(this, _app);
 	_eng_son = new Engine_Sound(this, _app);
@@ -48,6 +48,21 @@ void Game::run()
                 Engine_Event e("QUIT");
                 _eng_gfx->push_event(e);
             }
+            if (event.Type == sf::Event::MouseMoved)
+            {
+                int MouseX = event.MouseMove.X;
+                int MouseY = event.MouseMove.Y;
+                if(MouseX == 0 && MouseY == 0)                {
+                    Engine_Event e("MOUSEOVERPLAY");
+                    _eng_gfx->push_event(e);
+                }
+                if(MouseX ==0 && MouseY == 0)
+                {
+                    Engine_Event e("MOUSEOVERQUIT");
+                    _eng_gfx->push_event(e);
+                }
+            }
+
 
 
         }

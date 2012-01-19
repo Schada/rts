@@ -23,6 +23,14 @@ void Engine_Graphics::process_event(Engine_Event& e)
     {
         _app->Close();
     }
+    if(e.get_nb() == "MOUSEOVERQUIT")
+    {
+        _sceneActive->animation(_app, "MOUSEOVERQUIT");
+    }
+    if(e.get_nb() == "MOUSEOVERPLAY")
+    {
+        _sceneActive->animation(_app, "MOUSEOVERPLAY");
+    }
 }
 
 void Engine_Graphics::Run()
