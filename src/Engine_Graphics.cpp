@@ -8,7 +8,8 @@ Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app) : Engine(gam
 
 Engine_Graphics::~Engine_Graphics()
 {
-    delete _sceneActive;
+    if(_sceneActive)
+        delete _sceneActive;
 }
 
 void Engine_Graphics::frame()
@@ -21,7 +22,11 @@ void Engine_Graphics::process_event(Engine_Event& e)
     std::cout << "Graphics : " << e.get_nb() << std::endl;
     if(e.get_nb() == "QUIT")
     {
+        delete _sceneActive;
+        _sceneActive = NULL;
         _app->Close();
+        _encours = false;
+
     }
     if(e.get_nb() == "MOUSEOVERQUIT")
     {
@@ -49,5 +54,6 @@ void Engine_Graphics::Run()
         {
             _sceneActive->run(_app);
         }
+
     }
 }
