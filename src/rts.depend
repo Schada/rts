@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1326989042 source:c:\users\schada\rts\src\game.cpp
+1327001686 source:c:\users\schada\rts\src\game.cpp
 	"Game.h"
 
-1326923112 c:\users\schada\rts\src\game.h
+1326992699 c:\users\schada\rts\src\game.h
 	"constantes.h"
 	"Engine_Game.h"
 	"Engine_Graphics.h"
@@ -11,8 +11,9 @@
 	<string>
 	<SFML/Graphics.hpp>
 
-1326988956 c:\users\schada\rts\src\engine.h
+1326992836 c:\users\schada\rts\src\engine.h
 	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
 	<queue>
 	<iostream>
 	"Engine_Event.h"
@@ -20,10 +21,10 @@
 1326923112 source:c:\users\schada\rts\src\engine_event.cpp
 	"Engine_Event.h"
 
-1326923112 c:\users\schada\rts\src\engine_event.h
+1326989883 c:\users\schada\rts\src\engine_event.h
 	<string>
 
-1326923112 source:c:\users\schada\rts\src\engine.cpp
+1326992699 source:c:\users\schada\rts\src\engine.cpp
 	"Engine.h"
 	"Engine_Game.h"
 	"Engine_Graphics.h"
@@ -50,27 +51,50 @@
 1326838613 source:c:\users\thierry\autres\travail\rts\src\engine.cpp
 	"Engine.h"
 
-1326923113 source:c:\users\schada\rts\src\main.cpp
+1327001686 source:c:\users\schada\rts\src\main.cpp
 	"Game.h"
 
 1326923113 c:\users\schada\rts\src\constantes.h
 
-1326923112 c:\users\schada\rts\src\engine_game.h
+1326992722 c:\users\schada\rts\src\engine_game.h
 	"Engine.h"
 
-1326923112 c:\users\schada\rts\src\engine_graphics.h
+1326997575 c:\users\schada\rts\src\engine_graphics.h
 	"Engine.h"
+	"Scene.h"
+	"Scene_MenuPrincipal.h"
 
-1326923112 c:\users\schada\rts\src\engine_sound.h
+1326992722 c:\users\schada\rts\src\engine_sound.h
 	"Engine.h"
 	"Game.h"
 
-1326923112 source:c:\users\schada\rts\src\engine_game.cpp
+1327001999 source:c:\users\schada\rts\src\engine_game.cpp
 	"Engine_Game.h"
 
-1326923112 source:c:\users\schada\rts\src\engine_graphics.cpp
+1327001973 source:c:\users\schada\rts\src\engine_graphics.cpp
 	"Engine_Graphics.h"
 
-1326923112 source:c:\users\schada\rts\src\engine_sound.cpp
+1327001988 source:c:\users\schada\rts\src\engine_sound.cpp
 	"Engine_Sound.h"
+
+1326996560 c:\users\schada\rts\src\scene.h
+	<SFML/Graphics.hpp>
+	"Gestionnaire_Images.h"
+
+1326996489 c:\users\schada\rts\src\gestionnaire_images.h
+
+1326995976 source:c:\users\schada\rts\src\gestionnaire_images.cpp
+	"Gestionnaire_Images.h"
+
+1326995685 source:c:\users\schada\rts\src\scene.cpp
+	"Scene.h"
+
+1326997894 c:\users\schada\rts\src\scene_menuprincipal.h
+	"Scene.h"
+	"constantes.h"
+	<iostream>
+	<string>
+
+1327001396 source:c:\users\schada\rts\src\scene_menuprincipal.cpp
+	"Scene_MenuPrincipal.h"
 
