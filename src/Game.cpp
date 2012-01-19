@@ -42,9 +42,14 @@ Game::~Game()
 void Game::run()
 {
 
-    while(_encours)
+    while (_app->IsOpened())
     {
-
+        sf::Event event;
+        while (_app->GetEvent(event))
+        {
+            if (event.Type == sf::Event::Closed)
+                _app->Close();
+        }
     }
 }
 

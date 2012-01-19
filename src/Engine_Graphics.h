@@ -10,6 +10,7 @@
 
 #include "Engine.h"
 #include "Scene.h"
+#include "Scene_MenuPrincipal.h"
 
 class Engine_Graphics : public Engine
 {

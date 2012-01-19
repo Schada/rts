@@ -8,7 +8,7 @@ Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app) : Engine(gam
 
 Engine_Graphics::~Engine_Graphics()
 {
-
+    delete _sceneActive;
 }
 
 void Engine_Graphics::frame()
@@ -33,6 +33,9 @@ void Engine_Graphics::Run()
     send_message_to_game(e2);
     send_message_to_sound(e3);
     std::cout << "Graphics Go !" << std::endl;
+    Gestionnaire_Images gi;
+    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(&gi);
+    _sceneActive = scene;
     while(_encours)
     {
         process_queue();

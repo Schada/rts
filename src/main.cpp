@@ -3,6 +3,6 @@
 int main()
 {
     Game game;
-    game.mainMenu();
+    game.run();
     return 0;
 }

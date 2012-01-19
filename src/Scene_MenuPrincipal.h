@@ -8,12 +8,18 @@
 #define SCENE_MENUPRINCIPAL_H
 
 #include "Scene.h"
+#include "constantes.h"
+#include <iostream>
+#include <string>
 
-class Scene_MenuPrincipal : Scene
+class Scene_MenuPrincipal : public Scene
 {
     public:
     Scene_MenuPrincipal(Gestionnaire_Images* gi);
     virtual void run(sf::RenderWindow* app);
+    sf::Image image;
+    sf::Sprite buttonPlay;
+    sf::Sprite buttonQuit;
 
 };
 
