@@ -11,25 +11,28 @@ Explications sur les Threads :
  * Thread Engine_Sound : Gere le son dans le jeu
  
 Les messages des moteurs sont composés de :
-	Une Scene, std::string
-	Un type, std::string
-	Un nom, std::string
-	Un parametre, std::string
- 
-Le type mouse est utilisé lorsque la souris vient sur un élément ou le quitte.
+	Une Scene, int
+	Un Type, int
+	Un Nom, std::string
+	Un Parametre, std::string
+	
+Scene, valeur possible : MENU_PRINCIPAL, CHARGEMENT, JEU
+Type, valeur possible : MOUSE, CLICK, KEY, LOAD
+
+Le type MOUSE est utilisé lorsque la souris vient sur un élément ou le quitte.
 Il a pour parametre :
 	IN 
 	OUT
 	
-Le type click est utilisé lorsque un click de souris est utilisé.
+Le type CLICK est utilisé lorsque un click de souris est utilisé.
 Il a pour parametre :
 	LEFT
 	RIGHT
 	
-Le type key est utilisé lors d'un appuie sur une touche du clavier.
+Le type KEY est utilisé lors d'un appuie sur une touche du clavier.
 Il a pour parametre la touche pressée (avec casse).
 
-Le type load est utilisé lors d'un chargement de fichier.
+Le type LOAD est utilisé lors d'un chargement de fichier.
 Sans paramètre.
 
 

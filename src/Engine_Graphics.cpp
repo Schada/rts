@@ -19,22 +19,52 @@ void Engine_Graphics::frame()
 
 void Engine_Graphics::process_event(Engine_Event& e)
 {
-    std::cout << "Graphics : " << e.get_nb() << std::endl;
-    if(e.get_nb() == "QUIT")
-    {
-        delete _sceneActive;
-        _sceneActive = NULL;
-        _app->Close();
-        _encours = false;
+    std::cout << "Graphics : " << e.get_nom() << std::endl;
 
-    }
-    if(e.get_nb() == "MOUSEOVERQUIT")
+    switch(e.get_scene())
     {
-        _sceneActive->animation(_app, "MOUSEOVERQUIT");
-    }
-    if(e.get_nb() == "MOUSEOVERPLAY")
-    {
-        _sceneActive->animation(_app, "MOUSEOVERPLAY");
+        case MENU_PRINCIPAL:
+        switch(e.get_type())
+        {
+            case MOUSE:
+            if(e.get_nom() == "QUIT" && e.get_parametre() == "IN")
+            {
+                _sceneActive->animation(_app, "MOUSEOVERQUIT");
+            }
+            if(e.get_nom() == "PLAY" && e.get_parametre() == "IN")
+            {
+                _sceneActive->animation(_app, "MOUSEOVERPLAY");
+            }
+            break;
+            case CLICK:
+            if(e.get_nom() == "QUIT" && e.get_parametre() == "LEFT")
+            {
+                delete _sceneActive;
+                _sceneActive = NULL;
+                _app->Close();
+                _encours = false;
+            }
+            break;
+            case KEY:
+
+            break;
+            case LOAD:
+
+            break;
+            default:
+            std::cerr << "Impossible de traiter le message" << std::endl;
+            break;
+        }
+        break;
+        case CHARGEMENT:
+
+        break;
+        case JEU:
+
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message" << std::endl;
+        break;
     }
 }
 

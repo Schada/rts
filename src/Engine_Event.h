@@ -11,20 +11,21 @@
 
 class Engine_Event{
     public:
-	Engine_Event(std::string type, std::string nom);
+	Engine_Event(int scene, int type, std::string nom, std::string parametre);
 	~Engine_Event();
 
-	std::string get_scene();
-	std::string get_type();
+	int get_scene();
+	int get_type();
 	std::string get_nom();
 	std::string get_parametre();
 
     private:
-        std::string _scene;
-        std::string _type;
+        int _scene;
+        int _type;
         std::string _nom;
         std::string _parametre;
 
 };
 
 #endif //GAME_H
+

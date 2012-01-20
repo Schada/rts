@@ -18,11 +18,41 @@ void Engine_Game::frame()
 
 void Engine_Game::process_event(Engine_Event& e)
 {
-    std::cout << "Game : " << e.get_nb() << std::endl;
-    if(e.get_nb() == "QUIT")
+    std::cout << "Game : " << e.get_nom() << std::endl;
+    switch(e.get_scene())
     {
-        _encours = false;
+        case MENU_PRINCIPAL:
+        switch(e.get_type())
+        {
+            case MOUSE:
 
+            break;
+            case CLICK:
+            if(e.get_parametre() == "LEFT" && e.get_nom() == "QUIT" )
+            {
+                _encours = false;
+            }
+            break;
+            case KEY:
+
+            break;
+            case LOAD:
+
+            break;
+            default:
+            std::cerr << "Impossible de traiter le message" << std::endl;
+            break;
+        }
+        break;
+        case CHARGEMENT:
+
+        break;
+        case JEU:
+
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message" << std::endl;
+        break;
     }
 }
 

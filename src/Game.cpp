@@ -46,7 +46,7 @@ void Game::run()
         {
             if (event.Type == sf::Event::Closed)
             {
-                Engine_Event e("QUIT");
+                Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
                 _eng_gfx->push_event(e);
                 _eng_game->push_event(e);
                 _eng_son->push_event(e);
@@ -54,18 +54,17 @@ void Game::run()
                 _eng_gfx->Wait();
                 _eng_son->Wait();
             }
-<<<<<<< HEAD
-            if (event.Type == sf::Event::MouseMoved)
+            else if (event.Type == sf::Event::MouseMoved)
             {
                 int MouseX = event.MouseMove.X;
                 int MouseY = event.MouseMove.Y;
                 if(MouseX == 0 && MouseY == 0)                {
-                    Engine_Event e("MOUSEOVERPLAY");
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
                     _eng_gfx->push_event(e);
                 }
                 if(MouseX ==0 && MouseY == 0)
                 {
-                    Engine_Event e("MOUSEOVERQUIT");
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
                     _eng_gfx->push_event(e);
                 }
             }
@@ -74,11 +73,4 @@ void Game::run()
 
         }
     }
-    _eng_game->finir();
-    _eng_gfx->finir();
-    _eng_son->finir();
-=======
-        }
-    }
->>>>>>> 4472fdee08d0b82b3f163df669252a33055c8117
 }

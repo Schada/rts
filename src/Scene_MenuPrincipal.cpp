@@ -18,19 +18,11 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWind
         buttonPlay.SetImage(image);
         buttonQuit.SetImage(image);
     }
-<<<<<<< HEAD
     buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
     buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
 
     buttonPlay.SetPosition(sf::Vector2f(x/2-50, y/2-50));
     buttonQuit.SetPosition(sf::Vector2f(x/2-50,y/2+100));
-=======
-    buttonPlay.SetSubRect(sf::IntRect(0,0,150,60));
-    buttonQuit.SetSubRect(sf::IntRect(0,100, 150,160));
-
-    buttonPlay.SetPosition(sf::Vector2f(x/2-50,y/2+100));
-    buttonQuit.SetPosition(sf::Vector2f(x/2-50, y/2-50));
->>>>>>> 4472fdee08d0b82b3f163df669252a33055c8117
 }
 
 void Scene_MenuPrincipal::run(sf::RenderWindow* app)

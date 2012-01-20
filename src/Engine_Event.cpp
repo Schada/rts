@@ -1,9 +1,11 @@
 #include "Engine_Event.h"
 
-Engine_Event::Engine_Event(std::string type, std::string nom);
+Engine_Event::Engine_Event(int scene, int type, std::string nom, std::string parametre)
 {
+    _scene = scene;
     _type = type;
     _nom = nom;
+    _parametre = parametre;
 }
 
 Engine_Event::~Engine_Event()
@@ -11,12 +13,12 @@ Engine_Event::~Engine_Event()
 
 }
 
-std::string Engine_Event::get_scene()
+int Engine_Event::get_scene()
 {
     return _scene;
 }
 
-std::string Engine_Event::get_type()
+int Engine_Event::get_type()
 {
     return _type;
 }

@@ -9,9 +9,3 @@ Scene::~Scene()
 {
     _gi = NULL;
 }
-
-
-void Scene::run(sf::RenderWindow* app)
-{
-
-}
