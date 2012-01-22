@@ -31,9 +31,17 @@ void Engine_Graphics::process_event(Engine_Event& e)
             {
                 _sceneActive->animation(_app, "MOUSEOVERQUIT");
             }
+            if(e.get_nom() == "QUIT" && e.get_parametre() == "OUT")
+            {
+                _sceneActive->animation(_app, "MOUSEQUITQUIT");
+            }
             if(e.get_nom() == "PLAY" && e.get_parametre() == "IN")
             {
                 _sceneActive->animation(_app, "MOUSEOVERPLAY");
+            }
+            if(e.get_nom() == "PLAY" && e.get_parametre() == "OUT")
+            {
+                _sceneActive->animation(_app, "MOUSEQUITPLAY");
             }
             break;
             case CLICK:

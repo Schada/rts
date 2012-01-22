@@ -29,7 +29,6 @@ class Game{
 	/**
 	* Permet d'afficher à l'écran un menu principal.
 	*/
-    void mainMenu();
 
     private:
 	Engine_Game *_eng_game;

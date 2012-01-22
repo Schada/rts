@@ -39,8 +39,16 @@ void Scene_MenuPrincipal::animation(sf::RenderWindow* app, std::string mess)
     {
         buttonPlay.SetSubRect(sf::IntRect(200,100, 350,160));
     }
-        if(mess == "MOUSEOVERQUIT")
+    if(mess == "MOUSEOVERQUIT")
     {
         buttonQuit.SetSubRect(sf::IntRect(200,0,350,60));
+    }
+    if(mess == "MOUSEQUITQUIT")
+    {
+        buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
+    }
+    if(mess == "MOUSEQUITPLAY")
+    {
+        buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
     }
 }

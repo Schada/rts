@@ -56,21 +56,34 @@ void Game::run()
             }
             else if (event.Type == sf::Event::MouseMoved)
             {
+                int xPlay = (*_app).GetWidth()/2-50;
+                int yPlay = (*_app).GetHeight()/2-50;
+                int xQuit = (*_app).GetWidth()/2-50;
+                int yQuit = (*_app).GetHeight()/2-50+150;
+
                 int MouseX = event.MouseMove.X;
                 int MouseY = event.MouseMove.Y;
-                if(MouseX == 0 && MouseY == 0)                {
+
+                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
+                {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
                     _eng_gfx->push_event(e);
                 }
-                if(MouseX ==0 && MouseY == 0)
+                else{
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
+                    _eng_gfx->push_event(e);
+                }
+                if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
                 {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
                     _eng_gfx->push_event(e);
                 }
+                else
+                {
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
+                    _eng_gfx->push_event(e);
+                }
             }
-
-
-
         }
     }
 }
