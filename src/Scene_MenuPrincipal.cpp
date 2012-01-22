@@ -51,4 +51,8 @@ void Scene_MenuPrincipal::animation(sf::RenderWindow* app, std::string mess)
     {
         buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
     }
+    if(mess == "MOUSECLICKPLAY")
+    {
+    std::cout<<"pddddddddddddddddddddddddddddddddddddd"<<std::endl;;
+    }
 }

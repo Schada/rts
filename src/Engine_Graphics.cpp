@@ -52,6 +52,10 @@ void Engine_Graphics::process_event(Engine_Event& e)
                 _app->Close();
                 _encours = false;
             }
+            if(e.get_nom()== "PLAY" && e.get_parametre() == "LEFT")
+            {
+                _sceneActive->animation(_app, "MOUSECLICKPLAY");
+            }
             break;
             case KEY:
 

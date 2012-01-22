@@ -42,6 +42,12 @@ void Game::run()
     while (_app->IsOpened())
     {
         sf::Event event;
+        int xPlay = (*_app).GetWidth()/2-50;
+        int yPlay = (*_app).GetHeight()/2-50;
+        int xQuit = (*_app).GetWidth()/2-50;
+        int yQuit = (*_app).GetHeight()/2-50+150;
+        int MouseX = event.MouseMove.X;
+        int MouseY = event.MouseMove.Y;
         while (_app->GetEvent(event))
         {
             if (event.Type == sf::Event::Closed)
@@ -56,20 +62,14 @@ void Game::run()
             }
             else if (event.Type == sf::Event::MouseMoved)
             {
-                int xPlay = (*_app).GetWidth()/2-50;
-                int yPlay = (*_app).GetHeight()/2-50;
-                int xQuit = (*_app).GetWidth()/2-50;
-                int yQuit = (*_app).GetHeight()/2-50+150;
-
-                int MouseX = event.MouseMove.X;
-                int MouseY = event.MouseMove.Y;
-
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
                 {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
                     _eng_gfx->push_event(e);
                 }
-                else{
+
+                else
+                {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
                     _eng_gfx->push_event(e);
                 }
@@ -82,6 +82,24 @@ void Game::run()
                 {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
                     _eng_gfx->push_event(e);
+                }
+            }
+            else if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
+            {
+                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
+                {
+                    Engine_Event e(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
+                    _eng_gfx->push_event(e);
+                }
+                if (MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
+                {
+                    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                    _eng_gfx->push_event(e);
+                    _eng_game->push_event(e);
+                    _eng_son->push_event(e);
+                    _eng_game->Wait();
+                    _eng_gfx->Wait();
+                    _eng_son->Wait();
                 }
             }
         }
