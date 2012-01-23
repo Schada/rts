@@ -57,6 +57,7 @@ void Engine_Graphics::process_event(Engine_Event& e)
             }
             if(e.get_nom()== "PLAY" && e.get_parametre() == "LEFT")
             {
+                delete _sceneActive;
                 _sceneActive = new Scene_Jeu(_gi);
             }
             break;

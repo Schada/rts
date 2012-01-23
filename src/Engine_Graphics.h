@@ -11,6 +11,7 @@
 #include "Engine.h"
 #include "Scene.h"
 #include "Scene_MenuPrincipal.h"
+#include "Scene_Jeu.h"
 
 class Engine_Graphics : public Engine
 {
