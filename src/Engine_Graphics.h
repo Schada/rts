@@ -20,7 +20,6 @@ class Engine_Graphics : public Engine
 
         virtual void frame();
 
-
     protected:
 
         /**
@@ -34,8 +33,7 @@ class Engine_Graphics : public Engine
         virtual void Run();
 
         Scene* _sceneActive;
-
-
+        Gestionnaire_Images* _gi;
 };
 
 #endif // ENGINE_GRAPHICS_H

@@ -4,12 +4,15 @@
 Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app) : Engine(game, app)
 {
     _sceneActive = NULL;
+    _gi = NULL;
 }
 
 Engine_Graphics::~Engine_Graphics()
 {
     if(_sceneActive)
         delete _sceneActive;
+   if(_gi)
+        delete _gi;
 }
 
 void Engine_Graphics::frame()
@@ -54,7 +57,7 @@ void Engine_Graphics::process_event(Engine_Event& e)
             }
             if(e.get_nom()== "PLAY" && e.get_parametre() == "LEFT")
             {
-                _sceneActive->animation(_app, "MOUSECLICKPLAY");
+                _sceneActive = new Scene_Jeu(_gi);
             }
             break;
             case KEY:

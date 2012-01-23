@@ -60,31 +60,28 @@ void Game::run()
                 _eng_gfx->Wait();
                 _eng_son->Wait();
             }
-            else if (event.Type == sf::Event::MouseMoved)
+            if (event.Type == sf::Event::MouseMoved)
             {
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
                 {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
                     _eng_gfx->push_event(e);
-                }
-
-                else
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
-                    _eng_gfx->push_event(e);
-                }
+                }else
+                    {
+                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
+                        _eng_gfx->push_event(e);
+                    }
                 if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
                 {
                     Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
                     _eng_gfx->push_event(e);
-                }
-                else
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
-                    _eng_gfx->push_event(e);
-                }
+                }else
+                    {
+                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
+                        _eng_gfx->push_event(e);
+                    }
             }
-            else if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
+            if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
             {
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
                 {

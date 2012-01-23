@@ -53,6 +53,6 @@ void Scene_MenuPrincipal::animation(sf::RenderWindow* app, std::string mess)
     }
     if(mess == "MOUSECLICKPLAY")
     {
-    std::cout<<"pddddddddddddddddddddddddddddddddddddd"<<std::endl;;
+
     }
 }
