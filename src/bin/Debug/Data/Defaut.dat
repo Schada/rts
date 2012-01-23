@@ -1,0 +1,17 @@
+[General]
+Textures = Textures\Defaut\
+[Fin]
+[Civilisations]
+Gaia = Civilisations\Gaia\
+Humains = Civilisations\Humains\
+[Fin]
+[Terrains]
+Herbe = Textures\Terrain\Herbe\
+Sable = Textures\Terrain\Sable\
+Neige = Textures\Terrain\Neige\
+[Fin]
+[Textures]
+Icons
+Buttons
+[Fin]
+test

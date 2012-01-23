@@ -26,9 +26,10 @@ class Game{
 	* Permet de demarrer le jeu
 	*/
 	void run();
-	/**
-	* Permet d'afficher à l'écran un menu principal.
-	*/
+
+	static std::string RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne);
+    static bool VerifExistanceNom(std::string lienFichier, std::string nom, std::string balise);
+    static bool VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise);
 
     private:
 	Engine_Game *_eng_game;

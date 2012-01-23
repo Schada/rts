@@ -16,7 +16,7 @@ class Scene_Jeu : public Scene
         */
         void animation(sf::RenderWindow* app, std::string mess);
     private:
-        Gestionnaire_Images _gi;
+        Gestionnaire_Images _gi();
 };
 
 #endif // SCENE_JEU_H

@@ -8,16 +8,17 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWind
     std::cout<<lien<<std::endl;
     x = (*app).GetWidth();
     y = (*app).GetHeight();
-    if (!image.LoadFromFile(lien.c_str()))
+    /*if (!image.LoadFromFile(lien.c_str()))
     {
         std::cout<<"Erreur durant le chargement de l'image"<<std::endl;
     }
     else
-    {
-        image.CreateMaskFromColor(sf::Color(181 ,230 ,29 ));
+    {*/
+        //image.CreateMaskFromColor(sf::Color(181 ,230 ,29 ));
+        image = *(_gi->get_contenu("Buttons"));
         buttonPlay.SetImage(image);
         buttonQuit.SetImage(image);
-    }
+    //}
     buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
     buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
 

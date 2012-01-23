@@ -102,3 +102,176 @@ void Game::run()
         }
     }
 }
+
+/*
+Recupere la valeur contenu dans la ligne de nom nomLigne dans la balise balise du fichier lienFichier
+*/
+
+std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
+{
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom, vide, valeur;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                fichier >> nom;
+                if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+
+                    fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
+                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                    {
+                        fichier.close();
+                        return valeur;
+                    }
+
+                }
+
+
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            {
+                std::cout << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+            }
+            else
+            {
+                std::cout << "Ligne introuvable" << std::endl;
+            }
+
+        }
+        else // Si la balise consernée n'a pas été trouver
+        {
+            std::cout << "Balise " + balise + " introuvable" << std::endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+    return "";
+}
+
+/*
+Indique si une ligne dans la balise 'balise' porte le nom de 'nomLigne' dans le fichier 'lienFchier'
+*/
+
+bool Game::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std::string balise)
+{
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                fichier >> nom;
+                if(nomLigne == nom)// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+                    fichier.close();
+                    return true;
+                }
+
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+    return false;
+}
+
+/*
+Indique si une ligne 'nomLigne dans la balise 'balise' a pour valeur 'val' dans le fichier 'lienFchier'
+Renvoit true si la valeur existe dans le fichier
+Renvoit false pour tout les autres cas (ligne, balise introuvable ...)
+*/
+
+bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise)
+{
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom, vide, valeur;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                fichier >> nom;
+                if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+
+                    fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
+                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                    {
+                        fichier.close();
+                        if(valeur == val)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            {
+                std::cout << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+            }
+            else
+            {
+                std::cout << "Ligne introuvable" << std::endl;
+            }
+
+        }
+        else // Si la balise consernée n'a pas été trouver
+        {
+            std::cout << "Balise " + balise + " introuvable" << std::endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+    return false;
+}
+

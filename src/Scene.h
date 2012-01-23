@@ -20,7 +20,7 @@ class Scene
     virtual void run(sf::RenderWindow* app) = 0;
     virtual void animation(sf::RenderWindow* app, std::string mess) = 0;
 
-    private:
+    protected:
     Gestionnaire_Images* _gi;
 
 };
