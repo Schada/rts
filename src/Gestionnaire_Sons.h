@@ -9,6 +9,7 @@
 
 #include "constantes.h"
 #include "Gestionnaire.h"
+#include <SFML/Audio.hpp>
 #include <iostream>
 
 class Game;
