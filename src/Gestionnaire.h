@@ -1,7 +1,7 @@
 /**
 *   Auteur : Schada
-*   Classe : Gestionnaire_Images
-*   Role : Gere les images du jeu
+*   Classe : Gestionnaire
+*   Role :
 */
 
 #ifndef GESTIONNAIRE_H
