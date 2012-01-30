@@ -13,23 +13,46 @@
 class Engine_Game : public Engine
 {
     public:
-        Engine_Game(Game* game, sf::RenderWindow* app);
-        virtual ~Engine_Game();
-
-        virtual void frame();
-
-
-    protected:
+        /**
+        * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+        */
 
         /**
-        * Traitement d'un message, propre à chaque moteur.
+        * Constructeurs et Destructeur
         */
-        virtual void process_event(Engine_Event& e);
+        Engine_Game(Game* game, sf::RenderWindow* app, std::string nom);
+        virtual ~Engine_Game();
+
+        /**
+        * Traitement propre au moteur.
+        */
+        virtual void frame();
+
+        /**
+        * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+        */
+
+    private:
+
+        /**
+        * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+        */
 
         /**
         * Fonction "main" du Thread
         */
         virtual void Run();
+
+        /**
+        * Permet de regrouper le traitement des messages par scene
+        */
+        void event_MenuPrincipal(Engine_Event& e);
+        void event_Chargement(Engine_Event& e);
+        void event_Jeu(Engine_Event& e);
+
+        /**
+        * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
+        */
 
 
 };

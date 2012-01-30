@@ -23,20 +23,32 @@ class Game;
 class Engine : public sf::Thread
 {
     public:
-        Engine(Game* game, sf::RenderWindow* app);
+
+        /**
+        * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+        */
+
+        /**
+        * Constructeurs et Destructeur
+        */
+        Engine(Game* game, sf::RenderWindow* app, std::string nom);
         virtual ~Engine();
+
         /**
         * Accepter les messages des autres moteurs.
         */
         virtual void push_event(Engine_Event& e);
+
         /**
         * Traite la file des messages.
         */
         virtual void process_queue();
+
         /**
         * Traitement propre à chaque moteur.
         */
         virtual void frame() = 0;
+
 
         /**
         * Permet de lancer un Thread
@@ -49,37 +61,34 @@ class Engine : public sf::Thread
         virtual void finir();
 
         /**
-        * Permet l'envoit aux différents engines
+        * Permet l'envoi aux différents moteurs
         */
         void send_message_to_graphics(Engine_Event& e);
         void send_message_to_game(Engine_Event& e);
         void send_message_to_sound(Engine_Event& e);
 
         /**
-        * Permet de relier les Engines entre eux
+        * Permet de relier les moteurs entre eux
         */
         void attach_engine_game(Engine_Game* eng_game);
         void attach_engine_graphics(Engine_Graphics* eng_gfx);
         void attach_engine_sound(Engine_Sound* eng_son);
 
+        /**
+        * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+        */
+
 
     protected:
-        /**
-        * Pointeur sur la fenetre de rendu
-        */
-        sf::RenderWindow *_app;
 
         /**
-        * Liste des différents Engines
+        * <------------------------------------------------------- Methodes Protected ------------------------------------------------------->
         */
-        Engine_Game *_eng_game;
-        Engine_Graphics *_eng_gfx;
-        Engine_Sound *_eng_son;
 
         /**
-        * Traitement d'un message, propre à chaque moteur.
+        * Traitement d'un message
         */
-        virtual void process_event(Engine_Event& e) = 0;
+        void process_event(Engine_Event& e);
 
         /**
         * Fonction "main" du Thread
@@ -87,11 +96,40 @@ class Engine : public sf::Thread
         virtual void Run() = 0;
 
         /**
-        * Pointeur vers l'objet parent.
+        * Permet de regrouper le traitement des messages par scene
+        */
+        virtual void event_MenuPrincipal(Engine_Event& e) = 0;
+        virtual void event_Chargement(Engine_Event& e) = 0;
+        virtual void event_Jeu(Engine_Event& e) = 0;
+
+        /**
+        * <------------------------------------------------------- Attributs Protected ------------------------------------------------------->
+        */
+
+        /**
+        * Nom du moteur
+        */
+        std::string _nom;
+
+        /**
+        * Pointeur sur la fenetre de rendu
+        */
+        sf::RenderWindow *_app;
+
+        /**
+        * Liste des différents moteurs
+        */
+        Engine_Game *_eng_game;
+        Engine_Graphics *_eng_gfx;
+        Engine_Sound *_eng_son;
+
+        /**
+        * Pointeur vers l'objet parent
         */
         Game *_parent;
+
         /**
-        * File des messages à traiter.
+        * File des messages à traiter
         */
         std::queue< Engine_Event > _events_queue;
 
@@ -99,7 +137,6 @@ class Engine : public sf::Thread
         * Booleen pour savoir si le thread doit se terminer
         */
         bool _encours;
-
 
 };
 

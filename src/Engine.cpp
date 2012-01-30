@@ -4,10 +4,11 @@
 #include "Engine_Graphics.h"
 #include "Engine_Sound.h"
 
-Engine::Engine(Game* game, sf::RenderWindow* app) : sf::Thread()
+Engine::Engine(Game* game, sf::RenderWindow* app, std::string nom) : sf::Thread()
 {
     _parent = game;
     _app = app;
+    _nom = nom;
     _encours = false;
 }
 
@@ -19,12 +20,18 @@ Engine::~Engine()
 
 void Engine::push_event(Engine_Event& e)
 {
-    std::cout << "Message Envoye" << std::endl;
+    /**
+    * Un message est ajouté au conteneur des messages du moteur visé
+    */
+    std::cerr << "Message Envoye" << std::endl;
     _events_queue.push(e);
 }
 
 void Engine::process_queue()
 {
+    /**
+    * Tant que le conteneur n'est pas vide, on récupère le première message dans une variable, on l'enlève du conteneur et on le traite.
+    */
     while (! _events_queue.empty())
     {
 			Engine_Event e = _events_queue.front();
@@ -72,4 +79,25 @@ void Engine::attach_engine_graphics(Engine_Graphics* eng_gfx)
 void Engine::attach_engine_sound(Engine_Sound* eng_son)
 {
     _eng_son = eng_son;
+}
+
+void Engine::process_event(Engine_Event& e)
+{
+    std::cerr << _nom << " : " << e.get_nom() << std::endl;
+
+    switch(e.get_scene())
+    {
+        case MENU_PRINCIPAL:
+        event_MenuPrincipal(e);
+        break;
+        case CHARGEMENT:
+        event_Chargement(e);
+        break;
+        case JEU:
+        event_Jeu(e);
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message : La Scene " << e.get_scene() << " est invalide !" << std::endl;
+        break;
+    }
 }

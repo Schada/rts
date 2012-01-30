@@ -4,9 +4,9 @@ Game::Game()
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
     _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
-    _eng_game = new Engine_Game(this, _app);
-	_eng_gfx = new Engine_Graphics(this, _app);
-	_eng_son = new Engine_Sound(this, _app);
+    _eng_game = new Engine_Game(this, _app, "Game");
+	_eng_gfx = new Engine_Graphics(this, _app, "Graphics");
+	_eng_son = new Engine_Sound(this, _app, "Sound");
 
 	_eng_game->attach_engine_graphics(_eng_gfx);
 	_eng_game->attach_engine_sound(_eng_son);

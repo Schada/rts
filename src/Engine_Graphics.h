@@ -16,24 +16,55 @@
 class Engine_Graphics : public Engine
 {
     public:
-        Engine_Graphics(Game* game, sf::RenderWindow* app);
-        virtual ~Engine_Graphics();
-
-        virtual void frame();
-
-    protected:
+        /**
+        * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+        */
 
         /**
-        * Traitement d'un message, propre à chaque moteur.
+        * Constructeurs et Destructeur
         */
-        virtual void process_event(Engine_Event& e);
+        Engine_Graphics(Game* game, sf::RenderWindow* app, std::string nom);
+        virtual ~Engine_Graphics();
+
+        /**
+        * Traitement propre au moteur.
+        */
+        virtual void frame();
+
+        /**
+        * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+        */
+
+    private:
+
+        /**
+        * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+        */
 
         /**
         * Fonction "main" du Thread
         */
         virtual void Run();
 
+        /**
+        * Permet de regrouper le traitement des messages par scene
+        */
+        void event_MenuPrincipal(Engine_Event& e);
+        void event_Chargement(Engine_Event& e);
+        void event_Jeu(Engine_Event& e);
+
+        /**
+        * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
+        */
+
+        /**
+        * Pointeur sur la scene active
+        */
         Scene* _sceneActive;
+
+        /**
+        * Pointeur sur le gestionnaire d'images du jeu
+        */
         Gestionnaire_Images* _gi;
 };
 
