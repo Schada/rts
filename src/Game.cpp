@@ -21,7 +21,7 @@ Game::Game()
 	_eng_gfx->Launch();
 	_eng_son->Launch();
 
-	//Permet de syncroniser les moteurs entre eux
+	//Permet de synchroniser les moteurs entre eux
 
 	_eng_game->lancer();
 	_eng_gfx->lancer();

@@ -26,6 +26,7 @@ class Gestionnaire
 
     protected:
     void creerGestionnaire(std::string balise);
+    bool existe(std::string nom);
     std::map < std::string, void* > _conteneur;
     std::string _nom;
     std::string _lienFichier;

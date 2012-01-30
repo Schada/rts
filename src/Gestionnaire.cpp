@@ -73,3 +73,17 @@ void Gestionnaire::creerGestionnaire(std::string balise)
         std::cout << "Le fichier " << _lienFichier << " est introuvable." << std::endl;
     }
 }
+
+ bool Gestionnaire::existe(std::string nom)
+ {
+    std::map< std::string, void* >::iterator it;
+
+    for (it = _conteneur.begin(); it != _conteneur.end(); it++)
+    {
+        if(it->first == nom)
+        {
+            return true;
+        }
+    }
+    return false;
+ }

@@ -13,7 +13,12 @@ Gestionnaire_Musiques::~Gestionnaire_Musiques()
 
 sf::Music* Gestionnaire_Musiques::get_contenu(std::string nom)
 {
-    return ((sf::Music*) _conteneur[nom]);
+    if(existe(nom))
+    {
+        return ((sf::Music*) _conteneur[nom]);
+    }
+
+    return NULL;
 }
 
 void Gestionnaire_Musiques::initGestionnaire()

@@ -13,7 +13,13 @@ Gestionnaire_Sons::~Gestionnaire_Sons()
 
 sf::SoundBuffer* Gestionnaire_Sons::get_contenu(std::string nom)
 {
-    return ((sf::SoundBuffer*) _conteneur[nom]);
+    if(existe(nom))
+    {
+        return ((sf::SoundBuffer*) _conteneur[nom]);
+    }
+
+    return NULL;
+
 }
 
 void Gestionnaire_Sons::initGestionnaire()
