@@ -24,12 +24,12 @@ class Engine_Graphics : public Engine
         * Constructeurs et Destructeur
         */
         Engine_Graphics(Game* game, sf::RenderWindow* app, std::string nom);
-        virtual ~Engine_Graphics();
+        ~Engine_Graphics();
 
         /**
         * Traitement propre au moteur.
         */
-        virtual void frame();
+        void frame();
 
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -44,7 +44,7 @@ class Engine_Graphics : public Engine
         /**
         * Fonction "main" du Thread
         */
-        virtual void Run();
+        void Run();
 
         /**
         * Permet de regrouper le traitement des messages par scene

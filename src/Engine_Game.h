@@ -21,12 +21,12 @@ class Engine_Game : public Engine
         * Constructeurs et Destructeur
         */
         Engine_Game(Game* game, sf::RenderWindow* app, std::string nom);
-        virtual ~Engine_Game();
+        ~Engine_Game();
 
         /**
         * Traitement propre au moteur.
         */
-        virtual void frame();
+        void frame();
 
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -41,7 +41,7 @@ class Engine_Game : public Engine
         /**
         * Fonction "main" du Thread
         */
-        virtual void Run();
+        void Run();
 
         /**
         * Permet de regrouper le traitement des messages par scene

@@ -19,26 +19,63 @@
 
 class Game{
     public:
-	Game();
-	~Game();
+        /**
+        * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+        */
 
-	/**
-	* Permet de demarrer le jeu
-	*/
-	void run();
+        /**
+        * Constructeurs et Destructeur
+        */
+        Game();
+        ~Game();
 
-	static std::string RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne);
-    static bool VerifExistanceNom(std::string lienFichier, std::string nom, std::string balise);
-    static bool VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise);
+        /**
+        * Permet de demarrer le jeu
+        */
+        void run();
+
+        /**
+        * Permet de recuperer la valeur contenu dans la ligne de nom "nomLigne" dans la balise "balise" du fichier à ladresse "lienFichier"
+        */
+        static std::string RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne);
+
+        /**
+        * Renvoi True si le nom "nom" de la balise "balise" dans le fichier à l'adresse "lienFichier" existe
+        */
+        static bool VerifExistanceNom(std::string lienFichier, std::string nom, std::string balise);
+
+        /**
+        * Indique si une ligne "nomLigne" dans la balise "balise" a pour valeur "val" dans le fichier à l'adresse "lienFchier"
+        * Renvoit true si la valeur existe
+        * Renvoit false pour tout les autres cas (ligne, balise introuvable ...)
+        */
+        static bool VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise);
+
+        /**
+        * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+        */
 
     private:
-	Engine_Game *_eng_game;
-	Engine_Graphics *_eng_gfx;
-	Engine_Sound *_eng_son;
 
-	bool _encours;
+        /**
+        * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+        */
 
-	sf::RenderWindow *_app;
+        /**
+        * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
+        */
+
+        /**
+        * Liste des pointeurs sur les différents moteurs
+        */
+        Engine_Game *_eng_game;
+        Engine_Graphics *_eng_gfx;
+        Engine_Sound *_eng_son;
+
+        /**
+        * Pointeur sur la fenetre de rendu
+        */
+        sf::RenderWindow *_app;
 
 
 };

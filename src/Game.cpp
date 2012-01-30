@@ -103,10 +103,6 @@ void Game::run()
     }
 }
 
-/*
-Recupere la valeur contenu dans la ligne de nom nomLigne dans la balise balise du fichier lienFichier
-*/
-
 std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
@@ -144,30 +140,26 @@ std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, 
             }while((!fichier.eof()) && (nom != "[Fin]"));
             if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
             {
-                std::cout << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
             }
             else
             {
-                std::cout << "Ligne introuvable" << std::endl;
+                std::cerr << "Ligne introuvable" << std::endl;
             }
 
         }
         else // Si la balise consernée n'a pas été trouver
         {
-            std::cout << "Balise " + balise + " introuvable" << std::endl;
+            std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
         fichier.close();
     }
     else
     {
-        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
     }
     return "";
 }
-
-/*
-Indique si une ligne dans la balise 'balise' porte le nom de 'nomLigne' dans le fichier 'lienFchier'
-*/
 
 bool Game::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std::string balise)
 {
@@ -202,16 +194,10 @@ bool Game::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std:
     }
     else
     {
-        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
     }
     return false;
 }
-
-/*
-Indique si une ligne 'nomLigne dans la balise 'balise' a pour valeur 'val' dans le fichier 'lienFchier'
-Renvoit true si la valeur existe dans le fichier
-Renvoit false pour tout les autres cas (ligne, balise introuvable ...)
-*/
 
 bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise)
 {
@@ -254,23 +240,23 @@ bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
             }while((!fichier.eof()) && (nom != "[Fin]"));
             if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
             {
-                std::cout << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
             }
             else
             {
-                std::cout << "Ligne introuvable" << std::endl;
+                std::cerr << "Ligne introuvable" << std::endl;
             }
 
         }
         else // Si la balise consernée n'a pas été trouver
         {
-            std::cout << "Balise " + balise + " introuvable" << std::endl;
+            std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
         fichier.close();
     }
     else
     {
-        std::cout << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
     }
     return false;
 }

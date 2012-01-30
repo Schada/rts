@@ -22,12 +22,12 @@ class Engine_Sound : public Engine
         * Constructeurs et Destructeur
         */
         Engine_Sound(Game* game, sf::RenderWindow* app, std::string nom);
-        virtual ~Engine_Sound();
+        ~Engine_Sound();
 
         /**
         * Traitement propre au moteur.
         */
-        virtual void frame();
+        void frame();
 
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -42,7 +42,7 @@ class Engine_Sound : public Engine
         /**
         * Fonction "main" du Thread
         */
-        virtual void Run();
+        void Run();
 
         /**
         * Permet de regrouper le traitement des messages par scene

@@ -37,12 +37,12 @@ class Engine : public sf::Thread
         /**
         * Accepter les messages des autres moteurs.
         */
-        virtual void push_event(Engine_Event& e);
+        void push_event(Engine_Event& e);
 
         /**
         * Traite la file des messages.
         */
-        virtual void process_queue();
+        void process_queue();
 
         /**
         * Traitement propre à chaque moteur.
@@ -53,12 +53,12 @@ class Engine : public sf::Thread
         /**
         * Permet de lancer un Thread
         */
-        virtual void lancer();
+        void lancer();
 
         /**
         * Permet de terminer un Thread
         */
-        virtual void finir();
+        void finir();
 
         /**
         * Permet l'envoi aux différents moteurs
