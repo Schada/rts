@@ -8,19 +8,20 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWind
     std::cout<<lien<<std::endl;
     x = (*app).GetWidth();
     y = (*app).GetHeight();
-    /*if (!image.LoadFromFile(lien.c_str()))
-    {
-        std::cout<<"Erreur durant le chargement de l'image"<<std::endl;
-    }
-    else
-    {*/
-        //image.CreateMaskFromColor(sf::Color(181 ,230 ,29 ));
-        image = *(_gi->get_contenu("Buttons"));
-        buttonPlay.SetImage(image);
-        buttonQuit.SetImage(image);
-    //}
-    buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
-    buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
+
+    image = *(_gi->get_contenu("Buttons"));
+    fond = *(_gi ->get_contenu("Fond"));
+
+    app->SetBackgroundColor(sf::Color(150,110,23));
+    buttonPlay.SetImage(image);
+    buttonQuit.SetImage(image);
+
+    sf::Color pixel = buttonPlay.GetPixel(0, 0);
+    image.CreateMaskFromColor(pixel);
+
+    buttonPlay.SetSubRect(sf::IntRect(0*image.GetWidth()/2,2*image.GetHeight()/3, 1*image.GetWidth()/2,3*image.GetHeight()/3));
+    buttonQuit.SetSubRect(sf::IntRect(0*image.GetWidth()/2,1*image.GetHeight()/3, 1*image.GetWidth()/2,2*image.GetHeight()/3));
+
 
     buttonPlay.SetPosition(sf::Vector2f(x/2-50, y/2-50));
     buttonQuit.SetPosition(sf::Vector2f(x/2-50,y/2+100));
@@ -38,19 +39,20 @@ void Scene_MenuPrincipal::animation(sf::RenderWindow* app, std::string mess)
 {
     if(mess == "MOUSEOVERPLAY")
     {
-        buttonPlay.SetSubRect(sf::IntRect(200,100, 350,160));
+        buttonPlay.SetSubRect(sf::IntRect(1*image.GetWidth()/2,2*image.GetHeight()/3, 2*image.GetWidth()/2,3*image.GetHeight()/3));
+
     }
     if(mess == "MOUSEOVERQUIT")
     {
-        buttonQuit.SetSubRect(sf::IntRect(200,0,350,60));
+        buttonQuit.SetSubRect(sf::IntRect(1*image.GetWidth()/2,1*image.GetHeight()/3, 2*image.GetWidth()/2,2*image.GetHeight()/3));
     }
     if(mess == "MOUSEQUITQUIT")
     {
-        buttonQuit.SetSubRect(sf::IntRect(0,0,150,60));
+        buttonQuit.SetSubRect(sf::IntRect(56,191,230,240));
     }
     if(mess == "MOUSEQUITPLAY")
     {
-        buttonPlay.SetSubRect(sf::IntRect(0,100, 150,160));
+        buttonPlay.SetSubRect(sf::IntRect(73,350, 193,398));
     }
     if(mess == "MOUSECLICKPLAY")
     {

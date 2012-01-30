@@ -23,6 +23,7 @@ class Scene_MenuPrincipal : public Scene
         void animation(sf::RenderWindow* app, std::string mess);
 
         sf::Image image;
+        sf::Image fond;
         sf::Sprite buttonPlay;
         sf::Sprite buttonQuit;
 };
