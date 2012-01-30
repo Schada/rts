@@ -3,18 +3,18 @@
 Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWindow* app) : Scene(gi)
 {
     int x, y;
-    std::string lien = IMG_DOSSIER;
-    lien = lien + "buttons.png";
-    std::cout<<lien<<std::endl;
+
     x = (*app).GetWidth();
     y = (*app).GetHeight();
 
     image = *(_gi->get_contenu("Buttons"));
-    fond = *(_gi ->get_contenu("Fond"));
+    imageFond = *(_gi ->get_contenu("Fond"));
 
-    app->SetBackgroundColor(sf::Color(150,110,23));
+    fondEcran.SetImage(imageFond);
     buttonPlay.SetImage(image);
     buttonQuit.SetImage(image);
+
+    app->Draw(fondEcran);
 
     sf::Color pixel = buttonPlay.GetPixel(0, 0);
     image.CreateMaskFromColor(pixel);

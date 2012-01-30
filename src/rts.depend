@@ -155,3 +155,125 @@
 1327010931 source:c:\users\thierry\autres\travail\rts\src\scene_menuprincipal.cpp
 	"Scene_MenuPrincipal.h"
 
+1327942656 source:c:\users\thierry\autres\rts\src\engine.cpp
+	"Engine.h"
+	"Engine_Game.h"
+	"Engine_Graphics.h"
+	"Engine_Sound.h"
+
+1327947546 c:\users\thierry\autres\rts\src\engine.h
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<queue>
+	<iostream>
+	"constantes.h"
+	"Engine_Event.h"
+
+1327942656 c:\users\thierry\autres\rts\src\constantes.h
+
+1327942656 c:\users\thierry\autres\rts\src\engine_event.h
+	<string>
+
+1327947546 c:\users\thierry\autres\rts\src\engine_game.h
+	"Engine.h"
+
+1327947546 c:\users\thierry\autres\rts\src\engine_graphics.h
+	"Engine.h"
+	"Scene.h"
+	"Scene_MenuPrincipal.h"
+	"Scene_Jeu.h"
+
+1327942656 c:\users\thierry\autres\rts\src\scene.h
+	<SFML/Graphics.hpp>
+	"Gestionnaire_Images.h"
+	<iostream>
+
+1327942656 c:\users\thierry\autres\rts\src\gestionnaire_images.h
+	"constantes.h"
+	"Gestionnaire.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1327947546 c:\users\thierry\autres\rts\src\gestionnaire.h
+	"constantes.h"
+	<iostream>
+	<map>
+	<string>
+	<fstream>
+
+1327948756 c:\users\thierry\autres\rts\src\scene_menuprincipal.h
+	"Scene.h"
+	"constantes.h"
+	<iostream>
+	<string>
+
+1327942656 c:\users\thierry\autres\rts\src\scene_jeu.h
+	"Scene.h"
+
+1327947546 c:\users\thierry\autres\rts\src\engine_sound.h
+	"Engine.h"
+	"Game.h"
+
+1327947546 c:\users\thierry\autres\rts\src\game.h
+	"constantes.h"
+	"Engine_Game.h"
+	"Engine_Graphics.h"
+	"Engine_Sound.h"
+	<iostream>
+	<string>
+	<SFML/Graphics.hpp>
+
+1327942656 source:c:\users\thierry\autres\rts\src\engine_event.cpp
+	"Engine_Event.h"
+
+1327942656 source:c:\users\thierry\autres\rts\src\engine_game.cpp
+	"Engine_Game.h"
+
+1327942656 source:c:\users\thierry\autres\rts\src\engine_graphics.cpp
+	"Engine_Graphics.h"
+
+1327942656 source:c:\users\thierry\autres\rts\src\engine_sound.cpp
+	"Engine_Sound.h"
+
+1327947546 source:c:\users\thierry\autres\rts\src\game.cpp
+	"Game.h"
+
+1327947546 source:c:\users\thierry\autres\rts\src\gestionnaire_images.cpp
+	"Gestionnaire_Images.h"
+	"Game.h"
+
+1327942656 source:c:\users\thierry\autres\rts\src\scene.cpp
+	"Scene.h"
+
+1327948924 source:c:\users\thierry\autres\rts\src\scene_menuprincipal.cpp
+	"Scene_MenuPrincipal.h"
+
+1327942656 source:c:\users\thierry\autres\rts\src\main.cpp
+	"Game.h"
+
+1327947546 source:c:\users\thierry\autres\rts\src\gestionnaire.cpp
+	"Gestionnaire.h"
+
+1327947546 source:c:\users\thierry\autres\rts\src\gestionnaire_musiques.cpp
+	"Gestionnaire_Musiques.h"
+	"Game.h"
+
+1327942656 c:\users\thierry\autres\rts\src\gestionnaire_musiques.h
+	"constantes.h"
+	"Gestionnaire.h"
+	<SFML/Audio.hpp>
+	<iostream>
+
+1327947546 source:c:\users\thierry\autres\rts\src\gestionnaire_sons.cpp
+	"Gestionnaire_Sons.h"
+	"Game.h"
+
+1327942656 c:\users\thierry\autres\rts\src\gestionnaire_sons.h
+	"constantes.h"
+	"Gestionnaire.h"
+	<SFML/Audio.hpp>
+	<iostream>
+
+1327942656 source:c:\users\thierry\autres\rts\src\scene_jeu.cpp
+	"Scene_Jeu.h"
+
