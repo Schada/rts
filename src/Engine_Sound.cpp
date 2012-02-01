@@ -48,7 +48,10 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
         }
         if(e.get_parametre() =="LEFT" && e.get_nom()== "QUIT" && e.get_nom()== "PLAY")
         {
-
+            sf::Sound sound;
+            sf::SoundBuffer buffer = *(_gs->get_contenu("Click"));
+            sound.SetBuffer(buffer);
+            sound.Play();
         }
         break;
         case KEY:

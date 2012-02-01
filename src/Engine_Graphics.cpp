@@ -4,7 +4,8 @@
 Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
     _sceneActive = NULL;
-    _gi = NULL;
+     _gi = new Gestionnaire_Images();
+     _gs = new Gestionnaire_Sons();
 }
 
 Engine_Graphics::~Engine_Graphics()
@@ -32,16 +33,10 @@ void Engine_Graphics::Run()
     * On autorise le moteur graphics à modifier la fenetre de rendu
     */
     _app->SetActive(true);
-
-    /**
-    * On créé le gestionnaire d'images du jeu
-    */
-    Gestionnaire_Images gi;
-
     /**
     * On créé et active la première scene du jeu , le Menu Principal
     */
-    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(&gi, _app);
+    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(_gi, _gs, _app);
     _sceneActive = scene;
 
     while(_encours)

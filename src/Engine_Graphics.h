@@ -61,11 +61,14 @@ class Engine_Graphics : public Engine
         * Pointeur sur la scene active
         */
         Scene* _sceneActive;
-
         /**
-        * Pointeur sur le gestionnaire d'images du jeu
+        * Pointeur sur le gestionnaire d'images du jeu.
         */
         Gestionnaire_Images* _gi;
+        /**
+        * Pointeur sur le gestionnaire de sons du jeu.
+        */
+        Gestionnaire_Sons* _gs;
 };
 
 #endif // ENGINE_GRAPHICS_H

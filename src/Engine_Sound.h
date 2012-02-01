@@ -10,6 +10,7 @@
 
 #include "Engine.h"
 #include "Game.h"
+#include "Gestionnaire_Sons.h"
 
 class Engine_Sound : public Engine
 {
@@ -54,7 +55,7 @@ class Engine_Sound : public Engine
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
         */
-
+    Gestionnaire_Sons* _gs;
 
 };
 

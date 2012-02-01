@@ -169,7 +169,7 @@
 	"constantes.h"
 	"Engine_Event.h"
 
-1327942656 c:\users\thierry\autres\rts\src\constantes.h
+1328131739 c:\users\thierry\autres\rts\src\constantes.h
 
 1327942656 c:\users\thierry\autres\rts\src\engine_event.h
 	<string>
@@ -177,15 +177,16 @@
 1328129373 c:\users\thierry\autres\rts\src\engine_game.h
 	"Engine.h"
 
-1327947546 c:\users\thierry\autres\rts\src\engine_graphics.h
+1328134065 c:\users\thierry\autres\rts\src\engine_graphics.h
 	"Engine.h"
 	"Scene.h"
 	"Scene_MenuPrincipal.h"
 	"Scene_Jeu.h"
 
-1327942656 c:\users\thierry\autres\rts\src\scene.h
+1328133931 c:\users\thierry\autres\rts\src\scene.h
 	<SFML/Graphics.hpp>
 	"Gestionnaire_Images.h"
+	"Gestionnaire_Sons.h"
 	<iostream>
 
 1327942656 c:\users\thierry\autres\rts\src\gestionnaire_images.h
@@ -201,7 +202,7 @@
 	<string>
 	<fstream>
 
-1328129369 c:\users\thierry\autres\rts\src\scene_menuprincipal.h
+1328133838 c:\users\thierry\autres\rts\src\scene_menuprincipal.h
 	"Scene.h"
 	"constantes.h"
 	<iostream>
@@ -210,9 +211,10 @@
 1327942656 c:\users\thierry\autres\rts\src\scene_jeu.h
 	"Scene.h"
 
-1327947546 c:\users\thierry\autres\rts\src\engine_sound.h
+1328132877 c:\users\thierry\autres\rts\src\engine_sound.h
 	"Engine.h"
 	"Game.h"
+	"Gestionnaire_Sons.h"
 
 1327947546 c:\users\thierry\autres\rts\src\game.h
 	"constantes.h"
@@ -229,10 +231,10 @@
 1327942656 source:c:\users\thierry\autres\rts\src\engine_game.cpp
 	"Engine_Game.h"
 
-1327942656 source:c:\users\thierry\autres\rts\src\engine_graphics.cpp
+1328134267 source:c:\users\thierry\autres\rts\src\engine_graphics.cpp
 	"Engine_Graphics.h"
 
-1328130907 source:c:\users\thierry\autres\rts\src\engine_sound.cpp
+1328134284 source:c:\users\thierry\autres\rts\src\engine_sound.cpp
 	"Engine_Sound.h"
 
 1327950007 source:c:\users\thierry\autres\rts\src\game.cpp
@@ -268,7 +270,7 @@
 	"Gestionnaire_Sons.h"
 	"Game.h"
 
-1327942656 c:\users\thierry\autres\rts\src\gestionnaire_sons.h
+1328131918 c:\users\thierry\autres\rts\src\gestionnaire_sons.h
 	"constantes.h"
 	"Gestionnaire.h"
 	<SFML/Audio.hpp>

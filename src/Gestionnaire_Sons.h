@@ -17,15 +17,11 @@ class Game;
 class Gestionnaire_Sons : public Gestionnaire
 {
     public:
-    Gestionnaire_Sons();
-    ~Gestionnaire_Sons();
-
-    sf::SoundBuffer* get_contenu(std::string nom);
-
-    void initGestionnaire();
-
-    void inserer(std::string nom);
-
+        Gestionnaire_Sons();
+        ~Gestionnaire_Sons();
+        sf::SoundBuffer* get_contenu(std::string nom);
+        void initGestionnaire();
+        void inserer(std::string nom);
 };
 
 #endif // GESTIONNAIRE_SONS_H

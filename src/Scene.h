@@ -9,6 +9,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Gestionnaire_Images.h"
+#include "Gestionnaire_Sons.h"
 #include <iostream>
 
 class Scene

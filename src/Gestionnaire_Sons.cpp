@@ -33,5 +33,10 @@ void Gestionnaire_Sons::initGestionnaire()
 
 void Gestionnaire_Sons::inserer(std::string nom)
 {
+    sf::Music music;
+    std::string lien = _lienDossier + nom + ".mp3";
+    music.OpenFromFile(lien);
+    std::cout << nom << std::endl;
 
+    _conteneur[nom] = new sf::Music(music);
 }

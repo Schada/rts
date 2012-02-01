@@ -1,6 +1,6 @@
 #include "Scene_MenuPrincipal.h"
 
-Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWindow* app) : Scene(gi)
+Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, Gestionnaire_Sons* gs, sf::RenderWindow* app) : Scene(gi)
 {
     int x, y;
 
