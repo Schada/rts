@@ -32,5 +32,12 @@ void Gestionnaire_Musiques::initGestionnaire()
 
 void Gestionnaire_Musiques::inserer(std::string nom)
 {
+    /// On creer le lien en fonction du lien du dossier des images, du nom de l'image et de l'extension .png et on charge l'image
+    sf::Music music;
+    std::string lien = _lienDossier + nom + ".mp3";
+    music.OpenFromFile(lien);
+    std::cout << nom << std::endl;
 
+    /// On ajoute l'image trouver dans le conteneur
+    _conteneur[nom] = new sf::Music(music);
 }

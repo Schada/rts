@@ -17,40 +17,49 @@
 		<Cursor1 position="85" topLine="3" />
 	</File>
 	<File name="Engine_Game.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="388" topLine="0" />
+		<Cursor1 position="24" topLine="0" />
 	</File>
 	<File name="Engine_Graphics.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1028" topLine="33" />
+		<Cursor1 position="192" topLine="54" />
 	</File>
 	<File name="Engine_Graphics.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1560" topLine="38" />
 	</File>
-	<File name="Engine_Sound.cpp" open="1" top="1" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="561" topLine="30" />
+	<File name="Engine_Sound.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="135" topLine="0" />
 	</File>
 	<File name="Engine_Sound.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1590" topLine="27" />
 	</File>
 	<File name="Game.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3096" topLine="69" />
+		<Cursor1 position="2903" topLine="87" />
 	</File>
 	<File name="Game.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="445" topLine="9" />
 	</File>
 	<File name="Gestionnaire.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="324" topLine="0" />
+		<Cursor1 position="354" topLine="55" />
+	</File>
+	<File name="Gestionnaire.h" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="693" topLine="0" />
 	</File>
 	<File name="Gestionnaire_Images.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="860" topLine="0" />
+		<Cursor1 position="957" topLine="10" />
 	</File>
-	<File name="Gestionnaire_Images.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="161" topLine="2" />
+	<File name="Gestionnaire_Images.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="161" topLine="0" />
 	</File>
 	<File name="Gestionnaire_Musiques.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="597" topLine="0" />
+		<Cursor1 position="895" topLine="9" />
+	</File>
+	<File name="Gestionnaire_Musiques.h" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="0" topLine="0" />
 	</File>
 	<File name="Gestionnaire_Sons.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="337" topLine="0" />
+		<Cursor1 position="343" topLine="0" />
+	</File>
+	<File name="Gestionnaire_Sons.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="0" topLine="0" />
 	</File>
 	<File name="Scene.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="122" topLine="0" />
@@ -62,13 +71,13 @@
 		<Cursor1 position="198" topLine="0" />
 	</File>
 	<File name="Scene_MenuPrincipal.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
-		<Cursor1 position="1165" topLine="0" />
+		<Cursor1 position="545" topLine="0" />
 	</File>
 	<File name="Scene_MenuPrincipal.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="711" topLine="0" />
+		<Cursor1 position="26" topLine="0" />
 	</File>
-	<File name="constantes.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="0" topLine="0" />
+	<File name="constantes.h" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="350" topLine="0" />
 	</File>
 	<File name="main.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="67" topLine="0" />
