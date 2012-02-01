@@ -14,22 +14,23 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWind
     buttonPlay.SetImage(image);
     buttonQuit.SetImage(image);
 
-    app->Draw(fondEcran);
-
     sf::Color pixel = buttonPlay.GetPixel(0, 0);
     image.CreateMaskFromColor(pixel);
 
     buttonPlay.SetSubRect(sf::IntRect(0*image.GetWidth()/2,2*image.GetHeight()/3, 1*image.GetWidth()/2,3*image.GetHeight()/3));
     buttonQuit.SetSubRect(sf::IntRect(0*image.GetWidth()/2,1*image.GetHeight()/3, 1*image.GetWidth()/2,2*image.GetHeight()/3));
 
-
+    fondEcran.SetPosition(0,0);
+    fondEcran.Resize(800,600); /// Pour l'instant jeune pd
     buttonPlay.SetPosition(sf::Vector2f(x/2-50, y/2-50));
     buttonQuit.SetPosition(sf::Vector2f(x/2-50,y/2+100));
+
 }
 
 void Scene_MenuPrincipal::run(sf::RenderWindow* app)
 {
     (*app).Clear();
+    (*app).Draw(fondEcran);
     (*app).Draw(buttonPlay);
     (*app).Draw(buttonQuit);
     (*app).Display();

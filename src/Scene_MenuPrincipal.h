@@ -1,5 +1,5 @@
 /**
-*   Auteur : Schada
+*   Auteur : Schada, Sept
 *   Classe : Scene_MenuPrincipal
 *   Role : Permet la Creation de la Scene MenuPrincipal
 */

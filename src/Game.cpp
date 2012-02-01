@@ -86,6 +86,7 @@ void Game::run()
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
                 {
                     Engine_Event e(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
+                    _eng_son->push_event(e);
                     _eng_gfx->push_event(e);
                 }
                 if (MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )

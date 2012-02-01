@@ -46,6 +46,10 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
             */
             _encours = false;
         }
+        if(e.get_parametre() =="LEFT" && e.get_nom()== "QUIT" && e.get_nom()== "PLAY")
+        {
+
+        }
         break;
         case KEY:
 
