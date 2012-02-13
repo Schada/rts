@@ -16,6 +16,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
+					<Add option="-lsfml-audio-s-d" />
 					<Add option="-lsfml-graphics-s-d" />
 					<Add option="-lsfml-window-s-d" />
 					<Add option="-lsfml-system-s-d" />
@@ -31,6 +32,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-lsfml-audio-s" />
 					<Add option="-lsfml-graphics-s" />
 					<Add option="-lsfml-window-s" />
 					<Add option="-lsfml-system-s" />
@@ -40,6 +42,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Civilisation.cpp" />
+		<Unit filename="Civilisation.h" />
 		<Unit filename="Engine.cpp" />
 		<Unit filename="Engine.h" />
 		<Unit filename="Engine_Event.cpp" />
@@ -50,6 +54,10 @@
 		<Unit filename="Engine_Graphics.h" />
 		<Unit filename="Engine_Sound.cpp" />
 		<Unit filename="Engine_Sound.h" />
+		<Unit filename="Entite_Active.cpp" />
+		<Unit filename="Entite_Active.h" />
+		<Unit filename="Entite_Schema.cpp" />
+		<Unit filename="Entite_Schema.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="Gestionnaire.cpp" />
