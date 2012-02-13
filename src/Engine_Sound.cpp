@@ -2,11 +2,20 @@
 
 Engine_Sound::Engine_Sound(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
-
+    _sound = new sf::Sound();
+    _buffer = NULL;
+    _music = NULL;
+    _gs = new Gestionnaire_Sons();
+    _gm = new Gestionnaire_Musiques();
 }
 
 Engine_Sound::~Engine_Sound()
 {
+    delete _sound;
+    _buffer = NULL;
+    _music = NULL;
+    delete _gs;
+    delete _gm;
 
 }
 
@@ -23,12 +32,14 @@ void Engine_Sound::Run()
         * Permet de synchroniser le moteur avec les autres moteurs
         */
     }
-
+    _music = _gm->get_contenu("test");
+    _music->Play();
     while(_encours)
     {
 
         process_queue();
     }
+    _music->Stop();
 }
 
 void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
@@ -46,12 +57,15 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
             */
             _encours = false;
         }
-        if(e.get_parametre() =="LEFT" && e.get_nom()== "QUIT" && e.get_nom()== "PLAY")
+        if(e.get_parametre() =="LEFT" && (e.get_nom()== "QUIT" || e.get_nom()== "PLAY"))
         {
-            sf::Sound sound;
-            sf::SoundBuffer buffer = *(_gs->get_contenu("Click"));
-            sound.SetBuffer(buffer);
-            sound.Play();
+            std::cout << "Sound en cours" << std::endl;
+            _buffer = (_gs->get_contenu("t"));
+            std::cout << "Buffer recupérer" << std::endl;
+            _sound->SetBuffer(*_buffer);
+            std::cout << "Buffer assimiler" << std::endl;
+            _sound->Play();
+            std::cout << "Sons play" << std::endl;
         }
         break;
         case KEY:

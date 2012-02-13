@@ -25,17 +25,17 @@ void Gestionnaire_Musiques::initGestionnaire()
 {
     _nom = "Defaut";
     _lienFichier = FICHIER_DEFAUT;
-    _lienDossier = DOSSIER_DONNEES + Game::RecupValeurLigne(_lienFichier, "[General]", "Sons");
+    _lienDossier = DOSSIER_DONNEES + Game::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
 
-    creerGestionnaire("[Sons]");
+    creerGestionnaire("[Musiques]");
 }
 
 void Gestionnaire_Musiques::inserer(std::string nom)
 {
-    sf::Music music;
-    std::string lien = _lienDossier + nom + ".mp3";
-    music.OpenFromFile(lien);
+    sf::Music* music = new sf::Music();
+    std::string lien = _lienDossier + nom + ".ogg";
+    music->OpenFromFile(lien);
     std::cout << nom << std::endl;
 
-    _conteneur[nom] = new sf::Music(music);
+    _conteneur[nom] = music;
 }

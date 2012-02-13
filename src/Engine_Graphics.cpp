@@ -5,7 +5,6 @@ Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app, std::string 
 {
     _sceneActive = NULL;
      _gi = new Gestionnaire_Images();
-     _gs = new Gestionnaire_Sons();
 }
 
 Engine_Graphics::~Engine_Graphics()
@@ -36,7 +35,7 @@ void Engine_Graphics::Run()
     /**
     * On créé et active la première scene du jeu , le Menu Principal
     */
-    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(_gi, _gs, _app);
+    Scene_MenuPrincipal* scene = new Scene_MenuPrincipal(_gi, _app);
     _sceneActive = scene;
 
     while(_encours)

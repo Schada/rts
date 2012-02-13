@@ -1,5 +1,7 @@
 [General]
 Textures = Textures\Defaut\
+Sons = Sons\
+Musiques = Musiques\
 [Fin]
 [Civilisations]
 Gaia = Civilisations\Gaia\
@@ -13,4 +15,11 @@ Neige = Textures\Terrain\Neige\
 [Textures]
 Buttons
 Fond
+[Fin]
+[Sons]
+Click
+t
+[Fin]
+[Musiques]
+test
 [Fin]
