@@ -1,3 +1,0 @@
-Nom = Tirailleur
-PV = 20
-PA = 13

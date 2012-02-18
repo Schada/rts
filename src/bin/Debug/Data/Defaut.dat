@@ -1,16 +1,11 @@
 [General]
-Textures = Textures\Defaut\
+Textures = Textures\
 Sons = Sons\
 Musiques = Musiques\
 [Fin]
 [Civilisations]
 Gaia = Civilisations\Gaia\
 Humains = Civilisations\Humains\
-[Fin]
-[Terrains]
-Herbe = Textures\Terrain\Herbe\
-Sable = Textures\Terrain\Sable\
-Neige = Textures\Terrain\Neige\
 [Fin]
 [Textures]
 Buttons

@@ -30,6 +30,12 @@ class Entite_Schema
     */
     sf::Image* _image;
 
+    int _viemax;
+    int _moralmax;
+    int _force;
+    int _vitesse;
+    int _defense;
+
 
     /**
     * <------------------------------------------------------- Methodes Private ------------------------------------------------------->

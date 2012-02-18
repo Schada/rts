@@ -29,6 +29,14 @@ class Entite_Active
     * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
     */
     sf::Sprite _sprite;
+    Entite_Schema* _schema;
+    int _vie;
+    int _moral;
+    int _bonusvie;
+    int _bonusmoral;
+    int _bonusforce;
+    int _bonusvitesse;
+    int _bonusdefense;
 
 
     /**
