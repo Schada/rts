@@ -8,6 +8,7 @@
 #define CIVILISATION_H
 
 #include <map>
+#include <vector>
 #include <string>
 #include "Entite_Schema.h"
 #include "Entite_Active.h"
@@ -33,7 +34,7 @@ class Civilisation
     */
     std::string _nom;
     std::map<std::string, Entite_Schema*> _schemas;
-    std::map<std::string, Entite_Active*> _actives;
+    std::vector<Entite_Active*> _actives;
 
 
     /**
