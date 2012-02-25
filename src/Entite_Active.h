@@ -8,6 +8,7 @@
 #define ENTITE_ACTIVE_H
 
 #include <SFML/Graphics.hpp>
+#include "Entite_Schema.h"
 
 class Entite_Active
 {

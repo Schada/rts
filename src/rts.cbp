@@ -62,6 +62,8 @@
 		<Unit filename="Game.h" />
 		<Unit filename="Gestionnaire.cpp" />
 		<Unit filename="Gestionnaire.h" />
+		<Unit filename="Gestionnaire_Entites.cpp" />
+		<Unit filename="Gestionnaire_Entites.h" />
 		<Unit filename="Gestionnaire_Images.cpp" />
 		<Unit filename="Gestionnaire_Images.h" />
 		<Unit filename="Gestionnaire_Musiques.cpp" />

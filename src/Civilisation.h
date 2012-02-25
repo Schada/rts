@@ -10,6 +10,8 @@
 #include <map>
 #include <vector>
 #include <string>
+#include "Gestionnaire_Images.h"
+#include "Gestionnaire_Entites.h"
 #include "Entite_Schema.h"
 #include "Entite_Active.h"
 
@@ -24,8 +26,9 @@ class Civilisation
     /**
     * Constructeurs et Destructeur
     */
-    Civilisation();
+    Civilisation(std::string nom, Gestionnaire_Images* gi);
     ~Civilisation();
+
 
 
   private:
@@ -33,7 +36,7 @@ class Civilisation
     * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
     */
     std::string _nom;
-    std::map<std::string, Entite_Schema*> _schemas;
+    Gestionnaire_Entites* _schemas;
     std::vector<Entite_Active*> _actives;
 
 

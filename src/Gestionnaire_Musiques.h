@@ -1,7 +1,7 @@
 /**
 *   Auteur : Schada
 *   Classe : Gestionnaire_Musiques
-*   Role : Gere les sons du jeu
+*   Role : Gere les musiques du jeu
 */
 
 #ifndef GESTIONNAIRE_MUSIQUES_H

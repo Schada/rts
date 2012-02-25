@@ -38,16 +38,24 @@ Game::~Game()
 
 void Game::run()
 {
+
+    sf::Event event;
+    int xPlay = (*_app).GetWidth()/2-50;
+    int yPlay = (*_app).GetHeight()/2-50;
+    int xQuit = (*_app).GetWidth()/2-50;
+    int yQuit = (*_app).GetHeight()/2-50+150;
+    int MouseX = event.MouseMove.X;
+    int MouseY = event.MouseMove.Y;
+
     _app->SetActive(false);
     while (_app->IsOpened())
     {
-        sf::Event event;
-        int xPlay = (*_app).GetWidth()/2-50;
-        int yPlay = (*_app).GetHeight()/2-50;
-        int xQuit = (*_app).GetWidth()/2-50;
-        int yQuit = (*_app).GetHeight()/2-50+150;
-        int MouseX = event.MouseMove.X;
-        int MouseY = event.MouseMove.Y;
+        xPlay = (*_app).GetWidth()/2-50;
+        yPlay = (*_app).GetHeight()/2-50;
+        xQuit = (*_app).GetWidth()/2-50;
+        yQuit = (*_app).GetHeight()/2-50+150;
+        MouseX = event.MouseMove.X;
+        MouseY = event.MouseMove.Y;
         while (_app->GetEvent(event))
         {
             if (event.Type == sf::Event::Closed)
@@ -60,7 +68,7 @@ void Game::run()
                 _eng_gfx->Wait();
                 _eng_son->Wait();
             }
-            if (event.Type == sf::Event::MouseMoved)
+            /*if (event.Type == sf::Event::MouseMoved)
             {
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
                 {
@@ -80,7 +88,7 @@ void Game::run()
                         Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
                         _eng_gfx->push_event(e);
                     }
-            }
+            }*/
             if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
             {
                 if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )

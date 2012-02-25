@@ -12,6 +12,7 @@
 #include "Engine_Game.h"
 #include "Engine_Graphics.h"
 #include "Engine_Sound.h"
+#include "Civilisation.h"
 
 #include <iostream>
 #include <string>
@@ -76,6 +77,8 @@ class Game{
         * Pointeur sur la fenetre de rendu
         */
         sf::RenderWindow *_app;
+
+        Civilisation* _humain;
 
 
 };

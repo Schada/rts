@@ -8,6 +8,8 @@
 #define ENTITE_SCHEMA_H
 
 #include <SFML/Graphics.hpp>
+#include <string>
+#include "Gestionnaire_Images.h"
 
 class Entite_Schema
 {
@@ -20,8 +22,9 @@ class Entite_Schema
     /**
     * Constructeurs et Destructeur
     */
-    Entite_Schema();
+    Entite_Schema(std::string lien, std::string nom, Gestionnaire_Images* gi);
     ~Entite_Schema();
+    void creerEntite(std::string lien, Gestionnaire_Images* gi);
 
 
   private:
@@ -29,6 +32,8 @@ class Entite_Schema
     * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
     */
     sf::Image* _image;
+    std::string _nom;
+    std::string _description;
 
     int _viemax;
     int _moralmax;
