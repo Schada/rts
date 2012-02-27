@@ -57,14 +57,6 @@ class Engine_Graphics : public Engine
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
         */
 
-        /**
-        * Pointeur sur la scene active
-        */
-        Scene* _sceneActive;
-        /**
-        * Pointeur sur le gestionnaire d'images du jeu.
-        */
-        Gestionnaire_Images* _gi;
 };
 
 #endif // ENGINE_GRAPHICS_H

@@ -21,6 +21,8 @@ class Engine_Event{
         Engine_Event(int scene, int type, std::string nom, std::string parametre);
         ~Engine_Event();
 
+        void changerEvent(int scene, int type, std::string nom, std::string parametre);
+
         /**
         * Accesseurs
         */

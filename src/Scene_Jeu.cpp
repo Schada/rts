@@ -1,6 +1,6 @@
 #include "Scene_Jeu.h"
 
-Scene_Jeu::Scene_Jeu(Gestionnaire_Images* gi) : Scene(gi)
+Scene_Jeu::Scene_Jeu(sf::RenderWindow* app, Gestionnaire_Images* gi, Gestionnaire_Musiques* gm, Gestionnaire_Sons* gs) : Scene(app, gi, gm, gs)
 {
 
 }
@@ -10,13 +10,34 @@ Scene_Jeu::~Scene_Jeu()
 
 }
 
-void Scene_Jeu::run(sf::RenderWindow* app)
+void Scene_Jeu::run()
 {
-    (*app).Clear();
-    (*app).Display();
+    _app->Clear();
+    _app->Display();
 }
 
-void Scene_Jeu::animation(sf::RenderWindow* app, std::string mess)
+void Scene_Jeu::animation(std::string mess)
 {
 
+}
+
+float Scene_Jeu::jouerSon(std::string nom)
+{
+    return 0.f;
+}
+
+void Scene_Jeu::jouerMusique(std::string nom)
+{
+
+}
+
+void Scene_Jeu::stopperMusique()
+{
+
+}
+
+sf::Sprite Scene_Jeu::get_sprite(std::string nom)
+{
+    sf::Sprite f;
+    return f;
 }

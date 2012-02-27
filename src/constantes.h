@@ -7,7 +7,7 @@
 #define FIN_DOSSIER "\\"
 #define IMG_DOSSIER "img\\"
 
-enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU};
-enum Event_Type {MOUSE, CLICK, KEY, LOAD};
+enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, ALL};
+enum Event_Type {MOUSE, CLICK, KEY, LOAD, CHANGE};
 
 #endif // CONSTANTES_H

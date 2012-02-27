@@ -56,15 +56,7 @@ class Engine_Sound : public Engine
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
         */
-        /**
-        * Pointeur sur le gestionnaire de sons du jeu.
-        */
-        Gestionnaire_Sons* _gs;
-        Gestionnaire_Musiques* _gm;
 
-    sf::Sound* _sound;
-    sf::SoundBuffer* _buffer;
-    sf::Music* _music;
 
 };
 

@@ -35,6 +35,12 @@ class Game{
         */
         void run();
 
+        void changerScene(int scene, bool all);
+
+        Scene* get_Scene();
+
+        void envoiMultiple(Engine_Event e);
+
         /**
         * Permet de recuperer la valeur contenu dans la ligne de nom "nomLigne" dans la balise "balise" du fichier à ladresse "lienFichier"
         */
@@ -62,6 +68,7 @@ class Game{
         * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
         */
 
+
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
         */
@@ -76,11 +83,13 @@ class Game{
         /**
         * Pointeur sur la fenetre de rendu
         */
-        sf::RenderWindow *_app;
-
-        Civilisation* _humain;
+        sf::RenderWindow* _app;
 
 
+        Gestionnaire_Images* _gi;
+        Gestionnaire_Musiques* _gm;
+        Gestionnaire_Sons* _gs;
+        Scene* _scene;
 };
 
 #endif //GAME_H

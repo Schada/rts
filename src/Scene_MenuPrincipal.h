@@ -15,18 +15,35 @@
 class Scene_MenuPrincipal : public Scene
 {
     public:
-        Scene_MenuPrincipal(Gestionnaire_Images* gi, sf::RenderWindow* app);
-        void run(sf::RenderWindow* app);
+        Scene_MenuPrincipal(sf::RenderWindow* app, Gestionnaire_Images* gi, Gestionnaire_Musiques* gm, Gestionnaire_Sons* gs);
+        ~Scene_MenuPrincipal();
+
+
+        void run();
         /**
         *   Permet de gérer les animations du menu principal en fonction des messages passées en paramètres.
         */
-        void animation(sf::RenderWindow* app, std::string mess);
+        void animation(std::string mess);
 
-        sf::Image image;
-        sf::Image imageFond;
-        sf::Sprite fondEcran;
-        sf::Sprite buttonPlay;
-        sf::Sprite buttonQuit;
+        float jouerSon(std::string nom);
+        void jouerMusique(std::string nom);
+        void stopperMusique();
+
+        sf::Sprite get_sprite(std::string nom);
+        void test();
+
+    private:
+        sf::Image _image;
+        sf::Image _imageFond;
+        sf::Sprite *_fondEcran;
+        sf::Sprite _buttonPlay;
+        sf::Sprite _buttonQuit;
+
+        sf::Sound* _sound;
+        sf::SoundBuffer* _buffer;
+        sf::Music* _music;
+
+
 };
 
 #endif // SCENE_MENUPRINCIPAL_H

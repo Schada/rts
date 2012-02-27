@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _gi(NULL), _gm(NULL), _gs(NULL), _scene(NULL)
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
     _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
@@ -17,11 +17,20 @@ Game::Game()
 	_eng_son->attach_engine_game(_eng_game);
 	_eng_son->attach_engine_graphics(_eng_gfx);
 
+	_gi = new Gestionnaire_Images();
+	_gm = new Gestionnaire_Musiques();
+	_gs = new Gestionnaire_Sons();
+
+    changerScene(MENU_PRINCIPAL, true);
+
+    _app->SetActive(false);
+
 	_eng_game->Launch();
 	_eng_gfx->Launch();
 	_eng_son->Launch();
 
 	//Permet de synchroniser les moteurs entre eux
+
 
 	_eng_game->lancer();
 	_eng_gfx->lancer();
@@ -33,6 +42,10 @@ Game::~Game()
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
+    delete _gi;
+    delete _gm;
+    delete _gs;
+    delete _scene;
     delete _app;
 }
 
@@ -40,30 +53,29 @@ void Game::run()
 {
 
     sf::Event event;
-    int xPlay = (*_app).GetWidth()/2-50;
-    int yPlay = (*_app).GetHeight()/2-50;
-    int xQuit = (*_app).GetWidth()/2-50;
-    int yQuit = (*_app).GetHeight()/2-50+150;
+    sf::Vector2f PlaySize = (_scene->get_sprite("Play")).GetSize();
+    sf::Vector2f PlayPos = (_scene->get_sprite("Play")).GetPosition();
+    sf::Vector2f QuitSize = (_scene->get_sprite("Quit")).GetSize();
+    sf::Vector2f QuitPos = (_scene->get_sprite("Quit")).GetPosition();
+
     int MouseX = event.MouseMove.X;
     int MouseY = event.MouseMove.Y;
 
-    _app->SetActive(false);
+    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", "test");
+    _eng_son->push_event(e);
+
+
     while (_app->IsOpened())
     {
-        xPlay = (*_app).GetWidth()/2-50;
-        yPlay = (*_app).GetHeight()/2-50;
-        xQuit = (*_app).GetWidth()/2-50;
-        yQuit = (*_app).GetHeight()/2-50+150;
         MouseX = event.MouseMove.X;
         MouseY = event.MouseMove.Y;
         while (_app->GetEvent(event))
         {
             if (event.Type == sf::Event::Closed)
             {
-                Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
-                _eng_gfx->push_event(e);
-                _eng_game->push_event(e);
-                _eng_son->push_event(e);
+                e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                envoiMultiple(e);
+
                 _eng_game->Wait();
                 _eng_gfx->Wait();
                 _eng_son->Wait();
@@ -91,18 +103,16 @@ void Game::run()
             }*/
             if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
             {
-                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
+                if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
                 {
-                    Engine_Event e(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
-                    _eng_son->push_event(e);
-                    _eng_gfx->push_event(e);
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
+                    envoiMultiple(e);
                 }
-                if (MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
+                if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
                 {
-                    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
-                    _eng_gfx->push_event(e);
-                    _eng_game->push_event(e);
-                    _eng_son->push_event(e);
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                    envoiMultiple(e);
+
                     _eng_game->Wait();
                     _eng_gfx->Wait();
                     _eng_son->Wait();
@@ -110,6 +120,53 @@ void Game::run()
             }
         }
     }
+}
+
+void Game::changerScene(int scene, bool all)
+{
+    if(all)
+    {
+        Engine_Event e(ALL, CHANGE, "SCENE", "NULL");
+        envoiMultiple(e);
+    }
+
+
+    if(_scene)
+    {
+        delete _scene;
+        _scene = NULL;
+    }
+    switch(scene)
+    {
+        case MENU_PRINCIPAL:
+
+        _scene = new Scene_MenuPrincipal(_app, _gi, _gm, _gs);
+        break;
+        case JEU:
+        _scene = new Scene_Jeu(_app, _gi, _gm, _gs);
+        break;
+        default:
+        std::cerr << "La scene n'existe pas " << std::endl;
+        exit(-1);
+    }
+
+    if(all)
+    {
+        Engine_Event e(ALL, CHANGE, "SCENE", "");
+        envoiMultiple(e);
+    }
+}
+
+Scene* Game::get_Scene()
+{
+    return _scene;
+}
+
+void Game::envoiMultiple(Engine_Event e)
+{
+    _eng_gfx->push_event(e);
+    _eng_game->push_event(e);
+    _eng_son->push_event(e);
 }
 
 std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)

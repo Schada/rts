@@ -13,6 +13,7 @@
 #include <iostream>
 #include "constantes.h"
 #include "Engine_Event.h"
+#include "Scene.h"
 
 
 class Engine_Game;
@@ -75,6 +76,11 @@ class Engine : public sf::Thread
         void attach_engine_sound(Engine_Sound* eng_son);
 
         /**
+        * Permet de modifier la scene active
+        */
+        void changerSceneActive(Scene* scene);
+
+        /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
         */
 
@@ -101,6 +107,7 @@ class Engine : public sf::Thread
         virtual void event_MenuPrincipal(Engine_Event& e) = 0;
         virtual void event_Chargement(Engine_Event& e) = 0;
         virtual void event_Jeu(Engine_Event& e) = 0;
+        virtual void event_All(Engine_Event& e);
 
         /**
         * <------------------------------------------------------- Attributs Protected ------------------------------------------------------->
@@ -137,6 +144,11 @@ class Engine : public sf::Thread
         * Booleen pour savoir si le thread doit se terminer
         */
         bool _encours;
+
+        /**
+        * Pointeur sur la scene active
+        */
+        Scene* _sceneActive;
 
 };
 

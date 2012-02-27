@@ -9,20 +9,30 @@
 
 #include <SFML/Graphics.hpp>
 #include "Gestionnaire_Images.h"
+#include "Gestionnaire_Musiques.h"
 #include "Gestionnaire_Sons.h"
 #include <iostream>
 
 class Scene
 {
     public:
-    Scene(Gestionnaire_Images* gi);
+    Scene(sf::RenderWindow* app, Gestionnaire_Images* gi, Gestionnaire_Musiques* gm, Gestionnaire_Sons* gs);
     virtual ~Scene();
 
-    virtual void run(sf::RenderWindow* app) = 0;
-    virtual void animation(sf::RenderWindow* app, std::string mess) = 0;
+    virtual void run() = 0;
+    virtual void animation(std::string mess) = 0;
+
+    virtual float jouerSon(std::string nom) = 0;
+    virtual void jouerMusique(std::string nom) = 0;
+    virtual void stopperMusique() = 0;
+
+    virtual sf::Sprite get_sprite(std::string nom) = 0;
 
     protected:
+    sf::RenderWindow* _app;
     Gestionnaire_Images* _gi;
+    Gestionnaire_Sons* _gs;
+    Gestionnaire_Musiques* _gm;
 
 };
 

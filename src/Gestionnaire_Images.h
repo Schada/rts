@@ -12,8 +12,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-class Game;
-
 class Gestionnaire_Images : public Gestionnaire
 {
     public:

@@ -1,5 +1,5 @@
 #include "Engine.h"
-
+#include "Game.h"
 #include "Engine_Game.h"
 #include "Engine_Graphics.h"
 #include "Engine_Sound.h"
@@ -16,6 +16,7 @@ Engine::~Engine()
 {
     _parent = NULL;
     _app = NULL;
+    _sceneActive = NULL;
 }
 
 void Engine::push_event(Engine_Event& e)
@@ -96,8 +97,53 @@ void Engine::process_event(Engine_Event& e)
         case JEU:
         event_Jeu(e);
         break;
+        case ALL:
+        event_All(e);
+        break;
         default:
         std::cerr << "Impossible de traiter le message : La Scene " << e.get_scene() << " est invalide !" << std::endl;
         break;
     }
 }
+
+void Engine::changerSceneActive(Scene* scene)
+{
+    _sceneActive = scene;
+}
+
+void Engine::event_All(Engine_Event& e)
+{
+    switch(e.get_type())
+    {
+        case MOUSE:
+
+        break;
+        case CLICK:
+
+        break;
+        case KEY:
+
+        break;
+        case LOAD:
+
+        break;
+        case CHANGE:
+        if(e.get_nom() == "SCENE")
+        {
+            if(e.get_parametre() == "NULL")
+            {
+                _sceneActive = NULL;
+            }
+            else
+            {
+                _sceneActive = _parent->get_Scene();
+            }
+        }
+
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
+        break;
+    }
+}
+

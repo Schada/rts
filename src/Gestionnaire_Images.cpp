@@ -12,11 +12,11 @@ Gestionnaire_Images::~Gestionnaire_Images()
 
 sf::Image* Gestionnaire_Images::get_contenu(std::string nom)
 {
+
     if(existe(nom))
     {
         return ((sf::Image*) _conteneur[nom]);
     }
-
     return NULL;
 }
 

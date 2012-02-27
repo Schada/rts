@@ -13,6 +13,14 @@ Engine_Event::~Engine_Event()
 
 }
 
+void Engine_Event::changerEvent(int scene, int type, std::string nom, std::string parametre)
+{
+    _scene = scene;
+    _type = type;
+    _nom = nom;
+    _parametre = parametre;
+}
+
 int Engine_Event::get_scene()
 {
     return _scene;

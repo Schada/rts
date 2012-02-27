@@ -1,5 +1,5 @@
 #include "Engine_Game.h"
-
+#include "Game.h"
 
 Engine_Game::Engine_Game(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
@@ -43,6 +43,8 @@ void Engine_Game::event_MenuPrincipal(Engine_Event& e)
         case CLICK:
         if(e.get_parametre() == "LEFT" && e.get_nom() == "QUIT" )
         {
+
+            _sceneActive = NULL;
             /**
             * On demande au moteur de s'arréter
             */
@@ -53,6 +55,9 @@ void Engine_Game::event_MenuPrincipal(Engine_Event& e)
 
         break;
         case LOAD:
+
+        break;
+        case CHANGE:
 
         break;
         default:
@@ -77,6 +82,9 @@ void Engine_Game::event_Chargement(Engine_Event& e)
         case LOAD:
 
         break;
+        case CHANGE:
+
+        break;
         default:
         std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
         break;
@@ -97,6 +105,9 @@ void Engine_Game::event_Jeu(Engine_Event& e)
 
         break;
         case LOAD:
+
+        break;
+        case CHANGE:
 
         break;
         default:

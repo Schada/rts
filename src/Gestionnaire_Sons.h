@@ -12,7 +12,6 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
-class Game;
 
 class Gestionnaire_Sons : public Gestionnaire
 {
