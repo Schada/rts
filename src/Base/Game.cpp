@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _scene(NULL)
+Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _scene(NULL), _numeroScene(0)
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
     _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
@@ -44,76 +44,24 @@ Game::~Game()
 
 void Game::run()
 {
-
-    while(!(_scene->isInit()));
-
-    sf::Event event;
-    sf::Vector2f PlaySize = (_scene->get_sprite("Play"))->GetSize();
-    sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
-    sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
-    sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
-
-    int MouseX = event.MouseMove.X;
-    int MouseY = event.MouseMove.Y;
-
-    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", "test");
-    _eng_son->push_event(e);
-
-
     while (_app->IsOpened())
     {
-        MouseX = event.MouseMove.X;
-        MouseY = event.MouseMove.Y;
-        while (_app->GetEvent(event))
+        switch(_numeroScene)
         {
-            if (event.Type == sf::Event::Closed)
-            {
-                e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
-                envoiMultiple(e);
-
-                _eng_game->Wait();
-                _eng_gfx->Wait();
-                _eng_son->Wait();
-            }
-            /*if (event.Type == sf::Event::MouseMoved)
-            {
-                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
-                    _eng_gfx->push_event(e);
-                }else
-                    {
-                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
-                        _eng_gfx->push_event(e);
-                    }
-                if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
-                    _eng_gfx->push_event(e);
-                }else
-                    {
-                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
-                        _eng_gfx->push_event(e);
-                    }
-            }*/
-            if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
-            {
-                if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
-                {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
-                    envoiMultiple(e);
-                }
-                if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
-                {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
-                    envoiMultiple(e);
-
-                    _eng_game->Wait();
-                    _eng_gfx->Wait();
-                    _eng_son->Wait();
-                }
-            }
+            case MENU_PRINCIPAL:
+            events_MenuPrincipal();
+            break;
+            case CHARGEMENT:
+            events_Chargement();
+            break;
+            case JEU:
+            events_Jeu();
+            break;
+            default:
+            std::cerr << "La Scene est invalide !" << std::endl;
+            exit(-1);
         }
+
     }
 }
 
@@ -140,10 +88,15 @@ void Game::changerScene(int scene, bool all)
         case JEU:
         _scene = new Scene_Jeu(_app);
         break;
+        case CHARGEMENT:
+        _scene = new Scene_Chargement(_app);
+        break;
         default:
         std::cerr << "La scene n'existe pas " << std::endl;
         exit(-1);
     }
+
+    _numeroScene = scene;
 
     if(all)
     {
@@ -155,6 +108,11 @@ void Game::changerScene(int scene, bool all)
 Scene* Game::get_Scene()
 {
     return _scene;
+}
+
+int Game::get_numeroScene()
+{
+    return _numeroScene;
 }
 
 void Game::envoiMultiple(Engine_Event e)
@@ -320,5 +278,132 @@ bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
         std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
     }
     return false;
+}
+
+void Game::events_MenuPrincipal()
+{
+    while(!(_scene->isInit()));
+
+    sf::Event event;
+    sf::Vector2f PlaySize = (_scene->get_sprite("Play"))->GetSize();
+    sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
+    sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
+    sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
+
+    int MouseX = event.MouseMove.X;
+    int MouseY = event.MouseMove.Y;
+
+    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", "test");
+    _eng_son->push_event(e);
+
+
+
+
+    while(_numeroScene == MENU_PRINCIPAL)
+    {
+        MouseX = event.MouseMove.X;
+        MouseY = event.MouseMove.Y;
+        while (_app->GetEvent(event))
+        {
+            if (event.Type == sf::Event::Closed)
+            {
+                e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                envoiMultiple(e);
+
+                _eng_game->Wait();
+                _eng_gfx->Wait();
+                _eng_son->Wait();
+                _numeroScene = ALL;
+            }
+            /*if (event.Type == sf::Event::MouseMoved)
+            {
+                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
+                {
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
+                    _eng_gfx->push_event(e);
+                }else
+                    {
+                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
+                        _eng_gfx->push_event(e);
+                    }
+                if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
+                {
+                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
+                    _eng_gfx->push_event(e);
+                }else
+                    {
+                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
+                        _eng_gfx->push_event(e);
+                    }
+            }*/
+            if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
+            {
+                if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
+                {
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
+                    envoiMultiple(e);
+                }
+                if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
+                {
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                    envoiMultiple(e);
+
+                    _eng_game->Wait();
+                    _eng_gfx->Wait();
+                    _eng_son->Wait();
+                    _numeroScene = ALL;
+                }
+            }
+        }
+    }
+}
+void Game::events_Jeu()
+{
+    while(!(_scene->isInit()));
+
+    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+    sf::Event event;
+
+    while(_numeroScene == JEU)
+    {
+        while (_app->GetEvent(event))
+        {
+            if (event.Type == sf::Event::Closed)
+            {
+
+                envoiMultiple(e);
+
+                _eng_game->Wait();
+                _eng_gfx->Wait();
+                _eng_son->Wait();
+                _numeroScene = ALL;
+            }
+        }
+    }
+}
+
+void Game::events_Chargement()
+{
+    while(!(_scene->isInit()));
+
+    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+    sf::Event event;
+
+    while(_numeroScene == CHARGEMENT)
+    {
+        while (_app->GetEvent(event))
+        {
+            if (event.Type == sf::Event::Closed)
+            {
+
+                envoiMultiple(e);
+
+                _eng_game->Wait();
+                _eng_gfx->Wait();
+                _eng_son->Wait();
+                _numeroScene = ALL;
+            }
+        }
+    }
 }
 

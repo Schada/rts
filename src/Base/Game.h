@@ -9,6 +9,10 @@
 #define GAME_H
 
 #include "constantes.h"
+#include "../Scenes/Scene.h"
+#include "../Scenes/Scene_MenuPrincipal.h"
+#include "../Scenes/Scene_Jeu.h"
+#include "../Scenes/Scene_Chargement.h"
 #include "../Jeu/Engine_Game.h"
 #include "../Gfx/Engine_Graphics.h"
 #include "../Son/Engine_Sound.h"
@@ -39,7 +43,7 @@ class Game{
 
         Scene* get_Scene();
 
-        void envoiMultiple(Engine_Event e);
+        int get_numeroScene();
 
         /**
         * Permet de recuperer la valeur contenu dans la ligne de nom "nomLigne" dans la balise "balise" du fichier à ladresse "lienFichier"
@@ -68,6 +72,12 @@ class Game{
         * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
         */
 
+        void events_MenuPrincipal();
+        void events_Jeu();
+        void events_Chargement();
+
+
+        void envoiMultiple(Engine_Event e);
 
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
@@ -88,6 +98,8 @@ class Game{
 
 
         Scene* _scene;
+
+        int _numeroScene;
 };
 
 #endif //GAME_H

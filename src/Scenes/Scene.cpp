@@ -38,3 +38,8 @@ bool Scene::isInit()
 {
     return(_gfxInit && _sonInit);
 }
+
+float Scene::time()
+{
+    return floor(_clock.GetElapsedTime());
+}

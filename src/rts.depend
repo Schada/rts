@@ -389,11 +389,15 @@
 
 1330343632 c:\users\schada\rts\src\base\constantes.h
 
-1327094735 source:c:\users\schada\rts\src\base\main.cpp
+1330364661 source:c:\users\schada\rts\src\base\main.cpp
 	"Game.h"
 
-1330361559 c:\users\schada\rts\src\base\game.h
+1330370587 c:\users\schada\rts\src\base\game.h
 	"constantes.h"
+	"../Scenes/Scene.h"
+	"../Scenes/Scene_MenuPrincipal.h"
+	"../Scenes/Scene_Jeu.h"
+	"../Scenes/Scene_Chargement.h"
 	"../Jeu/Engine_Game.h"
 	"../Gfx/Engine_Graphics.h"
 	"../Son/Engine_Sound.h"
@@ -414,7 +418,7 @@
 	"Engine_Event.h"
 	"../Scenes/Scene.h"
 
-1330364514 c:\users\schada\rts\src\scenes\scene.h
+1330370224 c:\users\schada\rts\src\scenes\scene.h
 	<SFML/Graphics.hpp>
 	"../Gfx/Gestionnaire_Images.h"
 	"../Son/Gestionnaire_Musiques.h"
@@ -439,11 +443,8 @@
 	<SFML/Audio.hpp>
 	<iostream>
 
-1330362338 c:\users\schada\rts\src\gfx\engine_graphics.h
+1330369556 c:\users\schada\rts\src\gfx\engine_graphics.h
 	"../Base/Engine.h"
-	"../Scenes/Scene.h"
-	"../Scenes/Scene_MenuPrincipal.h"
-	"../Scenes/Scene_Jeu.h"
 	"Gestionnaire_Images.h"
 
 1330363918 c:\users\schada\rts\src\scenes\scene_menuprincipal.h
@@ -452,7 +453,7 @@
 	<iostream>
 	<string>
 
-1330363918 c:\users\schada\rts\src\scenes\scene_jeu.h
+1330370321 c:\users\schada\rts\src\scenes\scene_jeu.h
 	"Scene.h"
 
 1330362338 c:\users\schada\rts\src\son\engine_sound.h
@@ -493,7 +494,7 @@
 	"../Gfx/Engine_Graphics.h"
 	"../Son/Engine_Sound.h"
 
-1330363971 source:c:\users\schada\rts\src\base\game.cpp
+1330370582 source:c:\users\schada\rts\src\base\game.cpp
 	"Game.h"
 
 1330363395 source:c:\users\schada\rts\src\gfx\engine_graphics.cpp
@@ -504,7 +505,7 @@
 	"Gestionnaire_Images.h"
 	"../Base/Game.h"
 
-1330362715 source:c:\users\schada\rts\src\jeu\engine_game.cpp
+1330370691 source:c:\users\schada\rts\src\jeu\engine_game.cpp
 	"Engine_Game.h"
 	"../Base/Game.h"
 
@@ -521,16 +522,16 @@
 	"Gestionnaire_Entites.h"
 	"../Base/Game.h"
 
-1330362860 source:c:\users\schada\rts\src\scenes\scene.cpp
+1330370277 source:c:\users\schada\rts\src\scenes\scene.cpp
 	"Scene.h"
 
-1330364098 source:c:\users\schada\rts\src\scenes\scene_jeu.cpp
+1330370700 source:c:\users\schada\rts\src\scenes\scene_jeu.cpp
 	"Scene_Jeu.h"
 
-1330364307 source:c:\users\schada\rts\src\scenes\scene_menuprincipal.cpp
+1330364766 source:c:\users\schada\rts\src\scenes\scene_menuprincipal.cpp
 	"Scene_MenuPrincipal.h"
 
-1330363395 source:c:\users\schada\rts\src\son\engine_sound.cpp
+1330369438 source:c:\users\schada\rts\src\son\engine_sound.cpp
 	"Engine_Sound.h"
 	"../Base/Game.h"
 
@@ -541,4 +542,10 @@
 1330362736 source:c:\users\schada\rts\src\son\gestionnaire_sons.cpp
 	"Gestionnaire_Sons.h"
 	"../Base/Game.h"
+
+1330369265 source:c:\users\schada\rts\src\scenes\scene_chargement.cpp
+	"Scene_Chargement.h"
+
+1330368980 c:\users\schada\rts\src\scenes\scene_chargement.h
+	"Scene.h"
 

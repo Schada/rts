@@ -26,6 +26,8 @@ class Scene_Jeu : public Scene
         void initSon();
 
     private:
+        sf::Font MyFont;
+        sf::String Text;
 };
 
 #endif // SCENE_JEU_H

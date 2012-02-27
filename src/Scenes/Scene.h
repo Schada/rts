@@ -36,6 +36,8 @@ class Scene
     virtual void initSon() = 0;
     bool isInit();
 
+    float time();
+
     protected:
     sf::RenderWindow* _app;
     Gestionnaire_Images* _gi;
@@ -44,6 +46,8 @@ class Scene
 
     bool _gfxInit;
     bool _sonInit;
+
+    sf::Clock _clock;
 
 };
 

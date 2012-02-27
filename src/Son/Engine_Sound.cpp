@@ -56,7 +56,7 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
 
             sf::Sleep(_sceneActive->jouerSon("t"));
 
-            _parent->changerScene(JEU, true);
+            _parent->changerScene(CHARGEMENT, true);
 
         }
         break;

@@ -30,6 +30,7 @@ void Engine_Game::Run()
 
         process_queue();
 
+
     }
 }
 
@@ -118,5 +119,11 @@ void Engine_Game::event_Jeu(Engine_Event& e)
 
 void Engine_Game::sceneChangee()
 {
+    if(_parent->get_numeroScene() == CHARGEMENT)
+    {
+        while(_sceneActive->time() != 20);
+
+        _parent->changerScene(JEU, true);
+    }
 
 }

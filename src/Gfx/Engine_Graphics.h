@@ -9,9 +9,6 @@
 #define ENGINE_GRAPHICS_H
 
 #include "../Base/Engine.h"
-#include "../Scenes/Scene.h"
-#include "../Scenes/Scene_MenuPrincipal.h"
-#include "../Scenes/Scene_Jeu.h"
 #include "Gestionnaire_Images.h"
 
 class Engine_Graphics : public Engine
