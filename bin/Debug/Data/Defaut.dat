@@ -1,0 +1,20 @@
+[General]
+Textures = Textures\
+Sons = Sons\
+Musiques = Musiques\
+[Fin]
+[Civilisations]
+Gaia = Civilisations\Gaia\
+Humains = Civilisations\Humains\
+[Fin]
+[Textures]
+Buttons
+Fond
+[Fin]
+[Sons]
+Click
+t
+[Fin]
+[Musiques]
+test
+[Fin]
