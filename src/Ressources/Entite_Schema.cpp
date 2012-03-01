@@ -8,7 +8,7 @@ Entite_Schema::Entite_Schema(std::string lien, std::string nom, Gestionnaire_Ima
 
 Entite_Schema::~Entite_Schema()
 {
-
+    _image = NULL;
 }
 
 void Entite_Schema::creerEntite(std::string lien, Gestionnaire_Images* gi)
@@ -20,7 +20,8 @@ void Entite_Schema::creerEntite(std::string lien, Gestionnaire_Images* gi)
     {
         fichier >> vide >> vide >> valtexte;// Nom
         _nom = valtexte;
-        fichier >> vide >> vide >> valtexte;// Description
+        fichier >> vide >> vide;
+        getline(fichier, valtexte);// Description
         _description = valtexte;
         fichier >> vide >> vide >> valtexte;// Image
         _image = gi->get_contenu(valtexte);
@@ -32,4 +33,9 @@ void Entite_Schema::creerEntite(std::string lien, Gestionnaire_Images* gi)
         fichier.close();
     }
 
+}
+
+sf::Image* Entite_Schema::get_Image()
+{
+    return _image;
 }

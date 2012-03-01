@@ -1,0 +1,8 @@
+Nom = Soldat
+Description = Un faible soldat humain
+Image = Soldat
+Vie = 100
+Moral = 100
+Force = 5
+Vitesse = 1
+Defense = 3

@@ -51,7 +51,11 @@ void Gestionnaire::creerGestionnaire(std::string balise)
                 fichier >> nom;
                 if(nom != "[Fin]")
                 {
-                    inserer(nom);
+                    if(!existe(nom))
+                    {
+                        inserer(nom);
+                    }
+
                 }
 
             }while((!fichier.eof()) && (nom != "[Fin]"));

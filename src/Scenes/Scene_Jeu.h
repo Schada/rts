@@ -2,7 +2,7 @@
 #define SCENE_JEU_H
 
 #include "Scene.h"
-
+#include "../Ressources/Civilisation.h"
 
 class Scene_Jeu : public Scene
 {
@@ -28,6 +28,8 @@ class Scene_Jeu : public Scene
     private:
         sf::Font MyFont;
         sf::String Text;
+
+        Civilisation* _humain;
 };
 
 #endif // SCENE_JEU_H

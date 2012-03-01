@@ -1,5 +1,8 @@
 #include "Game.h"
 
+const std::string Game::dossierMod = DOSSIER_DONNEES + Game::RecupValeurLigne(FICHIER_DEFAUT, "[General]", "Mod") + FIN_DOSSIER;
+const std::string Game::fichierMod = Game::dossierMod + FICHIER_MOD;
+
 Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _scene(NULL), _numeroScene(0)
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
@@ -164,6 +167,61 @@ std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, 
             else
             {
                 std::cerr << "Ligne introuvable" << std::endl;
+            }
+
+        }
+        else // Si la balise consernée n'a pas été trouver
+        {
+            std::cerr << "Balise " + balise + " introuvable" << std::endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+    return "";
+}
+
+std::string Game::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne)
+{
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom;
+            int i = 0;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                i++;
+                getline(fichier, nom);
+
+                if(i == numeroLigne)// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+                    fichier.close();
+                    return nom;
+                }
+
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            {
+                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+            }
+            else
+            {
+                std::cerr << "Ligne introuvable" << std::endl;
+                return nom;
             }
 
         }

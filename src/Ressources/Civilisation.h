@@ -30,6 +30,9 @@ class Civilisation
     ~Civilisation();
 
 
+    void afficherEntites(sf::RenderWindow* app);
+
+
 
   private:
     /**
@@ -37,7 +40,7 @@ class Civilisation
     */
     std::string _nom;
     Gestionnaire_Entites* _schemas;
-    std::vector<Entite_Active*> _actives;
+    std::vector< Entite_Active* > _actives;
 
 
     /**

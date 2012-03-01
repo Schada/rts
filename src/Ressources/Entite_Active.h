@@ -21,8 +21,10 @@ class Entite_Active
     /**
     * Constructeurs et Destructeur
     */
-    Entite_Active();
+    Entite_Active(Entite_Schema* schema);
     ~Entite_Active();
+
+    sf::Sprite* get_Sprite();
 
 
   private:

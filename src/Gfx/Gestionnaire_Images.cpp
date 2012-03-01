@@ -15,16 +15,18 @@ sf::Image* Gestionnaire_Images::get_contenu(std::string nom)
 
     if(existe(nom))
     {
+        std::cout << "OK : " << nom << std::endl;
         return ((sf::Image*) _conteneur[nom]);
     }
+    std::cout << "NOT : " << nom << std::endl;
     return NULL;
 }
 
 void Gestionnaire_Images::initGestionnaire()
 {
     _nom = "Defaut";
-    _lienFichier = FICHIER_DEFAUT;
-    _lienDossier = DOSSIER_DONNEES + Game::RecupValeurLigne(_lienFichier, "[General]", "Textures");
+    _lienFichier = Game::fichierMod;
+    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(_lienFichier, "[General]", "Textures");
 
     creerGestionnaire("[Textures]");
 }

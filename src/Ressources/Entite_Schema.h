@@ -26,6 +26,8 @@ class Entite_Schema
     ~Entite_Schema();
     void creerEntite(std::string lien, Gestionnaire_Images* gi);
 
+    sf::Image* get_Image();
+
 
   private:
     /**

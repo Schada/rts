@@ -1,0 +1,8 @@
+Nom = Eglise
+Description = Une petite eglise
+Image = Eglise
+Vie = 100
+Moral = 0
+Force = 0
+Vitesse = 0
+Defense = 5

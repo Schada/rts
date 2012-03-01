@@ -24,8 +24,8 @@ sf::Music* Gestionnaire_Musiques::get_contenu(std::string nom)
 void Gestionnaire_Musiques::initGestionnaire()
 {
     _nom = "Defaut";
-    _lienFichier = FICHIER_DEFAUT;
-    _lienDossier = DOSSIER_DONNEES + Game::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
+    _lienFichier = Game::fichierMod;
+    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
 
     creerGestionnaire("[Musiques]");
 }

@@ -51,6 +51,13 @@ class Game{
         static std::string RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne);
 
         /**
+        * Permet de recuperer la valeur contenu à la ligne numeroLigne dans la balise "balise" du fichier à ladresse "lienFichier"
+        */
+        static std::string RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne);
+
+
+
+        /**
         * Renvoi True si le nom "nom" de la balise "balise" dans le fichier à l'adresse "lienFichier" existe
         */
         static bool VerifExistanceNom(std::string lienFichier, std::string nom, std::string balise);
@@ -65,6 +72,10 @@ class Game{
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
         */
+
+        static const std::string dossierMod;
+        static const std::string fichierMod;
+
 
     private:
 

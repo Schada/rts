@@ -121,7 +121,7 @@ void Engine_Game::sceneChangee()
 {
     if(_parent->get_numeroScene() == CHARGEMENT)
     {
-        while(_sceneActive->time() != 20);
+        while(_sceneActive->time() != 1);
 
         _parent->changerScene(JEU, true);
     }

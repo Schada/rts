@@ -1,0 +1,24 @@
+[General]
+Textures = Textures\
+Sons = Sons\
+Musiques = Musiques\
+Civilisations = Civilisations\
+Entites = Entites\
+[Fin]
+[Civilisations]
+Gaia
+Humains
+[Fin]
+[Textures]
+Buttons
+Fond
+Eglise
+Soldat
+[Fin]
+[Sons]
+Click
+t
+[Fin]
+[Musiques]
+test
+[Fin]
