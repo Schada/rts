@@ -8,6 +8,7 @@
 #define ENGINE_EVENT_H
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Engine_Event{
     public:
@@ -18,10 +19,10 @@ class Engine_Event{
         /**
         * Constructeurs et Destructeur
         */
-        Engine_Event(int scene, int type, std::string nom, std::string parametre);
+        Engine_Event(int scene, int type, std::string nom, sf::Event* _event);
         ~Engine_Event();
 
-        void changerEvent(int scene, int type, std::string nom, std::string parametre);
+        void changerEvent(int scene, int type, std::string nom, sf::Event* event);
 
         /**
         * Accesseurs
@@ -29,7 +30,7 @@ class Engine_Event{
         int get_scene();
         int get_type();
         std::string get_nom();
-        std::string get_parametre();
+        sf::Event* get_event();
 
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -59,10 +60,7 @@ class Engine_Event{
         */
         std::string _nom;
 
-        /**
-        * Paramètre du message lié au type voir README.txt
-        */
-        std::string _parametre;
+        sf::Event* _event;
 
 };
 

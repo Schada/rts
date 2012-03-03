@@ -72,7 +72,7 @@ void Game::changerScene(int scene, bool all)
 {
     if(all)
     {
-        Engine_Event e(ALL, CHANGE, "SCENE", "NULL");
+        Engine_Event e(ALL, CHANGE, "NULL", NULL);
         envoiMultiple(e);
     }
 
@@ -103,7 +103,7 @@ void Game::changerScene(int scene, bool all)
 
     if(all)
     {
-        Engine_Event e(ALL, CHANGE, "SCENE", "");
+        Engine_Event e(ALL, CHANGE, "SCENE", NULL);
         envoiMultiple(e);
     }
 }
@@ -351,7 +351,7 @@ void Game::events_MenuPrincipal()
     int MouseX = event.MouseMove.X;
     int MouseY = event.MouseMove.Y;
 
-    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", "test");
+    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", NULL);
     _eng_son->push_event(e);
 
 
@@ -365,7 +365,7 @@ void Game::events_MenuPrincipal()
         {
             if (event.Type == sf::Event::Closed)
             {
-                e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                e.changerEvent(ALL, QUIT, "", NULL);
                 envoiMultiple(e);
 
                 _eng_game->Wait();
@@ -398,12 +398,12 @@ void Game::events_MenuPrincipal()
             {
                 if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
                 {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", "LEFT");
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", new sf::Event(event));
                     envoiMultiple(e);
                 }
                 if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
                 {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", new sf::Event(event));
                     envoiMultiple(e);
 
                     _eng_game->Wait();
@@ -419,7 +419,7 @@ void Game::events_Jeu()
 {
     while(!(_scene->isInit()));
 
-    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+    Engine_Event e(ALL, QUIT, "", NULL);
     sf::Event event;
 
     while(_numeroScene == JEU)
@@ -444,7 +444,7 @@ void Game::events_Chargement()
 {
     while(!(_scene->isInit()));
 
-    Engine_Event e(MENU_PRINCIPAL, CLICK, "QUIT", "LEFT");
+    Engine_Event e(ALL, QUIT, "", NULL);
     sf::Event event;
 
     while(_numeroScene == CHARGEMENT)

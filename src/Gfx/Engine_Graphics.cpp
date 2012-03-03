@@ -68,7 +68,7 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
         }*/
         break;
         case CLICK:
-        if(e.get_nom() == "QUIT" && e.get_parametre() == "LEFT")
+        if(e.get_nom() == "QUIT" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
         {
             /**
             * On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter

@@ -8,6 +8,6 @@
 #define IMG_DOSSIER "img\\"
 
 enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, ALL};
-enum Event_Type {MOUSE, CLICK, KEY, LOAD, CHANGE};
+enum Event_Type {MOUSE, CLICK, KEY, LOAD, MUSIQUE, CHANGE, QUIT};
 
 #endif // CONSTANTES_H

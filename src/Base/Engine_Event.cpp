@@ -1,24 +1,27 @@
 #include "Engine_Event.h"
 
-Engine_Event::Engine_Event(int scene, int type, std::string nom, std::string parametre)
+Engine_Event::Engine_Event(int scene, int type, std::string nom, sf::Event* event)
 {
     _scene = scene;
     _type = type;
     _nom = nom;
-    _parametre = parametre;
+    _event = event;
 }
 
 Engine_Event::~Engine_Event()
 {
-
+    if(_event)
+    {
+        delete _event;
+    }
 }
 
-void Engine_Event::changerEvent(int scene, int type, std::string nom, std::string parametre)
+void Engine_Event::changerEvent(int scene, int type, std::string nom, sf::Event* event)
 {
     _scene = scene;
     _type = type;
     _nom = nom;
-    _parametre = parametre;
+    _event = event;
 }
 
 int Engine_Event::get_scene()
@@ -36,7 +39,7 @@ std::string Engine_Event::get_nom()
     return _nom;
 }
 
-std::string Engine_Event::get_parametre()
+sf::Event* Engine_Event::get_event()
 {
-    return _parametre;
+    return _event;
 }

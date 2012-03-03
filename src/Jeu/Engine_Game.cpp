@@ -42,7 +42,7 @@ void Engine_Game::event_MenuPrincipal(Engine_Event& e)
 
         break;
         case CLICK:
-        if(e.get_parametre() == "LEFT" && e.get_nom() == "QUIT" )
+        if(e.get_nom() == "QUIT" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
         {
 
             _sceneActive = NULL;

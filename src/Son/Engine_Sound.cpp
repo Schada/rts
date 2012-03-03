@@ -42,7 +42,7 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
 
         break;
         case CLICK:
-        if(e.get_parametre() == "LEFT" && e.get_nom() == "QUIT" )
+        if(e.get_nom() == "QUIT" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
         {
             _sceneActive = NULL;
             /**
@@ -50,7 +50,7 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
             */
             _encours = false;
         }
-        if(e.get_parametre() =="LEFT" && e.get_nom()== "PLAY")
+        if(e.get_nom() == "PLAY" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
         {
             _sceneActive->stopperMusique();
 
@@ -64,10 +64,17 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
 
         break;
         case LOAD:
-        if(e.get_nom() == "MUSIQUE")
-        {
-            _sceneActive->jouerMusique(e.get_parametre());
-        }
+        break;
+        case MUSIQUE:
+            if(e.get_nom() == "NULL")
+            {
+                _sceneActive->stopperMusique();
+            }
+            else
+            {
+                _sceneActive->jouerMusique(e.get_nom());
+            }
+
         break;
         case CHANGE:
 

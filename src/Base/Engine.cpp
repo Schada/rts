@@ -128,17 +128,14 @@ void Engine::event_All(Engine_Event& e)
 
         break;
         case CHANGE:
-        if(e.get_nom() == "SCENE")
+        if(e.get_nom() == "NULL")
         {
-            if(e.get_parametre() == "NULL")
-            {
-                _sceneActive = NULL;
-            }
-            else
-            {
-                _sceneActive = _parent->get_Scene();
-                sceneChangee();
-            }
+            _sceneActive = NULL;
+        }
+        else
+        {
+            _sceneActive = _parent->get_Scene();
+            sceneChangee();
         }
 
         break;
