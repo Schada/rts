@@ -50,6 +50,7 @@ class Engine_Graphics : public Engine
         void event_MenuPrincipal(Engine_Event& e);
         void event_Chargement(Engine_Event& e);
         void event_Jeu(Engine_Event& e);
+        void event_All(Engine_Event& e);
 
         /**
         * Permet de paremetrer la nouvelle scene en fonction du moteur

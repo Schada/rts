@@ -33,6 +33,7 @@ class Scene_MenuPrincipal : public Scene
 
         void initGfx();
         void initSon();
+        void initJeu();
 
     private:
         sf::Image* _image;

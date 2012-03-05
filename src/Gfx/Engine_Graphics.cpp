@@ -40,9 +40,11 @@ void Engine_Graphics::Run()
             *Si une scene est active alors on exécute son methode run
             */
             _sceneActive->run();
+
         }
         process_queue();
     }
+    std::cout << "Fin GFX" << std::endl;
 }
 
 void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
@@ -143,8 +145,51 @@ void Engine_Graphics::event_Jeu(Engine_Event& e)
     }
 }
 
+void Engine_Graphics::event_All(Engine_Event& e)
+{
+    switch(e.get_type())
+    {
+        case MOUSE:
+
+        break;
+        case CLICK:
+
+        break;
+        case KEY:
+
+        break;
+        case LOAD:
+
+        break;
+        case CHANGE:
+        if(e.get_nom() == "NULL")
+        {
+            _sceneActive = NULL;
+        }
+        else
+        {
+            _sceneActive = _parent->get_Scene();
+            sceneChangee();
+        }
+
+        break;
+        case QUIT:
+        _app->Close();
+        _sceneActive = NULL;
+        /**
+        * On demande au moteur de s'arréter
+        */
+        _encours = false;
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
+        break;
+    }
+}
+
 void Engine_Graphics::sceneChangee()
 {
     _sceneActive->set_gi(_gi);
     _sceneActive->initGfx();
+    while(!_sceneActive->isInit());
 }

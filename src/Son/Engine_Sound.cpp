@@ -31,7 +31,7 @@ void Engine_Sound::Run()
     {
         process_queue();
     }
-    //_sceneActive->stopperMusique();
+    std::cout << "Fin SON" << std::endl;
 }
 
 void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
@@ -56,7 +56,7 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
 
             sf::Sleep(_sceneActive->jouerSon("t"));
 
-            _parent->changerScene(CHARGEMENT, true);
+            _parent->changerScene(JEU, true);
 
         }
         break;
@@ -135,9 +135,51 @@ void Engine_Sound::event_Jeu(Engine_Event& e)
     }
 }
 
+void Engine_Sound::event_All(Engine_Event& e)
+{
+    switch(e.get_type())
+    {
+        case MOUSE:
+
+        break;
+        case CLICK:
+
+        break;
+        case KEY:
+
+        break;
+        case LOAD:
+
+        break;
+        case CHANGE:
+        if(e.get_nom() == "NULL")
+        {
+            _sceneActive = NULL;
+        }
+        else
+        {
+            _sceneActive = _parent->get_Scene();
+            sceneChangee();
+        }
+
+        break;
+        case QUIT:
+        _sceneActive = NULL;
+        /**
+        * On demande au moteur de s'arréter
+        */
+        _encours = false;
+        break;
+        default:
+        std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
+        break;
+    }
+}
+
 void Engine_Sound::sceneChangee()
 {
     _sceneActive->set_gm(_gm);
     _sceneActive->set_gs(_gs);
     _sceneActive->initSon();
+    while(!_sceneActive->isInit());
 }

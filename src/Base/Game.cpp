@@ -38,11 +38,14 @@ Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _sce
 
 Game::~Game()
 {
+    std::cout << "Debut FIN" << std::endl;
+    delete _scene;
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
-    delete _scene;
+
     delete _app;
+    std::cout << "OK" << std::endl;
 }
 
 void Game::run()
@@ -59,6 +62,9 @@ void Game::run()
             break;
             case JEU:
             events_Jeu();
+            break;
+            case ALL:
+            events_All();
             break;
             default:
             std::cerr << "La Scene est invalide !" << std::endl;
@@ -365,7 +371,7 @@ void Game::events_MenuPrincipal()
         {
             if (event.Type == sf::Event::Closed)
             {
-                e.changerEvent(ALL, QUIT, "", NULL);
+                e.changerEvent(ALL, QUIT, "QUIT", NULL);
                 envoiMultiple(e);
 
                 _eng_game->Wait();
@@ -419,7 +425,7 @@ void Game::events_Jeu()
 {
     while(!(_scene->isInit()));
 
-    Engine_Event e(ALL, QUIT, "", NULL);
+    Engine_Event e(ALL, QUIT, "QUIT", NULL);
     sf::Event event;
 
     while(_numeroScene == JEU)
@@ -448,6 +454,32 @@ void Game::events_Chargement()
     sf::Event event;
 
     while(_numeroScene == CHARGEMENT)
+    {
+        while (_app->GetEvent(event))
+        {
+            if (event.Type == sf::Event::Closed)
+            {
+
+                envoiMultiple(e);
+
+                _eng_game->Wait();
+                _eng_gfx->Wait();
+                _eng_son->Wait();
+                _numeroScene = ALL;
+            }
+        }
+    }
+}
+
+
+void Game::events_All()
+{
+    while(!(_scene->isInit()));
+
+    Engine_Event e(ALL, QUIT, "", NULL);
+    sf::Event event;
+
+    while(_numeroScene == ALL)
     {
         while (_app->GetEvent(event))
         {

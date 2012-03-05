@@ -9,6 +9,7 @@ Engine::Engine(Game* game, sf::RenderWindow* app, std::string nom) : sf::Thread(
     _parent = game;
     _app = app;
     _nom = nom;
+    _sceneActive = NULL;
     _encours = false;
 }
 
@@ -33,7 +34,7 @@ void Engine::process_queue()
     /**
     * Tant que le conteneur n'est pas vide, on récupère le première message dans une variable, on l'enlève du conteneur et on le traite.
     */
-    while (! _events_queue.empty())
+    while (!_events_queue.empty())
     {
 			Engine_Event e = _events_queue.front();
 			_events_queue.pop();
@@ -109,39 +110,5 @@ void Engine::process_event(Engine_Event& e)
 void Engine::changerSceneActive(Scene* scene)
 {
     _sceneActive = scene;
-}
-
-void Engine::event_All(Engine_Event& e)
-{
-    switch(e.get_type())
-    {
-        case MOUSE:
-
-        break;
-        case CLICK:
-
-        break;
-        case KEY:
-
-        break;
-        case LOAD:
-
-        break;
-        case CHANGE:
-        if(e.get_nom() == "NULL")
-        {
-            _sceneActive = NULL;
-        }
-        else
-        {
-            _sceneActive = _parent->get_Scene();
-            sceneChangee();
-        }
-
-        break;
-        default:
-        std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
-        break;
-    }
 }
 

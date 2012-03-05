@@ -10,7 +10,7 @@ Engine_Event::Engine_Event(int scene, int type, std::string nom, sf::Event* even
 
 Engine_Event::~Engine_Event()
 {
-    if(_event)
+    if(_event != NULL)
     {
         delete _event;
     }

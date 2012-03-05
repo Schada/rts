@@ -26,7 +26,7 @@ class Civilisation
     /**
     * Constructeurs et Destructeur
     */
-    Civilisation(std::string nom, Gestionnaire_Images* gi);
+    Civilisation(std::string nom, Gestionnaire_Entites* schemas);
     ~Civilisation();
 
 

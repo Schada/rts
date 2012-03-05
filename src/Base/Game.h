@@ -86,6 +86,7 @@ class Game{
         void events_MenuPrincipal();
         void events_Jeu();
         void events_Chargement();
+        void events_All();
 
 
         void envoiMultiple(Engine_Event e);

@@ -1,9 +1,9 @@
 #include "Civilisation.h"
 
-Civilisation::Civilisation(std::string nom, Gestionnaire_Images* gi)
+Civilisation::Civilisation(std::string nom, Gestionnaire_Entites* schemas)
 {
     _nom = nom;
-    _schemas = new Gestionnaire_Entites(_nom, gi);
+    _schemas = schemas;
     _actives.push_back(new Entite_Active(_schemas->get_contenu("Soldat")));
 }
 
@@ -13,7 +13,7 @@ Civilisation::~Civilisation()
     {
         delete _actives[i];
     }
-    delete _schemas;
+    _schemas = NULL;
 }
 
 void Civilisation::afficherEntites(sf::RenderWindow* app)

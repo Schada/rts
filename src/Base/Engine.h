@@ -107,7 +107,7 @@ class Engine : public sf::Thread
         virtual void event_MenuPrincipal(Engine_Event& e) = 0;
         virtual void event_Chargement(Engine_Event& e) = 0;
         virtual void event_Jeu(Engine_Event& e) = 0;
-        virtual void event_All(Engine_Event& e);
+        virtual void event_All(Engine_Event& e) = 0;
 
         /**
         * Permet de paremetrer la nouvelle scene en fonction du moteur

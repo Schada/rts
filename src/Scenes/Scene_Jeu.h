@@ -24,11 +24,13 @@ class Scene_Jeu : public Scene
 
         void initGfx();
         void initSon();
+        void initJeu();
 
     private:
         sf::Font MyFont;
         sf::String Text;
 
+        Gestionnaire_Entites* _schemas;
         Civilisation* _humain;
 };
 

@@ -24,6 +24,7 @@ class Scene_Chargement : public Scene
 
         void initGfx();
         void initSon();
+        void initJeu();
 
     private:
         sf::Clock _clock;

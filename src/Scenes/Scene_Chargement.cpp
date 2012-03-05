@@ -75,3 +75,8 @@ void Scene_Chargement::initSon()
 {
      _sonInit = true;
 }
+
+void Scene_Chargement::initJeu()
+{
+    _jeuInit = true;
+}

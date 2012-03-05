@@ -3,11 +3,16 @@
 Scene_Jeu::Scene_Jeu(sf::RenderWindow* app) : Scene(app)
 {
     _humain = NULL;
+    _schemas = NULL;
 }
 
 Scene_Jeu::~Scene_Jeu()
 {
+
     delete _humain;
+    delete _schemas;
+    std::cerr << "FIN" << std::endl;
+
 }
 
 void Scene_Jeu::run()
@@ -45,12 +50,21 @@ sf::Sprite* Scene_Jeu::get_sprite(std::string nom)
 
 void Scene_Jeu::initGfx()
 {
-    _humain = new Civilisation("Humains", _gi);
 
     _gfxInit = true;
+    std::cerr << "GFX INIT" << std::endl;
 }
 
 void Scene_Jeu::initSon()
 {
      _sonInit = true;
+}
+
+void Scene_Jeu::initJeu()
+{
+    while(_gfxInit == false);
+
+    _schemas = new Gestionnaire_Entites("Schema", _gi);
+    _humain = new Civilisation("Humains", _schemas);
+    _jeuInit = true;
 }

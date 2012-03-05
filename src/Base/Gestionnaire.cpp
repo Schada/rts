@@ -39,7 +39,6 @@ void Gestionnaire::creerGestionnaire(std::string balise)
         do
         {
         }while((getline(fichier, ligne)) && (ligne != balise));
-
         if(ligne == balise) // Si la balise a été trouver
         {
             std::string nom, lien;

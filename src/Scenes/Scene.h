@@ -34,6 +34,7 @@ class Scene
 
     virtual void initGfx() = 0;
     virtual void initSon() = 0;
+    virtual void initJeu() = 0;
     bool isInit();
 
     float time();
@@ -46,6 +47,7 @@ class Scene
 
     bool _gfxInit;
     bool _sonInit;
+    bool _jeuInit;
 
     sf::Clock _clock;
 

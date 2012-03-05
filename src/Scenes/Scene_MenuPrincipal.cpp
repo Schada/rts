@@ -20,6 +20,7 @@ Scene_MenuPrincipal::~Scene_MenuPrincipal()
     _imageFond = NULL;
     _image = NULL;
     delete _fondEcran;
+
     delete _buttonPlay;
     delete _buttonQuit;
 
@@ -68,6 +69,11 @@ void Scene_MenuPrincipal::initSon()
     _music = _gm->get_contenu("test");
 
     _sonInit = true;
+}
+
+void Scene_MenuPrincipal::initJeu()
+{
+    _jeuInit = true;
 }
 
 void Scene_MenuPrincipal::run()
