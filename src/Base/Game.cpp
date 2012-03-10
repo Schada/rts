@@ -20,7 +20,7 @@ Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _sce
 	_eng_son->attach_engine_game(_eng_game);
 	_eng_son->attach_engine_graphics(_eng_gfx);
 
-    changerScene(MENU_PRINCIPAL, true);
+    changerScene(JEU, true);
 
     _app->SetActive(false);
 
@@ -91,7 +91,6 @@ void Game::changerScene(int scene, bool all)
     switch(scene)
     {
         case MENU_PRINCIPAL:
-
         _scene = new Scene_MenuPrincipal(_app);
         break;
         case JEU:
@@ -124,8 +123,9 @@ int Game::get_numeroScene()
     return _numeroScene;
 }
 
-void Game::envoiMultiple(Engine_Event e)
+void Game::envoiMultiple(Engine_Event& e)
 {
+
     _eng_gfx->push_event(e);
     _eng_game->push_event(e);
     _eng_son->push_event(e);
@@ -404,12 +404,12 @@ void Game::events_MenuPrincipal()
             {
                 if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
                 {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", new sf::Event(event));
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", &event);
                     envoiMultiple(e);
                 }
                 if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
                 {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", new sf::Event(event));
+                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", &event);
                     envoiMultiple(e);
 
                     _eng_game->Wait();

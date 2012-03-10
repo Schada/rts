@@ -181,5 +181,5 @@ void Engine_Sound::sceneChangee()
     _sceneActive->set_gm(_gm);
     _sceneActive->set_gs(_gs);
     _sceneActive->initSon();
-    while(!_sceneActive->isInit());
+    while(_sceneActive->isInit() == false);
 }

@@ -5,7 +5,30 @@ Engine_Event::Engine_Event(int scene, int type, std::string nom, sf::Event* even
     _scene = scene;
     _type = type;
     _nom = nom;
-    _event = event;
+    if(event)
+    {
+        _event = new sf::Event(*event);
+    }
+    else
+    {
+        _event = NULL;
+    }
+}
+
+Engine_Event::Engine_Event(Engine_Event const& engine_event)
+{
+    _scene = engine_event._scene;
+    _type = engine_event._type;
+    _nom = engine_event._nom;
+
+    if(engine_event._event)
+    {
+        _event = new sf::Event(*engine_event._event);
+    }
+    else
+    {
+        _event = NULL;
+    }
 }
 
 Engine_Event::~Engine_Event()
@@ -21,7 +44,19 @@ void Engine_Event::changerEvent(int scene, int type, std::string nom, sf::Event*
     _scene = scene;
     _type = type;
     _nom = nom;
-    _event = event;
+    if(_event)
+    {
+        delete _event;
+    }
+
+    if(event)
+    {
+        _event = new sf::Event(*event);
+    }
+    else
+    {
+        _event = NULL;
+    }
 }
 
 int Engine_Event::get_scene()

@@ -70,7 +70,7 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
         }*/
         break;
         case CLICK:
-        if(e.get_nom() == "QUIT" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
+        if(e.get_nom() == "QUIT" && ((e.get_event()))->MouseButton.Button == sf::Mouse::Left)
         {
             /**
             * On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter
@@ -78,6 +78,7 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
             _app->Close();
             _sceneActive = NULL;
             _encours = false;
+
         }
         break;
         case KEY:
@@ -191,5 +192,6 @@ void Engine_Graphics::sceneChangee()
 {
     _sceneActive->set_gi(_gi);
     _sceneActive->initGfx();
-    while(!_sceneActive->isInit());
+    while(_sceneActive->isInit() == false);
+    std::cout << "Scene INIT : " << std::endl << std::endl;
 }

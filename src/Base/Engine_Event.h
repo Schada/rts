@@ -7,6 +7,7 @@
 #ifndef ENGINE_EVENT_H
 #define ENGINE_EVENT_H
 
+#include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
@@ -20,6 +21,7 @@ class Engine_Event{
         * Constructeurs et Destructeur
         */
         Engine_Event(int scene, int type, std::string nom, sf::Event* _event);
+        Engine_Event(Engine_Event const& engine_event);
         ~Engine_Event();
 
         void changerEvent(int scene, int type, std::string nom, sf::Event* event);

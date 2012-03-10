@@ -36,7 +36,18 @@ void Scene::set_gs(Gestionnaire_Sons* gs)
 
 bool Scene::isInit()
 {
-    return(_gfxInit && _sonInit && _jeuInit);
+    if(_gfxInit)
+    {
+        if(_sonInit)
+        {
+            if(_jeuInit)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 float Scene::time()

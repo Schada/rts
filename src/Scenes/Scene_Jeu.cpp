@@ -52,7 +52,6 @@ void Scene_Jeu::initGfx()
 {
 
     _gfxInit = true;
-    std::cerr << "GFX INIT" << std::endl;
 }
 
 void Scene_Jeu::initSon()
@@ -66,5 +65,7 @@ void Scene_Jeu::initJeu()
 
     _schemas = new Gestionnaire_Entites("Schema", _gi);
     _humain = new Civilisation("Humains", _schemas);
+    std::cerr << "JEU INIT" << std::endl;
+    std::cout << isInit() << std::endl;
     _jeuInit = true;
 }

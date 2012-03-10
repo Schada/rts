@@ -89,7 +89,7 @@ class Game{
         void events_All();
 
 
-        void envoiMultiple(Engine_Event e);
+        void envoiMultiple(Engine_Event& e);
 
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->

@@ -25,6 +25,7 @@ void Engine::push_event(Engine_Event& e)
     /**
     * Un message est ajouté au conteneur des messages du moteur visé
     */
+
     std::cerr << "Message Envoye" << std::endl;
     _events_queue.push(e);
 }

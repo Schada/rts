@@ -169,5 +169,5 @@ void Engine_Game::sceneChangee()
     }*/
 
     _sceneActive->initJeu();
-    while(!_sceneActive->isInit());
+    while(_sceneActive->isInit() == false);
 }
