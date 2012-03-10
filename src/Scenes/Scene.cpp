@@ -9,6 +9,7 @@ Scene::Scene(sf::RenderWindow* app)
     _gs = NULL;
     _gfxInit = false;
     _sonInit = false;
+    _jeuInit = false;
 }
 
 Scene::~Scene()
