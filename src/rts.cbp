@@ -59,6 +59,8 @@
 		<Unit filename="Gfx/Gestionnaire_Images.h" />
 		<Unit filename="Jeu/Engine_Game.cpp" />
 		<Unit filename="Jeu/Engine_Game.h" />
+		<Unit filename="Ressources/CaseValidation.cpp" />
+		<Unit filename="Ressources/CaseValidation.h" />
 		<Unit filename="Ressources/Civilisation.cpp" />
 		<Unit filename="Ressources/Civilisation.h" />
 		<Unit filename="Ressources/Entite_Active.cpp" />

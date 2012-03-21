@@ -2,11 +2,36 @@
 
 
 Scene_Options::Scene_Options(sf::RenderWindow* app) : Scene(app)
-{}
+{
+        _image = NULL;
+        _imageFond = NULL;
+        _fondEcran = NULL;
+        _buttonPleinEcran = NULL;
+        _buttonReturn = NULL;
 
-Scene_Options::~Scene_Options(){}
+        _sound = NULL;
+        _buffer = NULL;
+        _music = NULL;
+}
 
-void Scene_Options::set_gi(Gestionnaire_Images* gi){}
+Scene_Options::~Scene_Options()
+{
+    _imageFond = NULL;
+    _image = NULL;
+    delete _fondEcran;
+
+    delete _buttonPleinEcran;
+    delete _buttonReturn;
+
+    delete _sound;
+    _buffer = NULL;
+    _music = NULL;
+}
+
+void Scene_Options::set_gi(Gestionnaire_Images* gi)
+{
+
+}
 
 void Scene_Options::set_gm(Gestionnaire_Musiques* gm)
 {
@@ -66,16 +91,16 @@ void Scene_Options::stopperMusique()
 
 sf::Sprite* Scene_Options::get_sprite(std::string nom)
 {
-    if(nom == ")
+   /* if(nom == "CASE")
     {
-        return ;
+        return _CASEON;
     }
     else if(nom == "Quit")
     {
-        return _buttonQuit;
+        return _QUIT;
     }
 
-    return NULL;
+    return NULL; */
 }
 
 void Scene_Options::initGfx()

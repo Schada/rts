@@ -3,15 +3,15 @@
 Scene_MenuPrincipal::Scene_MenuPrincipal(sf::RenderWindow* app) : Scene(app)
 {
 
-    _image = NULL;;
-    _imageFond = NULL;;
-    _fondEcran = NULL;;
-    _buttonPlay = NULL;;
-    _buttonQuit = NULL;;
+    _image = NULL;
+    _imageFond = NULL;
+    _fondEcran = NULL;
+    _buttonPlay = NULL;
+    _buttonQuit = NULL;
 
-    _sound = NULL;;
-    _buffer = NULL;;
-    _music = NULL;;
+    _sound = NULL;
+    _buffer = NULL;
+    _music = NULL;
 
 }
 

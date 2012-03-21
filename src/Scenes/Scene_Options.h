@@ -53,6 +53,17 @@ class Scene_Options : public Scene
         bool _jeuInit;
 
         sf::Clock _clock;
+    private:
+
+        sf::Image* _image;
+        sf::Image* _imageFond;
+        sf::Sprite* _fondEcran;
+        sf::Sprite* _buttonPleinEcran;
+        sf::Sprite* _buttonReturn;
+
+        sf::Sound* _sound;
+        sf::SoundBuffer* _buffer;
+        sf::Music* _music;
 
 };
 
