@@ -76,7 +76,7 @@ void Scene_Options::animation(std::string mess)
 
 float Scene_Options::jouerSon(std::string nom)
 {
-
+ return 0;
 }
 
 void Scene_Options::jouerMusique(std::string nom)
@@ -98,9 +98,8 @@ sf::Sprite* Scene_Options::get_sprite(std::string nom)
     else if(nom == "Quit")
     {
         return _QUIT;
-    }
-
-    return NULL; */
+    }*/
+    return NULL;
 }
 
 void Scene_Options::initGfx()
