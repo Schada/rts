@@ -16,40 +16,40 @@
 class Scene
 {
     public:
-    Scene(sf::RenderWindow* app);
-    virtual ~Scene();
+        Scene(sf::RenderWindow* app);
+        virtual ~Scene();
 
-    virtual void run() = 0;
-    virtual void animation(std::string mess) = 0;
+        virtual void run() = 0;
+        virtual void animation(std::string mess) = 0;
 
-    virtual float jouerSon(std::string nom) = 0;
-    virtual void jouerMusique(std::string nom) = 0;
-    virtual void stopperMusique() = 0;
+        virtual float jouerSon(std::string nom) = 0;
+        virtual void jouerMusique(std::string nom) = 0;
+        virtual void stopperMusique() = 0;
 
-    virtual sf::Sprite* get_sprite(std::string nom) = 0;
+        virtual sf::Sprite* get_sprite(std::string nom) = 0;
 
-    void set_gi(Gestionnaire_Images* gi);
-    void set_gm(Gestionnaire_Musiques* gm);
-    void set_gs(Gestionnaire_Sons* gs);
+        void set_gi(Gestionnaire_Images* gi);
+        void set_gm(Gestionnaire_Musiques* gm);
+        void set_gs(Gestionnaire_Sons* gs);
 
-    virtual void initGfx() = 0;
-    virtual void initSon() = 0;
-    virtual void initJeu() = 0;
-    bool isInit();
+        virtual void initGfx() = 0;
+        virtual void initSon() = 0;
+        virtual void initJeu() = 0;
+        bool isInit();
 
-    float time();
+        float time();
 
     protected:
-    sf::RenderWindow* _app;
-    Gestionnaire_Images* _gi;
-    Gestionnaire_Sons* _gs;
-    Gestionnaire_Musiques* _gm;
+        sf::RenderWindow* _app;
+        Gestionnaire_Images* _gi;
+        Gestionnaire_Sons* _gs;
+        Gestionnaire_Musiques* _gm;
 
-    bool _gfxInit;
-    bool _sonInit;
-    bool _jeuInit;
+        bool _gfxInit;
+        bool _sonInit;
+        bool _jeuInit;
 
-    sf::Clock _clock;
+        sf::Clock _clock;
 
 };
 

@@ -22,7 +22,10 @@
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
 					<Add option="-lsfml-system" />
+<<<<<<< HEAD
 					<Add option="-lX11" />
+=======
+>>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -62,6 +65,11 @@
 		<Unit filename="Gfx/Gestionnaire_Images.h" />
 		<Unit filename="Jeu/Engine_Game.cpp" />
 		<Unit filename="Jeu/Engine_Game.h" />
+<<<<<<< HEAD
+=======
+		<Unit filename="Ressources/CaseValidation.cpp" />
+		<Unit filename="Ressources/CaseValidation.h" />
+>>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 		<Unit filename="Ressources/Civilisation.cpp" />
 		<Unit filename="Ressources/Civilisation.h" />
 		<Unit filename="Ressources/Entite_Active.cpp" />
@@ -78,6 +86,11 @@
 		<Unit filename="Scenes/Scene_Jeu.h" />
 		<Unit filename="Scenes/Scene_MenuPrincipal.cpp" />
 		<Unit filename="Scenes/Scene_MenuPrincipal.h" />
+<<<<<<< HEAD
+=======
+		<Unit filename="Scenes/Scene_Options.cpp" />
+		<Unit filename="Scenes/Scene_Options.h" />
+>>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 		<Unit filename="Son/Engine_Sound.cpp" />
 		<Unit filename="Son/Engine_Sound.h" />
 		<Unit filename="Son/Gestionnaire_Musiques.cpp" />

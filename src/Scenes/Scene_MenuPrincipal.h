@@ -18,7 +18,6 @@ class Scene_MenuPrincipal : public Scene
         Scene_MenuPrincipal(sf::RenderWindow* app);
         ~Scene_MenuPrincipal();
 
-
         void run();
         /**
         *   Permet de gérer les animations du menu principal en fonction des messages passées en paramètres.
