@@ -20,9 +20,9 @@
 
 #include <iostream>
 #include <string>
-#include <SFML/Graphics.hpp>
 
-class Game{
+class Game
+{
     public:
         /**
         * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
@@ -76,6 +76,8 @@ class Game{
         static const std::string dossierMod;
         static const std::string fichierMod;
 
+        static sf::Mutex* win_mu;
+
 
     private:
 
@@ -90,6 +92,7 @@ class Game{
 
 
         void envoiMultiple(Engine_Event& e);
+        void attendreFinScene();
 
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->

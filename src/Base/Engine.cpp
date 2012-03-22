@@ -113,3 +113,15 @@ void Engine::changerSceneActive(Scene* scene)
     _sceneActive = scene;
 }
 
+bool Engine::sceneFinie()
+{
+    if(_sceneActive == NULL)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+

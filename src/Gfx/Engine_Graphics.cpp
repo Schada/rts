@@ -28,7 +28,7 @@ void Engine_Graphics::Run()
     /**
     * On autorise le moteur graphics à modifier la fenetre de rendu
     */
-    _app->SetActive(true);
+    _app->SetActive();
 
 
     while(_encours)
@@ -39,7 +39,10 @@ void Engine_Graphics::Run()
             /**
             *Si une scene est active alors on exécute son methode run
             */
+
+            Game::win_mu->Lock();
             _sceneActive->run();
+            Game::win_mu->Unlock();
 
         }
         process_queue();
@@ -191,7 +194,9 @@ void Engine_Graphics::event_All(Engine_Event& e)
 void Engine_Graphics::sceneChangee()
 {
     _sceneActive->set_gi(_gi);
+    Game::win_mu->Lock();
     _sceneActive->initGfx();
+    Game::win_mu->Unlock();
     while(_sceneActive->isInit() == false);
     std::cout << "Scene INIT : " << std::endl << std::endl;
 }

@@ -2,11 +2,14 @@
 
 const std::string Game::dossierMod = DOSSIER_DONNEES + Game::RecupValeurLigne(FICHIER_DEFAUT, "[General]", "Mod") + FIN_DOSSIER;
 const std::string Game::fichierMod = Game::dossierMod + FICHIER_MOD;
+sf::Mutex* Game::win_mu = new sf::Mutex();
 
 Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _scene(NULL), _numeroScene(0)
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
-    _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
+    //_app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
+    _app->SetActive(false);
+
     _eng_game = new Engine_Game(this, _app, "Game");
 	_eng_gfx = new Engine_Graphics(this, _app, "Graphics");
 	_eng_son = new Engine_Sound(this, _app, "Sound");
@@ -20,9 +23,7 @@ Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _sce
 	_eng_son->attach_engine_game(_eng_game);
 	_eng_son->attach_engine_graphics(_eng_gfx);
 
-    changerScene(JEU, true);
-
-    _app->SetActive(false);
+    changerScene(MENU_PRINCIPAL, true);
 
 	_eng_game->Launch();
 	_eng_gfx->Launch();
@@ -52,6 +53,7 @@ void Game::run()
 {
     while (_app->IsOpened())
     {
+
         switch(_numeroScene)
         {
             case MENU_PRINCIPAL:
@@ -71,6 +73,7 @@ void Game::run()
             exit(-1);
         }
 
+
     }
 }
 
@@ -80,6 +83,7 @@ void Game::changerScene(int scene, bool all)
     {
         Engine_Event e(ALL, CHANGE, "NULL", NULL);
         envoiMultiple(e);
+        attendreFinScene();
     }
 
 
@@ -112,6 +116,12 @@ void Game::changerScene(int scene, bool all)
         envoiMultiple(e);
     }
 }
+void Game::attendreFinScene()
+{
+    while(!_eng_game->sceneFinie());
+    while(!_eng_gfx->sceneFinie());
+    while(!_eng_son->sceneFinie());
+}
 
 Scene* Game::get_Scene()
 {
@@ -125,7 +135,7 @@ int Game::get_numeroScene()
 
 void Game::envoiMultiple(Engine_Event& e)
 {
-
+    std::cerr << "Message envoye !" << std::endl;
     _eng_gfx->push_event(e);
     _eng_game->push_event(e);
     _eng_son->push_event(e);
@@ -367,8 +377,10 @@ void Game::events_MenuPrincipal()
     {
         MouseX = event.MouseMove.X;
         MouseY = event.MouseMove.Y;
+        Game::win_mu->Lock();
         while (_app->GetEvent(event))
         {
+            Game::win_mu->Unlock();
             if (event.Type == sf::Event::Closed)
             {
                 e.changerEvent(ALL, QUIT, "QUIT", NULL);
@@ -406,6 +418,9 @@ void Game::events_MenuPrincipal()
                 {
                     e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", &event);
                     envoiMultiple(e);
+
+                    changerScene(JEU, true);
+
                 }
                 if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
                 {
@@ -418,7 +433,10 @@ void Game::events_MenuPrincipal()
                     _numeroScene = ALL;
                 }
             }
+            Game::win_mu->Lock();
         }
+        Game::win_mu->Unlock();
+
     }
 }
 void Game::events_Jeu()
@@ -430,8 +448,10 @@ void Game::events_Jeu()
 
     while(_numeroScene == JEU)
     {
+        Game::win_mu->Lock();
         while (_app->GetEvent(event))
         {
+            Game::win_mu->Unlock();
             if (event.Type == sf::Event::Closed)
             {
 
@@ -442,7 +462,9 @@ void Game::events_Jeu()
                 _eng_son->Wait();
                 _numeroScene = ALL;
             }
+            Game::win_mu->Lock();
         }
+        Game::win_mu->Unlock();
     }
 }
 
@@ -455,8 +477,10 @@ void Game::events_Chargement()
 
     while(_numeroScene == CHARGEMENT)
     {
+        Game::win_mu->Lock();
         while (_app->GetEvent(event))
         {
+            Game::win_mu->Unlock();
             if (event.Type == sf::Event::Closed)
             {
 
@@ -467,7 +491,9 @@ void Game::events_Chargement()
                 _eng_son->Wait();
                 _numeroScene = ALL;
             }
+            Game::win_mu->Lock();
         }
+        Game::win_mu->Unlock();
     }
 }
 
@@ -481,8 +507,10 @@ void Game::events_All()
 
     while(_numeroScene == ALL)
     {
+        Game::win_mu->Lock();
         while (_app->GetEvent(event))
         {
+            Game::win_mu->Unlock();
             if (event.Type == sf::Event::Closed)
             {
 
@@ -493,7 +521,9 @@ void Game::events_All()
                 _eng_son->Wait();
                 _numeroScene = ALL;
             }
+            Game::win_mu->Lock();
         }
+        Game::win_mu->Unlock();
     }
 }
 

@@ -80,6 +80,8 @@ class Engine : public sf::Thread
         */
         void changerSceneActive(Scene* scene);
 
+        bool sceneFinie();
+
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
         */

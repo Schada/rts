@@ -8,6 +8,7 @@ Gestionnaire_Images::Gestionnaire_Images() : Gestionnaire()
 
 Gestionnaire_Images::~Gestionnaire_Images()
 {
+
 }
 
 sf::Image* Gestionnaire_Images::get_contenu(std::string nom)

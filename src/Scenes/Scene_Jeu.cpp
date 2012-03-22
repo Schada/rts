@@ -11,7 +11,7 @@ Scene_Jeu::~Scene_Jeu()
 
     delete _humain;
     delete _schemas;
-    std::cerr << "FIN" << std::endl;
+    std::cerr << "FIN SCENE JEU" << std::endl;
 
 }
 

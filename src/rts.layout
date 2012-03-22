@@ -1,118 +1,118 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Base\Engine.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="807" topLine="37" />
+	<File name="Base/Engine.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="2322" topLine="99" />
 	</File>
-	<File name="Base\Engine.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2767" topLine="105" />
+	<File name="Base/Engine.h" open="1" top="0" tabpos="15">
+		<Cursor position="1866" topLine="51" />
 	</File>
-	<File name="Base\Engine_Event.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="537" topLine="0" />
+	<File name="Base/Engine_Event.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="537" topLine="0" />
 	</File>
-	<File name="Base\Engine_Event.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="586" topLine="3" />
+	<File name="Base/Engine_Event.h" open="0" top="0" tabpos="7">
+		<Cursor position="586" topLine="3" />
 	</File>
-	<File name="Base\Game.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="4921" topLine="172" />
+	<File name="Base/Game.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="11952" topLine="401" />
 	</File>
-	<File name="Base\Game.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2794" topLine="72" />
+	<File name="Base/Game.h" open="1" top="0" tabpos="10">
+		<Cursor position="2809" topLine="73" />
 	</File>
-	<File name="Base\Gestionnaire.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="307" topLine="0" />
+	<File name="Base/Gestionnaire.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="307" topLine="3" />
 	</File>
-	<File name="Base\Gestionnaire.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="0" topLine="0" />
+	<File name="Base/Gestionnaire.h" open="0" top="0" tabpos="5">
+		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="Base\constantes.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="143" topLine="0" />
+	<File name="Base/constantes.h" open="0" top="0" tabpos="10">
+		<Cursor position="189" topLine="0" />
 	</File>
-	<File name="Base\main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="66" topLine="0" />
+	<File name="Base/main.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="229" topLine="0" />
 	</File>
-	<File name="Gfx\Engine_Graphics.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3931" topLine="161" />
+	<File name="Gfx/Engine_Graphics.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="803" topLine="34" />
 	</File>
-	<File name="Gfx\Engine_Graphics.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1618" topLine="15" />
+	<File name="Gfx/Engine_Graphics.h" open="0" top="0" tabpos="0">
+		<Cursor position="1618" topLine="15" />
 	</File>
-	<File name="Gfx\Gestionnaire_Images.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="496" topLine="9" />
+	<File name="Gfx/Gestionnaire_Images.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="195" topLine="3" />
 	</File>
-	<File name="Gfx\Gestionnaire_Images.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="216" topLine="0" />
+	<File name="Gfx/Gestionnaire_Images.h" open="0" top="0" tabpos="0">
+		<Cursor position="216" topLine="0" />
 	</File>
-	<File name="Jeu\Engine_Game.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3027" topLine="137" />
+	<File name="Jeu/Engine_Game.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="3027" topLine="137" />
 	</File>
-	<File name="Jeu\Engine_Game.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1558" topLine="43" />
+	<File name="Jeu/Engine_Game.h" open="0" top="0" tabpos="0">
+		<Cursor position="1558" topLine="43" />
 	</File>
-	<File name="Ressources\Civilisation.cpp" open="1" top="1" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="146" topLine="0" />
+	<File name="Ressources/Civilisation.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="348" topLine="2" />
 	</File>
-	<File name="Ressources\Civilisation.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="919" topLine="8" />
+	<File name="Ressources/Civilisation.h" open="0" top="0" tabpos="6">
+		<Cursor position="919" topLine="8" />
 	</File>
-	<File name="Ressources\Entite_Active.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="351" topLine="0" />
+	<File name="Ressources/Entite_Active.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="351" topLine="0" />
 	</File>
-	<File name="Ressources\Entite_Active.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="677" topLine="6" />
+	<File name="Ressources/Entite_Active.h" open="0" top="0" tabpos="8">
+		<Cursor position="677" topLine="6" />
 	</File>
-	<File name="Ressources\Entite_Schema.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="308" topLine="0" />
+	<File name="Ressources/Entite_Schema.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="308" topLine="0" />
 	</File>
-	<File name="Ressources\Entite_Schema.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="623" topLine="15" />
+	<File name="Ressources/Entite_Schema.h" open="0" top="0" tabpos="7">
+		<Cursor position="623" topLine="15" />
 	</File>
-	<File name="Ressources\Gestionnaire_Entites.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="977" topLine="9" />
+	<File name="Ressources/Gestionnaire_Entites.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="977" topLine="0" />
 	</File>
-	<File name="Ressources\Gestionnaire_Entites.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="232" topLine="0" />
+	<File name="Ressources/Gestionnaire_Entites.h" open="0" top="0" tabpos="7">
+		<Cursor position="232" topLine="0" />
 	</File>
-	<File name="Scenes\Scene.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="631" topLine="19" />
+	<File name="Scenes/Scene.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="67" topLine="0" />
 	</File>
-	<File name="Scenes\Scene.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="968" topLine="20" />
+	<File name="Scenes/Scene.h" open="0" top="0" tabpos="4">
+		<Cursor position="968" topLine="20" />
 	</File>
-	<File name="Scenes\Scene_Chargement.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1443" topLine="62" />
+	<File name="Scenes/Scene_Chargement.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="566" topLine="12" />
 	</File>
-	<File name="Scenes\Scene_Chargement.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="676" topLine="0" />
+	<File name="Scenes/Scene_Chargement.h" open="0" top="0" tabpos="5">
+		<Cursor position="676" topLine="0" />
 	</File>
-	<File name="Scenes\Scene_Jeu.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1017" topLine="34" />
+	<File name="Scenes/Scene_Jeu.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="278" topLine="5" />
 	</File>
-	<File name="Scenes\Scene_Jeu.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="656" topLine="1" />
+	<File name="Scenes/Scene_Jeu.h" open="0" top="0" tabpos="6">
+		<Cursor position="656" topLine="1" />
 	</File>
-	<File name="Scenes\Scene_MenuPrincipal.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="431" topLine="16" />
+	<File name="Scenes/Scene_MenuPrincipal.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="1895" topLine="68" />
 	</File>
-	<File name="Scenes\Scene_MenuPrincipal.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1029" topLine="9" />
+	<File name="Scenes/Scene_MenuPrincipal.h" open="0" top="0" tabpos="0">
+		<Cursor position="1029" topLine="9" />
 	</File>
-	<File name="Son\Engine_Sound.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="481" topLine="29" />
+	<File name="Son/Engine_Sound.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="1184" topLine="43" />
 	</File>
-	<File name="Son\Engine_Sound.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1492" topLine="39" />
+	<File name="Son/Engine_Sound.h" open="0" top="0" tabpos="0">
+		<Cursor position="1492" topLine="39" />
 	</File>
-	<File name="Son\Gestionnaire_Musiques.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="527" topLine="0" />
+	<File name="Son/Gestionnaire_Musiques.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="527" topLine="0" />
 	</File>
-	<File name="Son\Gestionnaire_Musiques.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="224" topLine="0" />
+	<File name="Son/Gestionnaire_Musiques.h" open="0" top="0" tabpos="0">
+		<Cursor position="224" topLine="0" />
 	</File>
-	<File name="Son\Gestionnaire_Sons.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="529" topLine="3" />
+	<File name="Son/Gestionnaire_Sons.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="529" topLine="3" />
 	</File>
-	<File name="Son\Gestionnaire_Sons.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="208" topLine="0" />
+	<File name="Son/Gestionnaire_Sons.h" open="0" top="0" tabpos="0">
+		<Cursor position="208" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>
