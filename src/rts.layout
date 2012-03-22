@@ -14,7 +14,7 @@
 		<Cursor position="586" topLine="3" />
 	</File>
 	<File name="Base/Game.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="11952" topLine="401" />
+		<Cursor position="11952" topLine="416" />
 	</File>
 	<File name="Base/Game.h" open="1" top="0" tabpos="10">
 		<Cursor position="2809" topLine="73" />
@@ -25,11 +25,11 @@
 	<File name="Base/Gestionnaire.h" open="0" top="0" tabpos="5">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="Base/constantes.h" open="0" top="0" tabpos="10">
+	<File name="Base/constantes.h" open="1" top="1" tabpos="16">
 		<Cursor position="189" topLine="0" />
 	</File>
-	<File name="Base/main.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="229" topLine="0" />
+	<File name="Base/main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="229" topLine="1" />
 	</File>
 	<File name="Gfx/Engine_Graphics.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="803" topLine="34" />
