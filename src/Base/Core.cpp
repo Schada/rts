@@ -61,9 +61,6 @@ void Core::run()
 {
     while (_app->IsOpened())
     {
-        // On attend que la scene soit initialiser avant de recuperer les evenements
-        while(_scene->isInit() == false);
-
         // On lock le mutex avant de recuperer les events
         Core::win_mu->Lock();
         while (_app->GetEvent(_event))
@@ -149,6 +146,9 @@ void Core::changerScene(int scene, bool all)
         // On demande aux moteurs de recuperer la nouvelle scene
         _eng_event.changerEvent(ALL, CHANGE, "SCENE", NULL);
         envoiMultiple();
+
+        // On attend que la scene soit initialiser avant de recuperer les evenements
+        while(_scene->isInit() == false);
     }
 }
 void Core::attendreFinScene()

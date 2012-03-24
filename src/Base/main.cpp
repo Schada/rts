@@ -11,6 +11,7 @@ int main()
     else
     {
         std::cerr << "XInitThreads() error ..." << std::endl;
+        return -1;
     }
 
     return 0;
