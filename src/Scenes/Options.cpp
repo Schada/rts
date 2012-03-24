@@ -28,7 +28,7 @@ Options::~Options()
     _music = NULL;
 }
 
-void Options::run()
+void Options::afficher()
 {
 
 }

@@ -6,14 +6,19 @@ sf::Mutex* Core::win_mu = new sf::Mutex();
 
 Core::Core() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _event(), _eng_event(ALL, QUIT, "", NULL), _scene(NULL), _numeroScene(0)
 {
+    /// Creation et configuration de la fenetre de jeu
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
-    //_app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
+    //_app->SetFramerateLimit(60); // Limite la fenÃªtre Ã  60 images par seconde
     _app->SetActive(false);
 
+
+    // Creation des differents moteurs du jeu
     _eng_game = new Engine_Game(this, _app, "Game");
 	_eng_gfx = new Engine_Graphics(this, _app, "Graphics");
 	_eng_son = new Engine_Sound(this, _app, "Sound");
 
+
+    // Permet de lier les moteurs entre eux
 	_eng_game->attach_engine_graphics(_eng_gfx);
 	_eng_game->attach_engine_sound(_eng_son);
 
@@ -24,41 +29,46 @@ Core::Core() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _eve
 	_eng_son->attach_engine_graphics(_eng_gfx);
 
 
-
+    // Permet de lancer les moteurs
 	_eng_game->Launch();
 	_eng_gfx->Launch();
 	_eng_son->Launch();
 
-	//Permet de synchroniser les moteurs entre eux
 
+	//Permet de synchroniser les moteurs entre eux
 	_eng_game->lancer();
 	_eng_gfx->lancer();
 	_eng_son->lancer();
 
+    // On lance la premiere scene du jeu
     changerScene(MENU_PRINCIPAL, true);
 
 }
 
 Core::~Core()
 {
-    std::cout << "Debut FIN" << std::endl;
+    std::cout << "Debut Core FIN" << std::endl;
     delete _scene;
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
 
     delete _app;
-    std::cout << "OK" << std::endl;
+    std::cout << "Core FIN" << std::endl;
 }
 
 void Core::run()
 {
     while (_app->IsOpened())
     {
+        // On attend que la scene soit initialiser avant de recuperer les evenements
         while(_scene->isInit() == false);
+
+        // On lock le mutex avant de recuperer les events
         Core::win_mu->Lock();
         while (_app->GetEvent(_event))
         {
+            // On unlock le mutex et on traite l'event recuperer en fonction de la scene
             Core::win_mu->Unlock();
 
             switch(_numeroScene)
@@ -72,6 +82,9 @@ void Core::run()
                 case JEU:
                 events_Jeu();
                 break;
+                case OPTIONS:
+                events_Options();
+                break;
                 case ALL:
                 events_All();
                 break;
@@ -79,8 +92,11 @@ void Core::run()
                 std::cerr << "La Scene est invalide !" << std::endl;
                 exit(-1);
             }
+
+            // On lock pour recuperer l'event au prochain tour de boucle
             Core::win_mu->Lock();
         }
+        // On unlock dans le cas ou il n'y avait plus d'event
         Core::win_mu->Unlock();
 
     }
@@ -90,19 +106,23 @@ void Core::changerScene(int scene, bool all)
 {
     if(all)
     {
+        // On demande aux moteurs de mettre leur pointeur de la scene a NULL
         _eng_event.changerEvent(ALL, CHANGE, "NULL", NULL);
         envoiMultiple();
+
+        // On attend que les moteurs aient fini
         attendreFinScene();
     }
 
-
     if(_scene)
     {
+        // On supprime la scene
         delete _scene;
         _scene = NULL;
     }
     switch(scene)
     {
+        // Creer la nouvelle scene
         case MENU_PRINCIPAL:
         _scene = new MenuPrincipal(_app);
         _eng_event.changerEvent(MENU_PRINCIPAL, LOAD, "MUSIQUE", NULL);
@@ -114,6 +134,9 @@ void Core::changerScene(int scene, bool all)
         case CHARGEMENT:
         _scene = new Chargement(_app);
         break;
+        case OPTIONS:
+        _scene = new Options(_app);
+        break;
         default:
         std::cerr << "La scene n'existe pas " << std::endl;
         exit(-1);
@@ -123,6 +146,7 @@ void Core::changerScene(int scene, bool all)
 
     if(all)
     {
+        // On demande aux moteurs de recuperer la nouvelle scene
         _eng_event.changerEvent(ALL, CHANGE, "SCENE", NULL);
         envoiMultiple();
     }
@@ -159,16 +183,16 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
     {
         std::string ligne;
 
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+         // Parcourt le fichier jusqu'Ã  trouver la balise ou la fin du fichier
         do
         {
         }while((getline(fichier, ligne)) && (ligne != balise));
 
-        if(ligne == balise) // Si la balise a été trouver
+        if(ligne == balise) // Si la balise a Ã©tÃ© trouver
         {
             std::string nom, vide, valeur;
 
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+             //On parcourt les lignes de la balise jusqu'Ã  la balise [Fin]
 
             do
             {
@@ -177,7 +201,7 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
                 {
 
                     fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
-                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                    if(nom == nomLigne) // SI la ligne porte le nom recherchÃ© on renvoit la valeur de cette ligne
                     {
                         fichier.close();
                         return valeur;
@@ -187,7 +211,7 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
 
 
             }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas Ã©tÃ© trouver
             {
                 std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
             }
@@ -197,7 +221,7 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
             }
 
         }
-        else // Si la balise consernée n'a pas été trouver
+        else // Si la balise consernÃ©e n'a pas Ã©tÃ© trouver
         {
             std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
@@ -217,17 +241,17 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
     {
         std::string ligne;
 
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+         // Parcourt le fichier jusqu'Ã  trouver la balise ou la fin du fichier
         do
         {
         }while((getline(fichier, ligne)) && (ligne != balise));
 
-        if(ligne == balise) // Si la balise a été trouver
+        if(ligne == balise) // Si la balise a Ã©tÃ© trouver
         {
             std::string nom;
             int i = 0;
 
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+             //On parcourt les lignes de la balise jusqu'Ã  la balise [Fin]
 
             do
             {
@@ -241,7 +265,7 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
                 }
 
             }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas Ã©tÃ© trouver
             {
                 std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
             }
@@ -252,7 +276,7 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
             }
 
         }
-        else // Si la balise consernée n'a pas été trouver
+        else // Si la balise consernÃ©e n'a pas Ã©tÃ© trouver
         {
             std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
@@ -272,16 +296,16 @@ bool Core::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std:
     {
         std::string ligne;
 
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+         // Parcourt le fichier jusqu'Ã  trouver la balise ou la fin du fichier
         do
         {
         }while((getline(fichier, ligne)) && (ligne != balise));
 
-        if(ligne == balise) // Si la balise a été trouver
+        if(ligne == balise) // Si la balise a Ã©tÃ© trouver
         {
             std::string nom;
 
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+             //On parcourt les lignes de la balise jusqu'Ã  la balise [Fin]
 
             do
             {
@@ -310,16 +334,16 @@ bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
     {
         std::string ligne;
 
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+         // Parcourt le fichier jusqu'Ã  trouver la balise ou la fin du fichier
         do
         {
         }while((getline(fichier, ligne)) && (ligne != balise));
 
-        if(ligne == balise) // Si la balise a été trouver
+        if(ligne == balise) // Si la balise a Ã©tÃ© trouver
         {
             std::string nom, vide, valeur;
 
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+             //On parcourt les lignes de la balise jusqu'Ã  la balise [Fin]
 
             do
             {
@@ -328,7 +352,7 @@ bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
                 {
 
                     fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
-                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                    if(nom == nomLigne) // SI la ligne porte le nom recherchÃ© on renvoit la valeur de cette ligne
                     {
                         fichier.close();
                         if(valeur == val)
@@ -342,7 +366,7 @@ bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
                     }
                 }
             }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas Ã©tÃ© trouver
             {
                 std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
             }
@@ -352,7 +376,7 @@ bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
             }
 
         }
-        else // Si la balise consernée n'a pas été trouver
+        else // Si la balise consernÃ©e n'a pas Ã©tÃ© trouver
         {
             std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
@@ -444,6 +468,20 @@ void Core::events_Jeu()
 }
 
 void Core::events_Chargement()
+{
+    if (_event.Type == sf::Event::Closed)
+    {
+        _eng_event.changerEvent(ALL, QUIT, "", NULL);
+        envoiMultiple();
+
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
+    }
+}
+
+void Core::events_Options()
 {
     if (_event.Type == sf::Event::Closed)
     {

@@ -2,7 +2,7 @@
 *   Auteur : Schada
 *   Classe : Core
 *   Role : Classe Principale du Jeu
-*          Gere les ressources du jeu
+*          Gere les entrées clavier du jeu
 */
 
 #ifndef CORE_H
@@ -13,6 +13,7 @@
 #include "../Scenes/MenuPrincipal.h"
 #include "../Scenes/Jeu.h"
 #include "../Scenes/Chargement.h"
+#include "../Scenes/Options.h"
 #include "../Jeu/Engine_Game.h"
 #include "../Gfx/Engine_Graphics.h"
 #include "../Son/Engine_Sound.h"
@@ -35,14 +36,23 @@ class Core
         ~Core();
 
         /**
-        * Permet de demarrer le jeu
+        * Recupere les evenements et appel les fonctions gerant les evenements en fonction de la scene actuelle
         */
         void run();
 
+        /**
+        * Permet de changer la scene actuelle du jeu
+        */
         void changerScene(int scene, bool all);
 
+        /**
+        * Permet de recuperer un pointeur sur la scene actuelle
+        */
         Scene* get_Scene();
 
+        /**
+        * Permet de recuperer le numero de la scene actuelle
+        */
         int get_numeroScene();
 
         /**
@@ -54,8 +64,6 @@ class Core
         * Permet de recuperer la valeur contenu à la ligne numeroLigne dans la balise "balise" du fichier à ladresse "lienFichier"
         */
         static std::string RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne);
-
-
 
         /**
         * Renvoi True si le nom "nom" de la balise "balise" dans le fichier à l'adresse "lienFichier" existe
@@ -73,9 +81,16 @@ class Core
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
         */
 
+        /**
+        * Attibuts static contenant des informations sur le mod utilise
+        */
         static const std::string dossierMod;
         static const std::string fichierMod;
 
+
+        /**
+        * Mutex de _app
+        */
         static sf::Mutex* win_mu;
 
 
@@ -85,13 +100,24 @@ class Core
         * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
         */
 
+        /**
+        * Les differentes fonctions gerant les evenements en fonction de la scene
+        */
         void events_MenuPrincipal();
         void events_Jeu();
         void events_Chargement();
+        void events_Options();
         void events_All();
 
 
+        /**
+        * Permet d'envoyer l'evenement en cours de traitement a tout les moteurs
+        */
         void envoiMultiple();
+
+        /**
+        * Permet d'attendre que tous les moteurs n'ont plus acces a la scene actuelle pour proceder au changement de scene
+        */
         void attendreFinScene();
 
         /**
@@ -110,12 +136,24 @@ class Core
         */
         sf::RenderWindow* _app;
 
+        /**
+        * Contient l'evenement sfml en cours de traitement
+        */
         sf::Event _event;
 
+        /**
+        * Contient l'evenement du jeu
+        */
         Engine_Event _eng_event;
 
+        /**
+        * Pointeur sur la scene actuelle
+        */
         Scene* _scene;
 
+        /**
+        * Numero de la scene actuelle
+        */
         int _numeroScene;
 };
 

@@ -76,7 +76,7 @@ void MenuPrincipal::initJeu()
     _jeuInit = true;
 }
 
-void MenuPrincipal::run()
+void MenuPrincipal::afficher()
 {
     _app->Clear();
     _app->Draw(*_fondEcran);
@@ -110,13 +110,13 @@ void MenuPrincipal::animation(std::string mess)
     }
 }
 
-float MenuPrincipal::jouerSon(std::string)
+float MenuPrincipal::jouerSon(std::string nom)
 {
     _sound->Play();
     return _buffer->GetDuration();
 }
 
-void MenuPrincipal::jouerMusique(std::string)
+void MenuPrincipal::jouerMusique(std::string nom)
 {
     _music->Play();
 }

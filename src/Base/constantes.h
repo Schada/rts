@@ -9,7 +9,7 @@
 
 #include <SFML/Graphics.hpp>
 
-enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, ALL};
+enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, OPTIONS, CONSOLE, ALL};
 enum Event_Type {MOUSE, CLICK, KEY, LOAD, MUSIQUE, CHANGE, QUIT};
 
 #endif // CONSTANTES_H

@@ -24,6 +24,9 @@ class Entite_Active
     Entite_Active(Entite_Schema* schema);
     ~Entite_Active();
 
+    /**
+    * Permet de recuperer un pointeur sur le sprite
+    */
     sf::Sprite* get_Sprite();
 
 

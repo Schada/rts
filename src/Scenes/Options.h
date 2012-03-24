@@ -1,7 +1,7 @@
 /**
 *   Auteur : Sept64
-*   Classe : Scene Option
-*   Role : Permet la Creation de la scene option dans le jeu
+*   Classe : Options
+*   Role : Permet la Creation de la scene options dans le jeu
 */
 
 #ifndef OPTIONS_H
@@ -17,47 +17,67 @@
 class Options : public Scene
 {
     public:
+    /**
+    * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+    */
 
-        Options(sf::RenderWindow* app);
-        virtual ~Options();
+    /**
+    * Constructeurs et Destructeur
+    */
+    Options(sf::RenderWindow* app);
+    virtual ~Options();
 
-        void run();
-        void animation(std::string mess);
+    /**
+    * Permet d'afficher la scene
+    */
+    void afficher();
 
-        float jouerSon(std::string nom);
-        void jouerMusique(std::string nom);
-        void stopperMusique();
+    /**
+    *   Permet de gérer les animations
+    */
+    void animation(std::string mess);
 
-        sf::Sprite* get_sprite(std::string nom);
+    /**
+    * Fonctions gerant le son de la scene
+    */
+    float jouerSon(std::string nom);
+    void jouerMusique(std::string nom);
+    void stopperMusique();
 
+    /**
+    * Accesseurs
+    */
+    sf::Sprite* get_sprite(std::string nom);
 
-        void initGfx();
-        void initSon();
-        void initJeu();
+    /**
+    * Fonctions permettant d'initialiser la scene
+    */
+    void initGfx();
+    void initSon();
+    void initJeu();
 
-    protected:
+    /**
+    * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+    */
 
-        sf::RenderWindow* _app;
-        Gestionnaire_Images* _gi;
-        Gestionnaire_Sons* _gs;
-        Gestionnaire_Musiques* _gm;
-
-        bool _gfxInit;
-        bool _sonInit;
-        bool _jeuInit;
-
-        sf::Clock _clock;
     private:
 
-        sf::Image* _image;
-        sf::Image* _imageFond;
-        sf::Sprite* _fondEcran;
-        sf::Sprite* _buttonPleinEcran;
-        sf::Sprite* _buttonReturn;
+    /**
+    * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
+    */
+    sf::Image* _image;
+    sf::Image* _imageFond;
+    sf::Sprite* _fondEcran;
+    sf::Sprite* _buttonPleinEcran;
+    sf::Sprite* _buttonReturn;
 
-        sf::Sound* _sound;
-        sf::SoundBuffer* _buffer;
-        sf::Music* _music;
+    sf::Sound* _sound;
+    sf::SoundBuffer* _buffer;
+    sf::Music* _music;
+
+    /**
+    * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+    */
 
 };
 

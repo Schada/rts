@@ -216,15 +216,15 @@
 	"Engine_Event.h"
 	"../Scenes/Scene.h"
 
-1332614772 /home/schada/rts/src/Base/constantes.h
+1332626727 /home/schada/rts/src/Base/constantes.h
 	<SFML/Graphics.hpp>
 
-1332613019 /home/schada/rts/src/Base/Engine_Event.h
+1332628652 /home/schada/rts/src/Base/Engine_Event.h
 	<iostream>
 	<string>
 	<SFML/Graphics.hpp>
 
-1332613019 /home/schada/rts/src/Scenes/Scene.h
+1332630914 /home/schada/rts/src/Scenes/Scene.h
 	<SFML/Graphics.hpp>
 	"../Gfx/Gestionnaire_Images.h"
 	"../Son/Gestionnaire_Musiques.h"
@@ -237,7 +237,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1332613019 /home/schada/rts/src/Base/Gestionnaire.h
+1332629665 /home/schada/rts/src/Base/Gestionnaire.h
 	"constantes.h"
 	<iostream>
 	<map>
@@ -279,7 +279,7 @@
 	"Scene.h"
 	"../Ressources/Civilisation.h"
 
-1332613019 /home/schada/rts/src/Ressources/Civilisation.h
+1332629665 /home/schada/rts/src/Ressources/Civilisation.h
 	<map>
 	<vector>
 	<string>
@@ -295,12 +295,12 @@
 	<iostream>
 	"Entite_Schema.h"
 
-1332613019 /home/schada/rts/src/Ressources/Entite_Schema.h
+1332628887 /home/schada/rts/src/Ressources/Entite_Schema.h
 	<SFML/Graphics.hpp>
 	<string>
 	"../Gfx/Gestionnaire_Images.h"
 
-1332613019 /home/schada/rts/src/Ressources/Entite_Active.h
+1332628858 /home/schada/rts/src/Ressources/Entite_Active.h
 	<SFML/Graphics.hpp>
 	"Entite_Schema.h"
 
@@ -333,7 +333,7 @@
 	"Core.h"
 	<X11/Xlib.h>
 
-1332619162 source:/home/schada/rts/src/Gfx/Engine_Graphics.cpp
+1332630953 source:/home/schada/rts/src/Gfx/Engine_Graphics.cpp
 	"Engine_Graphics.h"
 	"../Base/Core.h"
 
@@ -387,12 +387,13 @@
 	<X11/Xlib.h>
 	<SFML/Graphics.hpp>
 
-1332619580 /home/schada/rts/src/Base/Core.h
+1332626842 /home/schada/rts/src/Base/Core.h
 	"constantes.h"
 	"../Scenes/Scene.h"
 	"../Scenes/MenuPrincipal.h"
 	"../Scenes/Jeu.h"
 	"../Scenes/Chargement.h"
+	"../Scenes/Options.h"
 	"../Jeu/Engine_Game.h"
 	"../Gfx/Engine_Graphics.h"
 	"../Son/Engine_Sound.h"
@@ -400,35 +401,35 @@
 	<iostream>
 	<string>
 
-1332619566 source:/home/schada/rts/src/Base/Core.cpp
+1332626825 source:/home/schada/rts/src/Base/Core.cpp
 	"Core.h"
 
-1332619554 source:/home/schada/rts/src/Scenes/Chargement.cpp
+1332630969 source:/home/schada/rts/src/Scenes/Chargement.cpp
 	"Chargement.h"
 
-1332619522 /home/schada/rts/src/Scenes/Chargement.h
+1332630632 /home/schada/rts/src/Scenes/Chargement.h
 	"Scene.h"
 
-1332619745 source:/home/schada/rts/src/Scenes/Jeu.cpp
+1332630979 source:/home/schada/rts/src/Scenes/Jeu.cpp
 	"Jeu.h"
 
-1332619622 /home/schada/rts/src/Scenes/Jeu.h
+1332630931 /home/schada/rts/src/Scenes/Jeu.h
 	"Scene.h"
 	"../Ressources/Civilisation.h"
 
-1332619746 source:/home/schada/rts/src/Scenes/MenuPrincipal.cpp
+1332630987 source:/home/schada/rts/src/Scenes/MenuPrincipal.cpp
 	"MenuPrincipal.h"
 
-1332619622 /home/schada/rts/src/Scenes/MenuPrincipal.h
+1332630924 /home/schada/rts/src/Scenes/MenuPrincipal.h
 	"Scene.h"
 	"../Base/constantes.h"
 	<iostream>
 	<string>
 
-1332619814 source:/home/schada/rts/src/Scenes/Options.cpp
+1332630995 source:/home/schada/rts/src/Scenes/Options.cpp
 	"Options.h"
 
-1332619815 /home/schada/rts/src/Scenes/Options.h
+1332630938 /home/schada/rts/src/Scenes/Options.h
 	<SFML/Graphics.hpp>
 	"../Gfx/Gestionnaire_Images.h"
 	"../Son/Gestionnaire_Musiques.h"

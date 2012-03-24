@@ -26,6 +26,11 @@ class Entite_Schema
     ~Entite_Schema();
     void creerEntite(std::string lien, Gestionnaire_Images* gi);
 
+
+
+    /**
+    * Permet de recuperer un pointeur sur l'image
+    */
     sf::Image* get_Image();
 
 

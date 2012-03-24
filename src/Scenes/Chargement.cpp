@@ -10,7 +10,7 @@ Chargement::~Chargement()
 
 }
 
-void Chargement::run()
+void Chargement::afficher()
 {
     if(floor(_clock.GetElapsedTime()) == 5)
     {

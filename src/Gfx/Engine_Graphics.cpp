@@ -41,7 +41,7 @@ void Engine_Graphics::Run()
             */
 
             Core::win_mu->Lock();
-            _sceneActive->run();
+            _sceneActive->afficher();
             Core::win_mu->Unlock();
 
         }

@@ -24,6 +24,10 @@ class Engine_Event{
         Engine_Event(Engine_Event const& engine_event);
         ~Engine_Event();
 
+
+        /**
+        * Permet de changer l'event
+        */
         void changerEvent(int scene, int type, std::string nom, sf::Event* event);
 
         /**
@@ -62,6 +66,10 @@ class Engine_Event{
         */
         std::string _nom;
 
+
+        /**
+        * Pointeur sur l'event sfml
+        */
         sf::Event* _event;
 
 };

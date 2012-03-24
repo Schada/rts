@@ -1,7 +1,7 @@
 /**
 *   Auteur : Schada
-*   Classe :
-*   Role :
+*   Classe : Civilisation
+*   Role : Classe des civilisations
 */
 
 #ifndef CIVILISATION_H
@@ -29,8 +29,14 @@ class Civilisation
     Civilisation(std::string nom, Gestionnaire_Entites* schemas);
     ~Civilisation();
 
-
+    /**
+    * Affiche toutes les entites de la civilisation
+    */
     void afficherEntites(sf::RenderWindow* app);
+
+    /**
+    * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+    */
 
 
 
@@ -38,8 +44,20 @@ class Civilisation
     /**
     * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
     */
+
+    /**
+    * Nom de la civilisation
+    */
     std::string _nom;
+
+    /**
+    * Pointeur sur le gestionnaire des schemas d'entites
+    */
     Gestionnaire_Entites* _schemas;
+
+    /**
+    * Conteneur des entites de la civilisation
+    */
     std::vector< Entite_Active* > _actives;
 
 

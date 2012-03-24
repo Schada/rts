@@ -2,7 +2,6 @@ La krakoukass-Team aime le caca !!!
 
 Bibliotheques utilisées :
  * Sfml
- * Qt
 
 Explications sur les Threads :
  * Thread Principal : Initialise et demarre les autres Threads puis regarde les entrées (clavier et souris) et les stock dans un buffer
@@ -16,8 +15,8 @@ Les messages des moteurs sont composés de :
 	Un Nom, std::string
 	Un Parametre, std::string
 	
-Scene, valeur possible : MENU_PRINCIPAL, CHARGEMENT, JEU, ALL
-Type, valeur possible : MOUSE, CLICK, KEY, LOAD, CHANGE
+Scene, valeur possible : MENU_PRINCIPAL, CHARGEMENT, JEU, OPTIONS, CONSOLE, ALL
+Type, valeur possible : MOUSE, CLICK, KEY, LOAD, MUSIQUE, CHANGE, QUIT
 
 Le type MOUSE est utilisé lorsque la souris vient sur un élément ou le quitte.
 Il a pour parametre :

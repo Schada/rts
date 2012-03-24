@@ -16,40 +16,86 @@
 class Scene
 {
     public:
-        Scene(sf::RenderWindow* app);
-        virtual ~Scene();
+    /**
+    * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+    */
 
-        virtual void run() = 0;
-        virtual void animation(std::string mess) = 0;
+    /**
+    * Constructeurs et Destructeur
+    */
+    Scene(sf::RenderWindow* app);
+    virtual ~Scene();
 
-        virtual float jouerSon(std::string nom) = 0;
-        virtual void jouerMusique(std::string nom) = 0;
-        virtual void stopperMusique() = 0;
+    /**
+    * Permet d'afficher la scene
+    */
+    virtual void afficher() = 0;
 
-        virtual sf::Sprite* get_sprite(std::string nom) = 0;
+    /**
+    *   Permet de gérer les animations
+    */
+    virtual void animation(std::string mess) = 0;
 
-        void set_gi(Gestionnaire_Images* gi);
-        void set_gm(Gestionnaire_Musiques* gm);
-        void set_gs(Gestionnaire_Sons* gs);
+    /**
+    * Fonctions gerant le son de la scene
+    */
+    virtual float jouerSon(std::string nom) = 0;
+    virtual void jouerMusique(std::string nom) = 0;
+    virtual void stopperMusique() = 0;
 
-        virtual void initGfx() = 0;
-        virtual void initSon() = 0;
-        virtual void initJeu() = 0;
-        bool isInit();
+    /**
+    * Accesseurs
+    */
+    virtual sf::Sprite* get_sprite(std::string nom) = 0;
 
-        float time();
+    /**
+    * Setters
+    */
+    void set_gi(Gestionnaire_Images* gi);
+    void set_gm(Gestionnaire_Musiques* gm);
+    void set_gs(Gestionnaire_Sons* gs);
+
+    /**
+    * Fonctions permettant d'initialiser la scene
+    */
+    virtual void initGfx() = 0;
+    virtual void initSon() = 0;
+    virtual void initJeu() = 0;
+
+    /**
+    * Permet de savoir si la scene est initialiser
+    */
+    bool isInit();
+
+    /**
+    * Renvoit le nombre de milisecondes ecoulees depuis la creation de la scene
+    */
+    float time();
+
+    /**
+    * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+    */
 
     protected:
-        sf::RenderWindow* _app;
-        Gestionnaire_Images* _gi;
-        Gestionnaire_Sons* _gs;
-        Gestionnaire_Musiques* _gm;
 
-        bool _gfxInit;
-        bool _sonInit;
-        bool _jeuInit;
+    /**
+    * <------------------------------------------------------- Attributs Protected ------------------------------------------------------->
+    */
 
-        sf::Clock _clock;
+    sf::RenderWindow* _app;
+    Gestionnaire_Images* _gi;
+    Gestionnaire_Sons* _gs;
+    Gestionnaire_Musiques* _gm;
+
+    bool _gfxInit;
+    bool _sonInit;
+    bool _jeuInit;
+
+    sf::Clock _clock;
+
+    /**
+    * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+    */
 
 };
 

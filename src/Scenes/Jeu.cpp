@@ -15,7 +15,7 @@ Jeu::~Jeu()
 
 }
 
-void Jeu::run()
+void Jeu::afficher()
 {
     _app->Clear(sf::Color(200, 0, 0));
     _humain->afficherEntites(_app);

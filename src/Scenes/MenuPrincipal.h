@@ -15,35 +15,67 @@
 class MenuPrincipal : public Scene
 {
     public:
-        MenuPrincipal(sf::RenderWindow* app);
-        ~MenuPrincipal();
+    /**
+    * <------------------------------------------------------- Methodes Public ------------------------------------------------------->
+    */
 
-        void run();
-        /**
-        *   Permet de gérer les animations du menu principal en fonction des messages passées en paramètres.
-        */
-        void animation(std::string mess);
+    /**
+    * Constructeurs et Destructeur
+    */
+    MenuPrincipal(sf::RenderWindow* app);
+    ~MenuPrincipal();
 
-        float jouerSon(std::string nom);
-        void jouerMusique(std::string nom);
-        void stopperMusique();
+    /**
+    * Permet d'afficher la scene
+    */
+    void afficher();
 
-        sf::Sprite* get_sprite(std::string nom);
+    /**
+    *   Permet de gérer les animations
+    */
+    void animation(std::string mess);
 
-        void initGfx();
-        void initSon();
-        void initJeu();
+    /**
+    * Fonctions gerant le son de la scene
+    */
+    float jouerSon(std::string nom);
+    void jouerMusique(std::string nom);
+    void stopperMusique();
+
+    /**
+    * Accesseurs
+    */
+    sf::Sprite* get_sprite(std::string nom);
+
+    /**
+    * Fonctions permettant d'initialiser la scene
+    */
+    void initGfx();
+    void initSon();
+    void initJeu();
+
+    /**
+    * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
+    */
 
     private:
-        sf::Image* _image;
-        sf::Image* _imageFond;
-        sf::Sprite* _fondEcran;
-        sf::Sprite* _buttonPlay;
-        sf::Sprite* _buttonQuit;
 
-        sf::Sound* _sound;
-        sf::SoundBuffer* _buffer;
-        sf::Music* _music;
+    /**
+    * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
+    */
+    sf::Image* _image;
+    sf::Image* _imageFond;
+    sf::Sprite* _fondEcran;
+    sf::Sprite* _buttonPlay;
+    sf::Sprite* _buttonQuit;
+
+    sf::Sound* _sound;
+    sf::SoundBuffer* _buffer;
+    sf::Music* _music;
+
+    /**
+    * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+    */
 
 
 };
