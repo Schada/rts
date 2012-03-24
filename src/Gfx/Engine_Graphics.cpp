@@ -1,7 +1,7 @@
 #include "Engine_Graphics.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
-Engine_Graphics::Engine_Graphics(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
+Engine_Graphics::Engine_Graphics(Core* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
     _gi = new Gestionnaire_Images();
 }
@@ -40,9 +40,9 @@ void Engine_Graphics::Run()
             *Si une scene est active alors on exécute son methode run
             */
 
-            Game::win_mu->Lock();
+            Core::win_mu->Lock();
             _sceneActive->run();
-            Game::win_mu->Unlock();
+            Core::win_mu->Unlock();
 
         }
         process_queue();
@@ -194,9 +194,9 @@ void Engine_Graphics::event_All(Engine_Event& e)
 void Engine_Graphics::sceneChangee()
 {
     _sceneActive->set_gi(_gi);
-    Game::win_mu->Lock();
+    Core::win_mu->Lock();
     _sceneActive->initGfx();
-    Game::win_mu->Unlock();
+    Core::win_mu->Unlock();
     while(_sceneActive->isInit() == false);
     std::cout << "Scene INIT : " << std::endl << std::endl;
 }

@@ -1,5 +1,5 @@
 #include "Gestionnaire_Sons.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
 Gestionnaire_Sons::Gestionnaire_Sons() : Gestionnaire()
 {
@@ -25,8 +25,8 @@ sf::SoundBuffer* Gestionnaire_Sons::get_contenu(std::string nom)
 void Gestionnaire_Sons::initGestionnaire()
 {
     _nom = "Defaut";
-    _lienFichier = Game::fichierMod;
-    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(_lienFichier, "[General]", "Sons");
+    _lienFichier = Core::fichierMod;
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Sons");
 
     creerGestionnaire("[Sons]");
 }

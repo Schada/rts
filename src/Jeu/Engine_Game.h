@@ -1,6 +1,6 @@
 /**
 *   Auteur : Schada
-*   Classe : Engine_Game
+*   Classe : Engine_Core
 *   Role : Classe du Moteur de Jeu
 *          Gere les différents éléments du jeu
 */
@@ -20,7 +20,7 @@ class Engine_Game : public Engine
         /**
         * Constructeurs et Destructeur
         */
-        Engine_Game(Game* game, sf::RenderWindow* app, std::string nom);
+        Engine_Game(Core* game, sf::RenderWindow* app, std::string nom);
         ~Engine_Game();
 
         /**

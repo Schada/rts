@@ -1,6 +1,6 @@
-#include "Scene_MenuPrincipal.h"
+#include "MenuPrincipal.h"
 
-Scene_MenuPrincipal::Scene_MenuPrincipal(sf::RenderWindow* app) : Scene(app)
+MenuPrincipal::MenuPrincipal(sf::RenderWindow* app) : Scene(app)
 {
 
     _image = NULL;
@@ -15,7 +15,7 @@ Scene_MenuPrincipal::Scene_MenuPrincipal(sf::RenderWindow* app) : Scene(app)
 
 }
 
-Scene_MenuPrincipal::~Scene_MenuPrincipal()
+MenuPrincipal::~MenuPrincipal()
 {
     _imageFond = NULL;
     _image = NULL;
@@ -29,7 +29,7 @@ Scene_MenuPrincipal::~Scene_MenuPrincipal()
     _music = NULL;
 }
 
-void Scene_MenuPrincipal::initGfx()
+void MenuPrincipal::initGfx()
 {
     int x = _app->GetWidth();
     int y = _app->GetHeight();
@@ -61,7 +61,7 @@ void Scene_MenuPrincipal::initGfx()
 
 }
 
-void Scene_MenuPrincipal::initSon()
+void MenuPrincipal::initSon()
 {
     _sound = new sf::Sound();
     _buffer = _gs->get_contenu("t");
@@ -71,12 +71,12 @@ void Scene_MenuPrincipal::initSon()
     _sonInit = true;
 }
 
-void Scene_MenuPrincipal::initJeu()
+void MenuPrincipal::initJeu()
 {
     _jeuInit = true;
 }
 
-void Scene_MenuPrincipal::run()
+void MenuPrincipal::run()
 {
     _app->Clear();
     _app->Draw(*_fondEcran);
@@ -85,7 +85,7 @@ void Scene_MenuPrincipal::run()
     _app->Display();
 }
 
-void Scene_MenuPrincipal::animation(std::string mess)
+void MenuPrincipal::animation(std::string mess)
 {
     if(mess == "MOUSEOVERPLAY")
     {
@@ -110,23 +110,23 @@ void Scene_MenuPrincipal::animation(std::string mess)
     }
 }
 
-float Scene_MenuPrincipal::jouerSon(std::string)
+float MenuPrincipal::jouerSon(std::string)
 {
     _sound->Play();
     return _buffer->GetDuration();
 }
 
-void Scene_MenuPrincipal::jouerMusique(std::string)
+void MenuPrincipal::jouerMusique(std::string)
 {
     _music->Play();
 }
 
-void Scene_MenuPrincipal::stopperMusique()
+void MenuPrincipal::stopperMusique()
 {
     _music->Stop();
 }
 
-sf::Sprite* Scene_MenuPrincipal::get_sprite(std::string nom)
+sf::Sprite* MenuPrincipal::get_sprite(std::string nom)
 {
     if(nom == "Play")
     {

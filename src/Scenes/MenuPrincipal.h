@@ -4,19 +4,19 @@
 *   Role : Permet la Creation de la Scene MenuPrincipal
 */
 
-#ifndef SCENE_MENUPRINCIPAL_H
-#define SCENE_MENUPRINCIPAL_H
+#ifndef MENUPRINCIPAL_H
+#define MENUPRINCIPAL_H
 
 #include "Scene.h"
 #include "../Base/constantes.h"
 #include <iostream>
 #include <string>
 
-class Scene_MenuPrincipal : public Scene
+class MenuPrincipal : public Scene
 {
     public:
-        Scene_MenuPrincipal(sf::RenderWindow* app);
-        ~Scene_MenuPrincipal();
+        MenuPrincipal(sf::RenderWindow* app);
+        ~MenuPrincipal();
 
         void run();
         /**
@@ -48,5 +48,5 @@ class Scene_MenuPrincipal : public Scene
 
 };
 
-#endif // SCENE_MENUPRINCIPAL_H
+#endif // MENUPRINCIPAL_H
 

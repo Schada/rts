@@ -22,10 +22,7 @@
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
 					<Add option="-lsfml-system" />
-<<<<<<< HEAD
 					<Add option="-lX11" />
-=======
->>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -49,12 +46,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Base/Core.cpp" />
+		<Unit filename="Base/Core.h" />
 		<Unit filename="Base/Engine.cpp" />
 		<Unit filename="Base/Engine.h" />
 		<Unit filename="Base/Engine_Event.cpp" />
 		<Unit filename="Base/Engine_Event.h" />
-		<Unit filename="Base/Game.cpp" />
-		<Unit filename="Base/Game.h" />
 		<Unit filename="Base/Gestionnaire.cpp" />
 		<Unit filename="Base/Gestionnaire.h" />
 		<Unit filename="Base/constantes.h" />
@@ -65,11 +62,7 @@
 		<Unit filename="Gfx/Gestionnaire_Images.h" />
 		<Unit filename="Jeu/Engine_Game.cpp" />
 		<Unit filename="Jeu/Engine_Game.h" />
-<<<<<<< HEAD
-=======
-		<Unit filename="Ressources/CaseValidation.cpp" />
 		<Unit filename="Ressources/CaseValidation.h" />
->>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 		<Unit filename="Ressources/Civilisation.cpp" />
 		<Unit filename="Ressources/Civilisation.h" />
 		<Unit filename="Ressources/Entite_Active.cpp" />
@@ -78,19 +71,16 @@
 		<Unit filename="Ressources/Entite_Schema.h" />
 		<Unit filename="Ressources/Gestionnaire_Entites.cpp" />
 		<Unit filename="Ressources/Gestionnaire_Entites.h" />
+		<Unit filename="Scenes/Chargement.cpp" />
+		<Unit filename="Scenes/Chargement.h" />
+		<Unit filename="Scenes/Jeu.cpp" />
+		<Unit filename="Scenes/Jeu.h" />
+		<Unit filename="Scenes/MenuPrincipal.cpp" />
+		<Unit filename="Scenes/MenuPrincipal.h" />
+		<Unit filename="Scenes/Options.cpp" />
+		<Unit filename="Scenes/Options.h" />
 		<Unit filename="Scenes/Scene.cpp" />
 		<Unit filename="Scenes/Scene.h" />
-		<Unit filename="Scenes/Scene_Chargement.cpp" />
-		<Unit filename="Scenes/Scene_Chargement.h" />
-		<Unit filename="Scenes/Scene_Jeu.cpp" />
-		<Unit filename="Scenes/Scene_Jeu.h" />
-		<Unit filename="Scenes/Scene_MenuPrincipal.cpp" />
-		<Unit filename="Scenes/Scene_MenuPrincipal.h" />
-<<<<<<< HEAD
-=======
-		<Unit filename="Scenes/Scene_Options.cpp" />
-		<Unit filename="Scenes/Scene_Options.h" />
->>>>>>> 71fdcbcb2eb67c2015c23ec2aaf564891ebaa76c
 		<Unit filename="Son/Engine_Sound.cpp" />
 		<Unit filename="Son/Engine_Sound.h" />
 		<Unit filename="Son/Gestionnaire_Musiques.cpp" />

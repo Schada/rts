@@ -21,7 +21,7 @@ class Engine_Graphics : public Engine
         /**
         * Constructeurs et Destructeur
         */
-        Engine_Graphics(Game* game, sf::RenderWindow* app, std::string nom);
+        Engine_Graphics(Core* game, sf::RenderWindow* app, std::string nom);
         ~Engine_Graphics();
 
         /**

@@ -1,5 +1,5 @@
 #include "Gestionnaire_Entites.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
 Gestionnaire_Entites::Gestionnaire_Entites(std::string nom, Gestionnaire_Images* gi) : Gestionnaire()
 {
@@ -26,11 +26,11 @@ Entite_Schema* Gestionnaire_Entites::get_contenu(std::string nom)
 void Gestionnaire_Entites::initGestionnaire()
 {
     int i = 1;
-    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(Game::fichierMod, "[General]", "Entites");
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Entites");
 
-    while(Game::RecupValeurNumeroLigne(Game::fichierMod, "[Civilisations]", i) != "[Fin]")
+    while(Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) != "[Fin]")
     {
-        _lienFichier = Game::dossierMod + Game::RecupValeurLigne(Game::fichierMod, "[General]", "Civilisations") + Game::RecupValeurNumeroLigne(Game::fichierMod, "[Civilisations]", i) + ".dat";
+        _lienFichier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Civilisations") + Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) + ".dat";
         creerGestionnaire("[Entites]");
         i++;
     }

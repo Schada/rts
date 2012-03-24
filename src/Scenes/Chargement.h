@@ -1,14 +1,14 @@
-#ifndef SCENE_JEU_H
-#define SCENE_JEU_H
+#ifndef CHARGEMENT_H
+#define CHARGEMENT_H
 
 #include "Scene.h"
-#include "../Ressources/Civilisation.h"
 
-class Scene_Jeu : public Scene
+
+class Chargement : public Scene
 {
     public:
-        Scene_Jeu(sf::RenderWindow* app);
-        virtual ~Scene_Jeu();
+        Chargement(sf::RenderWindow* app);
+        virtual ~Chargement();
 
         void run();
         /**
@@ -27,11 +27,9 @@ class Scene_Jeu : public Scene
         void initJeu();
 
     private:
+        sf::Clock _clock;
         sf::Font MyFont;
         sf::String Text;
-
-        Gestionnaire_Entites* _schemas;
-        Civilisation* _humain;
 };
 
-#endif // SCENE_JEU_H
+#endif // CHARGEMENT_H

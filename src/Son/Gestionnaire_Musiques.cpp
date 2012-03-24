@@ -1,5 +1,5 @@
 #include "Gestionnaire_Musiques.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
 Gestionnaire_Musiques::Gestionnaire_Musiques() : Gestionnaire()
 {
@@ -24,8 +24,8 @@ sf::Music* Gestionnaire_Musiques::get_contenu(std::string nom)
 void Gestionnaire_Musiques::initGestionnaire()
 {
     _nom = "Defaut";
-    _lienFichier = Game::fichierMod;
-    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
+    _lienFichier = Core::fichierMod;
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
 
     creerGestionnaire("[Musiques]");
 }

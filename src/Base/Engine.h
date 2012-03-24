@@ -19,7 +19,7 @@
 class Engine_Game;
 class Engine_Graphics;
 class Engine_Sound;
-class Game;
+class Core;
 
 class Engine : public sf::Thread
 {
@@ -32,7 +32,7 @@ class Engine : public sf::Thread
         /**
         * Constructeurs et Destructeur
         */
-        Engine(Game* game, sf::RenderWindow* app, std::string nom);
+        Engine(Core* game, sf::RenderWindow* app, std::string nom);
         virtual ~Engine();
 
         /**
@@ -140,7 +140,7 @@ class Engine : public sf::Thread
         /**
         * Pointeur vers l'objet parent
         */
-        Game *_parent;
+        Core *_parent;
 
         /**
         * File des messages à traiter

@@ -1,7 +1,7 @@
 #include "Engine_Sound.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
-Engine_Sound::Engine_Sound(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
+Engine_Sound::Engine_Sound(Core* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
 	_gm = new Gestionnaire_Musiques();
 	_gs = new Gestionnaire_Sons();

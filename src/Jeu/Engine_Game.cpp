@@ -1,7 +1,7 @@
 #include "Engine_Game.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
-Engine_Game::Engine_Game(Game* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
+Engine_Game::Engine_Game(Core* game, sf::RenderWindow* app, std::string nom) : Engine(game, app, nom)
 {
 
 }

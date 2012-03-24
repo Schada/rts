@@ -1,5 +1,5 @@
 #include "Gestionnaire_Images.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 
 Gestionnaire_Images::Gestionnaire_Images() : Gestionnaire()
 {
@@ -26,8 +26,8 @@ sf::Image* Gestionnaire_Images::get_contenu(std::string nom)
 void Gestionnaire_Images::initGestionnaire()
 {
     _nom = "Defaut";
-    _lienFichier = Game::fichierMod;
-    _lienDossier = Game::dossierMod + Game::RecupValeurLigne(_lienFichier, "[General]", "Textures");
+    _lienFichier = Core::fichierMod;
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Textures");
 
     creerGestionnaire("[Textures]");
 }

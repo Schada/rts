@@ -1,18 +1,18 @@
 /**
 *   Auteur : Schada
-*   Classe : Game
+*   Classe : Core
 *   Role : Classe Principale du Jeu
 *          Gere les ressources du jeu
 */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef CORE_H
+#define CORE_H
 
 #include "constantes.h"
 #include "../Scenes/Scene.h"
-#include "../Scenes/Scene_MenuPrincipal.h"
-#include "../Scenes/Scene_Jeu.h"
-#include "../Scenes/Scene_Chargement.h"
+#include "../Scenes/MenuPrincipal.h"
+#include "../Scenes/Jeu.h"
+#include "../Scenes/Chargement.h"
 #include "../Jeu/Engine_Game.h"
 #include "../Gfx/Engine_Graphics.h"
 #include "../Son/Engine_Sound.h"
@@ -21,7 +21,7 @@
 #include <iostream>
 #include <string>
 
-class Game
+class Core
 {
     public:
         /**
@@ -31,8 +31,8 @@ class Game
         /**
         * Constructeurs et Destructeur
         */
-        Game();
-        ~Game();
+        Core();
+        ~Core();
 
         /**
         * Permet de demarrer le jeu
@@ -91,7 +91,7 @@ class Game
         void events_All();
 
 
-        void envoiMultiple(Engine_Event& e);
+        void envoiMultiple();
         void attendreFinScene();
 
         /**
@@ -110,11 +110,13 @@ class Game
         */
         sf::RenderWindow* _app;
 
+        sf::Event _event;
 
+        Engine_Event _eng_event;
 
         Scene* _scene;
 
         int _numeroScene;
 };
 
-#endif //GAME_H
+#endif //CORE_H

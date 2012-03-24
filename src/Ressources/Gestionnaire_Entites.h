@@ -13,7 +13,7 @@
 #include <iostream>
 #include "Entite_Schema.h"
 
-class Game;
+class Core;
 
 class Gestionnaire_Entites : public Gestionnaire
 {

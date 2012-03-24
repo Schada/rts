@@ -1,16 +1,16 @@
-#include "Scene_Chargement.h"
+#include "Chargement.h"
 
-Scene_Chargement::Scene_Chargement(sf::RenderWindow* app) : Scene(app)
+Chargement::Chargement(sf::RenderWindow* app) : Scene(app)
 {
 
 }
 
-Scene_Chargement::~Scene_Chargement()
+Chargement::~Chargement()
 {
 
 }
 
-void Scene_Chargement::run()
+void Chargement::run()
 {
     if(floor(_clock.GetElapsedTime()) == 5)
     {
@@ -29,32 +29,32 @@ void Scene_Chargement::run()
     _app->Display();
 }
 
-void Scene_Chargement::animation(std::string mess)
+void Chargement::animation(std::string mess)
 {
 
 }
 
-float Scene_Chargement::jouerSon(std::string nom)
+float Chargement::jouerSon(std::string nom)
 {
     return 0.f;
 }
 
-void Scene_Chargement::jouerMusique(std::string nom)
+void Chargement::jouerMusique(std::string nom)
 {
 
 }
 
-void Scene_Chargement::stopperMusique()
+void Chargement::stopperMusique()
 {
 
 }
 
-sf::Sprite* Scene_Chargement::get_sprite(std::string nom)
+sf::Sprite* Chargement::get_sprite(std::string nom)
 {
     return NULL;
 }
 
-void Scene_Chargement::initGfx()
+void Chargement::initGfx()
 {
     _clock.Reset();
     // Chargement de la police à partir d'un fichier
@@ -71,12 +71,12 @@ void Scene_Chargement::initGfx()
     _gfxInit = true;
 }
 
-void Scene_Chargement::initSon()
+void Chargement::initSon()
 {
      _sonInit = true;
 }
 
-void Scene_Chargement::initJeu()
+void Chargement::initJeu()
 {
     _jeuInit = true;
 }

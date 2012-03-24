@@ -4,8 +4,8 @@
 *   Role : Permet la Creation de la scene option dans le jeu
 */
 
-#ifndef SCENE_OPTION_H
-#define SCENE_OPTION_H
+#ifndef OPTIONS_H
+#define OPTIONS_H
 
 #include <SFML/Graphics.hpp>
 #include "../Gfx/Gestionnaire_Images.h"
@@ -14,12 +14,12 @@
 #include <iostream>
 #include "Scene.h"
 
-class Scene_Options : public Scene
+class Options : public Scene
 {
     public:
 
-        Scene_Options(sf::RenderWindow* app);
-        virtual ~Scene_Options();
+        Options(sf::RenderWindow* app);
+        virtual ~Options();
 
         void run();
         void animation(std::string mess);
@@ -30,16 +30,10 @@ class Scene_Options : public Scene
 
         sf::Sprite* get_sprite(std::string nom);
 
-        void set_gi(Gestionnaire_Images* gi);
-        void set_gm(Gestionnaire_Musiques* gm);
-        void set_gs(Gestionnaire_Sons* gs);
 
         void initGfx();
         void initSon();
         void initJeu();
-        bool isInit();
-
-        float time();
 
     protected:
 
@@ -67,4 +61,4 @@ class Scene_Options : public Scene
 
 };
 
-#endif // SCENE_H_OPTION
+#endif // OPTIONS_H

@@ -1,12 +1,12 @@
 #include "Engine.h"
-#include "Game.h"
+#include "Core.h"
 #include "../Jeu/Engine_Game.h"
 #include "../Gfx/Engine_Graphics.h"
 #include "../Son/Engine_Sound.h"
 
-Engine::Engine(Game* game, sf::RenderWindow* app, std::string nom) : sf::Thread()
+Engine::Engine(Core* core, sf::RenderWindow* app, std::string nom) : sf::Thread()
 {
-    _parent = game;
+    _parent = core;
     _app = app;
     _nom = nom;
     _sceneActive = NULL;

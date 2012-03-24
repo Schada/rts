@@ -1,10 +1,10 @@
-#include "Game.h"
+#include "Core.h"
 
-const std::string Game::dossierMod = DOSSIER_DONNEES + Game::RecupValeurLigne(FICHIER_DEFAUT, "[General]", "Mod") + FIN_DOSSIER;
-const std::string Game::fichierMod = Game::dossierMod + FICHIER_MOD;
-sf::Mutex* Game::win_mu = new sf::Mutex();
+const std::string Core::dossierMod = DOSSIER_DONNEES + Core::RecupValeurLigne(FICHIER_DEFAUT, "[General]", "Mod") + FIN_DOSSIER;
+const std::string Core::fichierMod = Core::dossierMod + FICHIER_MOD;
+sf::Mutex* Core::win_mu = new sf::Mutex();
 
-Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _scene(NULL), _numeroScene(0)
+Core::Core() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _event(), _eng_event(ALL, QUIT, "", NULL), _scene(NULL), _numeroScene(0)
 {
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
     //_app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
@@ -23,7 +23,7 @@ Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _sce
 	_eng_son->attach_engine_game(_eng_game);
 	_eng_son->attach_engine_graphics(_eng_gfx);
 
-    changerScene(MENU_PRINCIPAL, true);
+
 
 	_eng_game->Launch();
 	_eng_gfx->Launch();
@@ -35,9 +35,11 @@ Game::Game() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _sce
 	_eng_gfx->lancer();
 	_eng_son->lancer();
 
+    changerScene(MENU_PRINCIPAL, true);
+
 }
 
-Game::~Game()
+Core::~Core()
 {
     std::cout << "Debut FIN" << std::endl;
     delete _scene;
@@ -49,40 +51,47 @@ Game::~Game()
     std::cout << "OK" << std::endl;
 }
 
-void Game::run()
+void Core::run()
 {
     while (_app->IsOpened())
     {
-
-        switch(_numeroScene)
+        while(_scene->isInit() == false);
+        Core::win_mu->Lock();
+        while (_app->GetEvent(_event))
         {
-            case MENU_PRINCIPAL:
-            events_MenuPrincipal();
-            break;
-            case CHARGEMENT:
-            events_Chargement();
-            break;
-            case JEU:
-            events_Jeu();
-            break;
-            case ALL:
-            events_All();
-            break;
-            default:
-            std::cerr << "La Scene est invalide !" << std::endl;
-            exit(-1);
-        }
+            Core::win_mu->Unlock();
 
+            switch(_numeroScene)
+            {
+                case MENU_PRINCIPAL:
+                events_MenuPrincipal();
+                break;
+                case CHARGEMENT:
+                events_Chargement();
+                break;
+                case JEU:
+                events_Jeu();
+                break;
+                case ALL:
+                events_All();
+                break;
+                default:
+                std::cerr << "La Scene est invalide !" << std::endl;
+                exit(-1);
+            }
+            Core::win_mu->Lock();
+        }
+        Core::win_mu->Unlock();
 
     }
 }
 
-void Game::changerScene(int scene, bool all)
+void Core::changerScene(int scene, bool all)
 {
     if(all)
     {
-        Engine_Event e(ALL, CHANGE, "NULL", NULL);
-        envoiMultiple(e);
+        _eng_event.changerEvent(ALL, CHANGE, "NULL", NULL);
+        envoiMultiple();
         attendreFinScene();
     }
 
@@ -95,13 +104,15 @@ void Game::changerScene(int scene, bool all)
     switch(scene)
     {
         case MENU_PRINCIPAL:
-        _scene = new Scene_MenuPrincipal(_app);
+        _scene = new MenuPrincipal(_app);
+        _eng_event.changerEvent(MENU_PRINCIPAL, LOAD, "MUSIQUE", NULL);
+        _eng_son->push_event(_eng_event);
         break;
         case JEU:
-        _scene = new Scene_Jeu(_app);
+        _scene = new Jeu(_app);
         break;
         case CHARGEMENT:
-        _scene = new Scene_Chargement(_app);
+        _scene = new Chargement(_app);
         break;
         default:
         std::cerr << "La scene n'existe pas " << std::endl;
@@ -112,36 +123,36 @@ void Game::changerScene(int scene, bool all)
 
     if(all)
     {
-        Engine_Event e(ALL, CHANGE, "SCENE", NULL);
-        envoiMultiple(e);
+        _eng_event.changerEvent(ALL, CHANGE, "SCENE", NULL);
+        envoiMultiple();
     }
 }
-void Game::attendreFinScene()
+void Core::attendreFinScene()
 {
     while(!_eng_game->sceneFinie());
     while(!_eng_gfx->sceneFinie());
     while(!_eng_son->sceneFinie());
 }
 
-Scene* Game::get_Scene()
+Scene* Core::get_Scene()
 {
     return _scene;
 }
 
-int Game::get_numeroScene()
+int Core::get_numeroScene()
 {
     return _numeroScene;
 }
 
-void Game::envoiMultiple(Engine_Event& e)
+void Core::envoiMultiple()
 {
     std::cerr << "Message envoye !" << std::endl;
-    _eng_gfx->push_event(e);
-    _eng_game->push_event(e);
-    _eng_son->push_event(e);
+    _eng_gfx->push_event(_eng_event);
+    _eng_game->push_event(_eng_event);
+    _eng_son->push_event(_eng_event);
 }
 
-std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
+std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
@@ -199,7 +210,7 @@ std::string Game::RecupValeurLigne(std::string lienFichier, std::string balise, 
     return "";
 }
 
-std::string Game::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne)
+std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
@@ -254,7 +265,7 @@ std::string Game::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
     return "";
 }
 
-bool Game::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std::string balise)
+bool Core::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std::string balise)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
@@ -292,7 +303,7 @@ bool Game::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std:
     return false;
 }
 
-bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise)
+bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
@@ -354,176 +365,108 @@ bool Game::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
     return false;
 }
 
-void Game::events_MenuPrincipal()
+void Core::events_MenuPrincipal()
 {
-    while(!(_scene->isInit()));
-
-    sf::Event event;
     sf::Vector2f PlaySize = (_scene->get_sprite("Play"))->GetSize();
     sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
     sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
     sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
 
-    int MouseX = event.MouseMove.X;
-    int MouseY = event.MouseMove.Y;
+    int MouseX = _event.MouseButton.X;
+    int MouseY = _event.MouseButton.Y;
 
-    Engine_Event e(MENU_PRINCIPAL, LOAD, "MUSIQUE", NULL);
-    _eng_son->push_event(e);
-
-
-
-
-    while(_numeroScene == MENU_PRINCIPAL)
+    if (_event.Type == sf::Event::Closed)
     {
-        MouseX = event.MouseMove.X;
-        MouseY = event.MouseMove.Y;
-        Game::win_mu->Lock();
-        while (_app->GetEvent(event))
+        _eng_event.changerEvent(ALL, QUIT, "QUIT", NULL);
+        envoiMultiple();
+
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
+    }
+    /*if (event.Type == sf::Event::MouseMoved)
+    {
+        if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
         {
-            Game::win_mu->Unlock();
-            if (event.Type == sf::Event::Closed)
+            Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
+            _eng_gfx->push_event(e);
+        }else
             {
-                e.changerEvent(ALL, QUIT, "QUIT", NULL);
-                envoiMultiple(e);
-
-                _eng_game->Wait();
-                _eng_gfx->Wait();
-                _eng_son->Wait();
-                _numeroScene = ALL;
+                Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
+                _eng_gfx->push_event(e);
             }
-            /*if (event.Type == sf::Event::MouseMoved)
+        if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
+        {
+            Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
+            _eng_gfx->push_event(e);
+        }else
             {
-                if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
-                    _eng_gfx->push_event(e);
-                }else
-                    {
-                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
-                        _eng_gfx->push_event(e);
-                    }
-                if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
-                {
-                    Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
-                    _eng_gfx->push_event(e);
-                }else
-                    {
-                        Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
-                        _eng_gfx->push_event(e);
-                    }
-            }*/
-            if(event.Type == sf::Event::MouseButtonPressed && event.MouseButton.Button == sf::Mouse::Left)
-            {
-                if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
-                {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", &event);
-                    envoiMultiple(e);
-
-                    changerScene(JEU, true);
-
-                }
-                if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
-                {
-                    e.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", &event);
-                    envoiMultiple(e);
-
-                    _eng_game->Wait();
-                    _eng_gfx->Wait();
-                    _eng_son->Wait();
-                    _numeroScene = ALL;
-                }
+                Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
+                _eng_gfx->push_event(e);
             }
-            Game::win_mu->Lock();
+    }*/
+    if(_event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left)
+    {
+        if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
+        {
+            _eng_event.changerEvent(MENU_PRINCIPAL, CLICK, "PLAY", &_event);
+            envoiMultiple();
+
+            changerScene(JEU, true);
+
         }
-        Game::win_mu->Unlock();
+        if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
+        {
+            _eng_event.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", &_event);
+            envoiMultiple();
 
+            _eng_game->Wait();
+            _eng_gfx->Wait();
+            _eng_son->Wait();
+            _numeroScene = ALL;
+        }
     }
 }
-void Game::events_Jeu()
+
+void Core::events_Jeu()
 {
-    while(!(_scene->isInit()));
-
-    Engine_Event e(ALL, QUIT, "QUIT", NULL);
-    sf::Event event;
-
-    while(_numeroScene == JEU)
+    if (_event.Type == sf::Event::Closed)
     {
-        Game::win_mu->Lock();
-        while (_app->GetEvent(event))
-        {
-            Game::win_mu->Unlock();
-            if (event.Type == sf::Event::Closed)
-            {
+        _eng_event.changerEvent(ALL, QUIT, "", NULL);
+        envoiMultiple();
 
-                envoiMultiple(e);
-
-                _eng_game->Wait();
-                _eng_gfx->Wait();
-                _eng_son->Wait();
-                _numeroScene = ALL;
-            }
-            Game::win_mu->Lock();
-        }
-        Game::win_mu->Unlock();
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
     }
 }
 
-void Game::events_Chargement()
+void Core::events_Chargement()
 {
-    while(!(_scene->isInit()));
-
-    Engine_Event e(ALL, QUIT, "", NULL);
-    sf::Event event;
-
-    while(_numeroScene == CHARGEMENT)
+    if (_event.Type == sf::Event::Closed)
     {
-        Game::win_mu->Lock();
-        while (_app->GetEvent(event))
-        {
-            Game::win_mu->Unlock();
-            if (event.Type == sf::Event::Closed)
-            {
+        _eng_event.changerEvent(ALL, QUIT, "", NULL);
+        envoiMultiple();
 
-                envoiMultiple(e);
-
-                _eng_game->Wait();
-                _eng_gfx->Wait();
-                _eng_son->Wait();
-                _numeroScene = ALL;
-            }
-            Game::win_mu->Lock();
-        }
-        Game::win_mu->Unlock();
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
     }
 }
 
-
-void Game::events_All()
+void Core::events_All()
 {
-    while(!(_scene->isInit()));
-
-    Engine_Event e(ALL, QUIT, "", NULL);
-    sf::Event event;
-
-    while(_numeroScene == ALL)
+    if (_event.Type == sf::Event::Closed)
     {
-        Game::win_mu->Lock();
-        while (_app->GetEvent(event))
-        {
-            Game::win_mu->Unlock();
-            if (event.Type == sf::Event::Closed)
-            {
+        _eng_event.changerEvent(ALL, QUIT, "", NULL);
+        envoiMultiple();
 
-                envoiMultiple(e);
-
-                _eng_game->Wait();
-                _eng_gfx->Wait();
-                _eng_son->Wait();
-                _numeroScene = ALL;
-            }
-            Game::win_mu->Lock();
-        }
-        Game::win_mu->Unlock();
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
     }
 }
-

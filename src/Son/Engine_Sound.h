@@ -9,7 +9,7 @@
 #define ENGINE_SOUND_H
 
 #include "../Base/Engine.h"
-#include "../Base/Game.h"
+#include "../Base/Core.h"
 #include "../Son/Gestionnaire_Sons.h"
 #include "../Son/Gestionnaire_Musiques.h"
 
@@ -23,7 +23,7 @@ class Engine_Sound : public Engine
         /**
         * Constructeurs et Destructeur
         */
-        Engine_Sound(Game* game, sf::RenderWindow* app, std::string nom);
+        Engine_Sound(Core* core, sf::RenderWindow* app, std::string nom);
         ~Engine_Sound();
 
         /**
