@@ -9,6 +9,7 @@
 
 #include "Scene.h"
 #include "../Base/constantes.h"
+#include "../Interface/ZoneTexte.h"
 #include <iostream>
 #include <string>
 
@@ -72,6 +73,8 @@ class MenuPrincipal : public Scene
     sf::Sound* _sound;
     sf::SoundBuffer* _buffer;
     sf::Music* _music;
+
+    ZoneTexte* _zone;
 
     /**
     * <------------------------------------------------------- Methodes Private ------------------------------------------------------->

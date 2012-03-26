@@ -395,6 +395,8 @@ void Core::events_MenuPrincipal()
     sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
     sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
     sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
+    sf::Vector2f ZoneSize = (_scene->get_sprite("Zone"))->GetSize();
+    sf::Vector2f ZonePos = (_scene->get_sprite("Zone"))->GetPosition();
 
     int MouseX = _event.MouseButton.X;
     int MouseY = _event.MouseButton.Y;
@@ -440,7 +442,7 @@ void Core::events_MenuPrincipal()
             changerScene(JEU, true);
 
         }
-        if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
+        else if (MouseX > QuitPos.x && MouseX < QuitPos.x + QuitSize.x && MouseY > QuitPos.y && MouseY < QuitPos.x +QuitSize.y)
         {
             _eng_event.changerEvent(MENU_PRINCIPAL, CLICK, "QUIT", &_event);
             envoiMultiple();
@@ -450,6 +452,11 @@ void Core::events_MenuPrincipal()
             _eng_son->Wait();
             _numeroScene = ALL;
         }
+        else if(MouseX > ZonePos.x && MouseX < ZonePos.x + ZoneSize.x && MouseY > ZonePos.y && MouseY < ZonePos.y + ZoneSize.y )
+        {
+            _scene->stopperMusique();
+        }
+
     }
 }
 

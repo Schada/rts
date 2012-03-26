@@ -329,7 +329,7 @@
 1332613019 source:/home/schada/rts/src/Base/Gestionnaire.cpp
 	"Gestionnaire.h"
 
-1332616387 source:/home/schada/rts/src/Base/main.cpp
+1332632853 source:/home/schada/rts/src/Base/main.cpp
 	"Core.h"
 	<X11/Xlib.h>
 
@@ -401,7 +401,7 @@
 	<iostream>
 	<string>
 
-1332626825 source:/home/schada/rts/src/Base/Core.cpp
+1332781159 source:/home/schada/rts/src/Base/Core.cpp
 	"Core.h"
 
 1332630969 source:/home/schada/rts/src/Scenes/Chargement.cpp
@@ -417,12 +417,13 @@
 	"Scene.h"
 	"../Ressources/Civilisation.h"
 
-1332630987 source:/home/schada/rts/src/Scenes/MenuPrincipal.cpp
+1332781145 source:/home/schada/rts/src/Scenes/MenuPrincipal.cpp
 	"MenuPrincipal.h"
 
-1332630924 /home/schada/rts/src/Scenes/MenuPrincipal.h
+1332780393 /home/schada/rts/src/Scenes/MenuPrincipal.h
 	"Scene.h"
 	"../Base/constantes.h"
+	"../Interface/ZoneTexte.h"
 	<iostream>
 	<string>
 
@@ -436,4 +437,11 @@
 	"../Son/Gestionnaire_Sons.h"
 	<iostream>
 	"Scene.h"
+
+1332781308 source:/home/schada/rts/src/Interface/ZoneTexte.cpp
+	"ZoneTexte.h"
+	"../Base/Core.h"
+
+1332780764 /home/schada/rts/src/Interface/ZoneTexte.h
+	"../Base/constantes.h"
 

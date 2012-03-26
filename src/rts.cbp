@@ -60,6 +60,8 @@
 		<Unit filename="Gfx/Engine_Graphics.h" />
 		<Unit filename="Gfx/Gestionnaire_Images.cpp" />
 		<Unit filename="Gfx/Gestionnaire_Images.h" />
+		<Unit filename="Interface/ZoneTexte.cpp" />
+		<Unit filename="Interface/ZoneTexte.h" />
 		<Unit filename="Jeu/Engine_Game.cpp" />
 		<Unit filename="Jeu/Engine_Game.h" />
 		<Unit filename="Ressources/CaseValidation.h" />
