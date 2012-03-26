@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine.cpp
 	"Engine.h"
-	"Game.h"
+	"Core.h"
 	"../Jeu/Engine_Game.h"
 	"../Gfx/Engine_Graphics.h"
 	"../Son/Engine_Sound.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine.h
 	<SFML/System.hpp>
 	<SFML/Graphics.hpp>
 	<queue>
@@ -15,40 +15,41 @@
 	"Engine_Event.h"
 	"../Scenes/Scene.h"
 
-1332169576 /home/sotiropoulos/Documents/Jeu/rts/src/Base/constantes.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/constantes.h
+	<SFML/Graphics.hpp>
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine_Event.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine_Event.h
 	<iostream>
 	<string>
 	<SFML/Graphics.hpp>
 
-1332321930 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene.h
 	<SFML/Graphics.hpp>
 	"../Gfx/Gestionnaire_Images.h"
 	"../Son/Gestionnaire_Musiques.h"
 	"../Son/Gestionnaire_Sons.h"
 	<iostream>
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Gestionnaire_Images.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Gestionnaire_Images.h
 	"../Base/constantes.h"
 	"../Base/Gestionnaire.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Gestionnaire.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Gestionnaire.h
 	"constantes.h"
 	<iostream>
 	<map>
 	<string>
 	<fstream>
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Musiques.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Musiques.h
 	"../Base/constantes.h"
 	"../Base/Gestionnaire.h"
 	<SFML/Audio.hpp>
 	<iostream>
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Sons.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Sons.h
 	"../Base/constantes.h"
 	"../Base/Gestionnaire.h"
 	<SFML/Audio.hpp>
@@ -78,7 +79,7 @@
 	"Scene.h"
 	"../Ressources/Civilisation.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Civilisation.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Civilisation.h
 	<map>
 	<vector>
 	<string>
@@ -87,77 +88,77 @@
 	"Entite_Schema.h"
 	"Entite_Active.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Gestionnaire_Entites.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Gestionnaire_Entites.h
 	"../Base/constantes.h"
 	"../Base/Gestionnaire.h"
 	<SFML/Audio.hpp>
 	<iostream>
 	"Entite_Schema.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Schema.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Schema.h
 	<SFML/Graphics.hpp>
 	<string>
 	"../Gfx/Gestionnaire_Images.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Active.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Active.h
 	<SFML/Graphics.hpp>
 	"Entite_Schema.h"
 
 1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene_Chargement.h
 	"Scene.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Jeu/Engine_Game.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Jeu/Engine_Game.h
 	"../Base/Engine.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Engine_Graphics.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Engine_Graphics.h
 	"../Base/Engine.h"
 	"Gestionnaire_Images.h"
 
-1332159073 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Engine_Sound.h
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Son/Engine_Sound.h
 	"../Base/Engine.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 	"../Son/Gestionnaire_Sons.h"
 	"../Son/Gestionnaire_Musiques.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine_Event.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Engine_Event.cpp
 	"Engine_Event.h"
 
 1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Game.cpp
 	"Game.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Gestionnaire.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Gestionnaire.cpp
 	"Gestionnaire.h"
 
-1332170562 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/main.cpp
-	"Game.h"
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/main.cpp
+	"Core.h"
 	<X11/Xlib.h>
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Engine_Graphics.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Engine_Graphics.cpp
 	"Engine_Graphics.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Gestionnaire_Images.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Gfx/Gestionnaire_Images.cpp
 	"Gestionnaire_Images.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Jeu/Engine_Game.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Jeu/Engine_Game.cpp
 	"Engine_Game.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332166618 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Civilisation.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Civilisation.cpp
 	"Civilisation.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Active.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Active.cpp
 	"Entite_Active.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Schema.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Entite_Schema.cpp
 	"Entite_Schema.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Gestionnaire_Entites.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/Gestionnaire_Entites.cpp
 	"Gestionnaire_Entites.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332322857 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene.cpp
 	"Scene.h"
 
 1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Scene_Chargement.cpp
@@ -180,17 +181,17 @@
 	<iostream>
 	"Scene.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Engine_Sound.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Engine_Sound.cpp
 	"Engine_Sound.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Musiques.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Musiques.cpp
 	"Gestionnaire_Musiques.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
-1332159073 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Sons.cpp
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Son/Gestionnaire_Sons.cpp
 	"Gestionnaire_Sons.h"
-	"../Base/Game.h"
+	"../Base/Core.h"
 
 1332354364 source:/home/sotiropoulos/Documents/Jeu/rts/src/Ressources/CaseValidation.cpp
 	"CaseValidation.h"
@@ -438,10 +439,62 @@
 	<iostream>
 	"Scene.h"
 
+<<<<<<< HEAD
 1332781308 source:/home/schada/rts/src/Interface/ZoneTexte.cpp
 	"ZoneTexte.h"
 	"../Base/Core.h"
 
 1332780764 /home/schada/rts/src/Interface/ZoneTexte.h
 	"../Base/constantes.h"
+=======
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Core.h
+	"constantes.h"
+	"../Scenes/Scene.h"
+	"../Scenes/MenuPrincipal.h"
+	"../Scenes/Jeu.h"
+	"../Scenes/Chargement.h"
+	"../Scenes/Options.h"
+	"../Jeu/Engine_Game.h"
+	"../Gfx/Engine_Graphics.h"
+	"../Son/Engine_Sound.h"
+	"../Ressources/Civilisation.h"
+	<iostream>
+	<string>
+
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/MenuPrincipal.h
+	"Scene.h"
+	"../Base/constantes.h"
+	<iostream>
+	<string>
+
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Jeu.h
+	"Scene.h"
+	"../Ressources/Civilisation.h"
+
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Chargement.h
+	"Scene.h"
+
+1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Options.h
+	<SFML/Graphics.hpp>
+	"../Gfx/Gestionnaire_Images.h"
+	"../Son/Gestionnaire_Musiques.h"
+	"../Son/Gestionnaire_Sons.h"
+	<iostream>
+	"Scene.h"
+
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Chargement.cpp
+	"Chargement.h"
+
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Jeu.cpp
+	"Jeu.h"
+
+1332766604 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/MenuPrincipal.cpp
+	"MenuPrincipal.h"
+
+1332764704 source:/home/sotiropoulos/Documents/Jeu/rts/src/Scenes/Options.cpp
+	"Options.h"
+
+1332766867 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Core.cpp
+	"Core.h"
+>>>>>>> ce5e9c2cf904f17b1b1d26178576361ede3f7974
 
