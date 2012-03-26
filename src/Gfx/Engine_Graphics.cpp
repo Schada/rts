@@ -55,35 +55,44 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
     switch(e.get_type())
     {
         case MOUSE:
-        /*if(e.get_nom() == "QUIT" && e.get_parametre() == "IN")
         {
-            _sceneActive->animation("MOUSEOVERQUIT");
+        /** <---------------------------------------- Déclaration variables début ------------------------------------------->*/
+
+            sf::Vector2f PlaySize = (_sceneActive->get_sprite("Play"))->GetSize();
+            sf::Vector2f PlayPos = (_sceneActive->get_sprite("Play"))->GetPosition();
+            sf::Vector2f QuitPos = (_sceneActive->get_sprite("Quit"))->GetPosition();
+
+            int MouseX = e.get_event()->MouseButton.X;
+            int MouseY = e.get_event()->MouseButton.Y;
+        /** <---------------------------------------- Déclaration variables fin ------------------------------------------->*/
+            if( MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
+            {
+                _sceneActive->animation("MOUSEOVERPLAY");
+            }else
+                {
+                _sceneActive->animation("MOUSEQUITPLAY");
+                }
+            if(MouseX > QuitPos.x && MouseX < (QuitPos.x + 150) && MouseY > QuitPos.y && MouseY < (QuitPos.y+ 60) )
+            {
+                _sceneActive->animation("MOUSEOVERQUIT");
+            }else
+            {
+                _sceneActive->animation("MOUSEQUITQUIT");
+            }
         }
-        if(e.get_nom() == "QUIT" && e.get_parametre() == "OUT")
-        {
-            _sceneActive->animation("MOUSEQUITQUIT");
-        }
-        if(e.get_nom() == "PLAY" && e.get_parametre() == "IN")
-        {
-            _sceneActive->animation("MOUSEOVERPLAY");
-        }
-        if(e.get_nom() == "PLAY" && e.get_parametre() == "OUT")
-        {
-            _sceneActive->animation("MOUSEQUITPLAY");
-        }*/
         break;
         case CLICK:
-        if(e.get_nom() == "QUIT" && ((e.get_event()))->MouseButton.Button == sf::Mouse::Left)
-        {
-            /**
-            * On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter
-            */
-            _app->Close();
-            _sceneActive = NULL;
-            _encours = false;
+            if(e.get_nom() == "QUIT" && ((e.get_event()))->MouseButton.Button == sf::Mouse::Left)
+            {
+                /**
+                * On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter
+                */
+                _app->Close();
+                _sceneActive = NULL;
+                _encours = false;
 
-        }
-        break;
+            }
+            break;
         case KEY:
 
         break;
@@ -94,8 +103,8 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
 
         break;
         default:
-        std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
-        break;
+            std::cerr << "Impossible de traiter le message : Le Type " << e.get_type() << " est invalide !" << std::endl;
+            break;
     }
 }
 

@@ -104,10 +104,6 @@ void MenuPrincipal::animation(std::string mess)
     {
         _buttonPlay->SetSubRect(sf::IntRect(73,350, 193,398));
     }
-    if(mess == "MOUSECLICKPLAY")
-    {
-
-    }
 }
 
 float MenuPrincipal::jouerSon(std::string nom)

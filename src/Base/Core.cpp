@@ -409,27 +409,11 @@ void Core::events_MenuPrincipal()
         _eng_son->Wait();
         _numeroScene = ALL;
     }
-    /*if (event.Type == sf::Event::MouseMoved)
+    if (_event.Type == sf::Event::MouseMoved)
     {
-        if(MouseX > xPlay && MouseX < (xPlay + 150) && MouseY > yPlay && MouseY < (yPlay + 60) )
-        {
-            Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "IN");
-            _eng_gfx->push_event(e);
-        }else
-            {
-                Engine_Event e(MENU_PRINCIPAL, MOUSE, "PLAY", "OUT");
-                _eng_gfx->push_event(e);
-            }
-        if(MouseX > xQuit && MouseX < (xQuit + 150) && MouseY > yQuit && MouseY < (yQuit+ 60) )
-        {
-            Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "IN");
-            _eng_gfx->push_event(e);
-        }else
-            {
-                Engine_Event e(MENU_PRINCIPAL, MOUSE, "QUIT", "OUT");
-                _eng_gfx->push_event(e);
-            }
-    }*/
+        _eng_event.changerEvent(MENU_PRINCIPAL, MOUSE, "MOUSEMOVE", &_event);
+        envoiMultiple();
+    }
     if(_event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left)
     {
         if(MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
