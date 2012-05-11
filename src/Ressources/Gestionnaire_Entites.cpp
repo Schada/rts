@@ -26,11 +26,11 @@ Entite_Schema* Gestionnaire_Entites::get_contenu(std::string nom)
 void Gestionnaire_Entites::initGestionnaire()
 {
     int i = 1;
-    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Entites");
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Entites") + FIN_DOSSIER;
 
     while(Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) != "[Fin]")
     {
-        _lienFichier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Civilisations") + Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) + ".dat";
+        _lienFichier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Civilisations") + FIN_DOSSIER + Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) + ".dat";
         creerGestionnaire("[Entites]");
         i++;
     }

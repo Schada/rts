@@ -1,9 +1,9 @@
 [General]
-Textures = Textures/
-Sons = Sons/
-Musiques = Musiques/
-Civilisations = Civilisations/
-Entites = Entites/
+Textures = Textures
+Sons = Sons
+Musiques = Musiques
+Civilisations = Civilisations
+Entites = Entites
 [Fin]
 [Civilisations]
 Gaia

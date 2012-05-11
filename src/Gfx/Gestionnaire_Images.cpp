@@ -27,7 +27,7 @@ void Gestionnaire_Images::initGestionnaire()
 {
     _nom = "Defaut";
     _lienFichier = Core::fichierMod;
-    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Textures");
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Textures") + FIN_DOSSIER;
 
     creerGestionnaire("[Textures]");
 }

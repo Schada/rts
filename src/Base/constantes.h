@@ -1,11 +1,20 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
-#define DOSSIER_DONNEES "Data/"
+#define WIN
+#ifdef WIN
+#define FIN_DOSSIER "\\"
+#endif
+#ifdef LINUX
+#define FIN_DOSSIER "/"
+#include <X11/Xlib.h>
+#endif
+
+#define DOSSIER_DONNEES "Data"FIN_DOSSIER
 #define FICHIER_DEFAUT "rts.dat"
 #define FICHIER_MOD "Mod.dat"
-#define FIN_DOSSIER "/"
-#define IMG_DOSSIER "img/"
+#define IMG_DOSSIER "img"FIN_DOSSIER
+
 
 #include <SFML/Graphics.hpp>
 

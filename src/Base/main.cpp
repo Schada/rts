@@ -1,8 +1,9 @@
 #include "Core.h"
-#include <X11/Xlib.h>
+
 
 int main()
 {
+    #ifdef LINUX
     if(XInitThreads())
     {
         Core core;
@@ -13,7 +14,11 @@ int main()
         std::cerr << "XInitThreads() error ..." << std::endl;
         return -1;
     }
-
+    #endif
+    #ifndef LINUX
+    Core core;
+    core.run();
+    #endif
     return 0;
 }
 
