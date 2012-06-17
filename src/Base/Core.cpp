@@ -122,8 +122,6 @@ void Core::changerScene(int scene, bool all)
         // Creer la nouvelle scene
         case MENU_PRINCIPAL:
         _scene = new MenuPrincipal(_app);
-        _eng_event.changerEvent(MENU_PRINCIPAL, LOAD, "MUSIQUE", NULL);
-        _eng_son->push_event(_eng_event);
         break;
         case JEU:
         _scene = new Jeu(_app);
@@ -149,6 +147,9 @@ void Core::changerScene(int scene, bool all)
 
         // On attend que la scene soit initialiser avant de recuperer les evenements
         while(_scene->isInit() == false);
+
+        _eng_event.changerEvent(MENU_PRINCIPAL, MUSIQUE, "MUSIQUE", NULL);
+        _eng_son->push_event(_eng_event);
     }
 }
 void Core::attendreFinScene()
@@ -413,8 +414,8 @@ void Core::events_MenuPrincipal()
     }
     if (_event.Type == sf::Event::MouseMoved)
     {
-        _eng_event.changerEvent(MENU_PRINCIPAL, MOUSE, "MOUSEMOVE", &_event);
-        envoiMultiple();
+        //_eng_event.changerEvent(MENU_PRINCIPAL, MOUSE, "MOUSEMOVE", &_event);
+        //envoiMultiple();
     }
     if(_event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left)
     {

@@ -19,7 +19,6 @@
 #include "../Son/Engine_Sound.h"
 #include "../Ressources/Civilisation.h"
 
-#include <iostream>
 #include <string>
 
 class Core

@@ -52,9 +52,9 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
         }
         if(e.get_nom() == "PLAY" && ((e.get_event())->MouseButton.Button) == sf::Mouse::Left)
         {
-            _sceneActive->stopperMusique();
+            //_sceneActive->stopperMusique();
 
-            sf::Sleep(_sceneActive->jouerSon("t"));
+            //sf::Sleep(_sceneActive->jouerSon("t"));
 
         }
         break;

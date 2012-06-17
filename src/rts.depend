@@ -439,14 +439,17 @@
 	<iostream>
 	"Scene.h"
 
-<<<<<<< HEAD
+1332630938 D
+
 1332781308 source:/home/schada/rts/src/Interface/ZoneTexte.cpp
 	"ZoneTexte.h"
 	"../Base/Core.h"
 
 1332780764 /home/schada/rts/src/Interface/ZoneTexte.h
 	"../Base/constantes.h"
-=======
+
+1332780764 onstantes.h"
+
 1332764704 /home/sotiropoulos/Documents/Jeu/rts/src/Base/Core.h
 	"constantes.h"
 	"../Scenes/Scene.h"
@@ -496,5 +499,227 @@
 
 1332766867 source:/home/sotiropoulos/Documents/Jeu/rts/src/Base/Core.cpp
 	"Core.h"
->>>>>>> ce5e9c2cf904f17b1b1d26178576361ede3f7974
+
+1332766867 e9c2cf904f17b1b1d26178576361ede3f7974
+
+1336831287 source:c:\users\schada\rts\src\base\core.cpp
+	"Core.h"
+
+1336841949 c:\users\schada\rts\src\base\core.h
+	"constantes.h"
+	"../Scenes/Scene.h"
+	"../Scenes/MenuPrincipal.h"
+	"../Scenes/Jeu.h"
+	"../Scenes/Chargement.h"
+	"../Scenes/Options.h"
+	"../Jeu/Engine_Game.h"
+	"../Gfx/Engine_Graphics.h"
+	"../Son/Engine_Sound.h"
+	"../Ressources/Civilisation.h"
+	<string>
+
+1336841949 c:\users\schada\rts\src\base\constantes.h
+	<X11/Xlib.h>
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1336745278 c:\users\schada\rts\src\scenes\scene.h
+	<SFML/Graphics.hpp>
+	"../Gfx/Gestionnaire_Images.h"
+	"../Son/Gestionnaire_Musiques.h"
+	"../Son/Gestionnaire_Sons.h"
+	<iostream>
+
+1330947028 c:\users\schada\rts\src\gfx\gestionnaire_images.h
+	"../Base/constantes.h"
+	"../Base/Gestionnaire.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1336745278 c:\users\schada\rts\src\base\gestionnaire.h
+	"constantes.h"
+	<iostream>
+	<map>
+	<string>
+	<fstream>
+
+1330947028 c:\users\schada\rts\src\son\gestionnaire_musiques.h
+	"../Base/constantes.h"
+	"../Base/Gestionnaire.h"
+	<SFML/Audio.hpp>
+	<iostream>
+
+1330947028 c:\users\schada\rts\src\son\gestionnaire_sons.h
+	"../Base/constantes.h"
+	"../Base/Gestionnaire.h"
+	<SFML/Audio.hpp>
+	<iostream>
+
+1336745278 c:\users\schada\rts\src\scenes\menuprincipal.h
+	"Scene.h"
+	"../Base/constantes.h"
+	"../Interface/ZoneTexte.h"
+	<iostream>
+	<string>
+
+1339854693 c:\users\schada\rts\src\interface\zonetexte.h
+	"../Base/constantes.h"
+	"IEBloquant.h"
+
+1336745278 c:\users\schada\rts\src\scenes\jeu.h
+	"Scene.h"
+	"../Ressources/Civilisation.h"
+
+1336745278 c:\users\schada\rts\src\ressources\civilisation.h
+	<map>
+	<vector>
+	<string>
+	"../Gfx/Gestionnaire_Images.h"
+	"Gestionnaire_Entites.h"
+	"Entite_Schema.h"
+	"Entite_Active.h"
+
+1336745278 c:\users\schada\rts\src\ressources\gestionnaire_entites.h
+	"../Base/constantes.h"
+	"../Base/Gestionnaire.h"
+	<SFML/Audio.hpp>
+	<iostream>
+	"Entite_Schema.h"
+
+1336745278 c:\users\schada\rts\src\ressources\entite_schema.h
+	<SFML/Graphics.hpp>
+	<string>
+	"../Gfx/Gestionnaire_Images.h"
+
+1336745278 c:\users\schada\rts\src\ressources\entite_active.h
+	<SFML/Graphics.hpp>
+	"Entite_Schema.h"
+
+1336745278 c:\users\schada\rts\src\scenes\chargement.h
+	"Scene.h"
+
+1336745278 c:\users\schada\rts\src\scenes\options.h
+	<SFML/Graphics.hpp>
+	"../Gfx/Gestionnaire_Images.h"
+	"../Son/Gestionnaire_Musiques.h"
+	"../Son/Gestionnaire_Sons.h"
+	<iostream>
+	"Scene.h"
+
+1336745278 c:\users\schada\rts\src\jeu\engine_game.h
+	"../Base/Engine.h"
+
+1336745278 c:\users\schada\rts\src\base\engine.h
+	<SFML/System.hpp>
+	<SFML/Graphics.hpp>
+	<queue>
+	<iostream>
+	"constantes.h"
+	"Engine_Event.h"
+	"../Scenes/Scene.h"
+
+1336745278 c:\users\schada\rts\src\base\engine_event.h
+	<iostream>
+	<string>
+	<SFML/Graphics.hpp>
+
+1336745278 c:\users\schada\rts\src\gfx\engine_graphics.h
+	"../Base/Engine.h"
+	"Gestionnaire_Images.h"
+
+1336745278 c:\users\schada\rts\src\son\engine_sound.h
+	"../Base/Engine.h"
+	"../Base/Core.h"
+	"../Son/Gestionnaire_Sons.h"
+	"../Son/Gestionnaire_Musiques.h"
+
+1336745278 source:c:\users\schada\rts\src\base\engine.cpp
+	"Engine.h"
+	"Core.h"
+	"../Jeu/Engine_Game.h"
+	"../Gfx/Engine_Graphics.h"
+	"../Son/Engine_Sound.h"
+
+1331383878 source:c:\users\schada\rts\src\base\engine_event.cpp
+	"Engine_Event.h"
+
+1330947028 source:c:\users\schada\rts\src\base\gestionnaire.cpp
+	"Gestionnaire.h"
+
+1336746030 source:c:\users\schada\rts\src\base\main.cpp
+	"Core.h"
+
+1336745278 source:c:\users\schada\rts\src\gfx\engine_graphics.cpp
+	"Engine_Graphics.h"
+	"../Base/Core.h"
+
+1336745655 source:c:\users\schada\rts\src\gfx\gestionnaire_images.cpp
+	"Gestionnaire_Images.h"
+	"../Base/Core.h"
+
+1336745278 source:c:\users\schada\rts\src\interface\zonetexte.cpp
+	"ZoneTexte.h"
+	"../Base/Core.h"
+
+1336745278 source:c:\users\schada\rts\src\jeu\engine_game.cpp
+	"Engine_Game.h"
+	"../Base/Core.h"
+
+1331395672 source:c:\users\schada\rts\src\ressources\civilisation.cpp
+	"Civilisation.h"
+
+1330947028 source:c:\users\schada\rts\src\ressources\entite_active.cpp
+	"Entite_Active.h"
+
+1330947028 source:c:\users\schada\rts\src\ressources\entite_schema.cpp
+	"Entite_Schema.h"
+
+1336746470 source:c:\users\schada\rts\src\ressources\gestionnaire_entites.cpp
+	"Gestionnaire_Entites.h"
+	"../Base/Core.h"
+
+1336745278 source:c:\users\schada\rts\src\scenes\chargement.cpp
+	"Chargement.h"
+
+1336745278 source:c:\users\schada\rts\src\scenes\jeu.cpp
+	"Jeu.h"
+
+1336842180 source:c:\users\schada\rts\src\scenes\menuprincipal.cpp
+	"MenuPrincipal.h"
+
+1336745278 source:c:\users\schada\rts\src\scenes\options.cpp
+	"Options.h"
+
+1331398005 source:c:\users\schada\rts\src\scenes\scene.cpp
+	"Scene.h"
+
+1336830627 source:c:\users\schada\rts\src\son\engine_sound.cpp
+	"Engine_Sound.h"
+	"../Base/Core.h"
+
+1336829619 source:c:\users\schada\rts\src\son\gestionnaire_musiques.cpp
+	"Gestionnaire_Musiques.h"
+	"../Base/Core.h"
+
+1336829603 source:c:\users\schada\rts\src\son\gestionnaire_sons.cpp
+	"Gestionnaire_Sons.h"
+	"../Base/Core.h"
+
+1336841917 source:c:\users\schada\rts\src\interface\ielement.cpp
+	"IElement.h"
+
+1339507285 c:\users\schada\rts\src\interface\ielement.h
+	"../Base/constantes.h"
+
+1336842151 c:\users\schada\rts\src\interface\ieactif.h
+	"IElement.h"
+
+1336842151 source:c:\users\schada\rts\src\interface\ieactif.cpp
+	"IEActif.h"
+
+1339854675 c:\users\schada\rts\src\interface\iebloquant.h
+	"IElement.h"
+
+1339856766 source:c:\users\schada\rts\src\interface\iebloquant.cpp
+	"IEBloquant.h"
 

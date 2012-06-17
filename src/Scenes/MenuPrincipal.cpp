@@ -93,7 +93,7 @@ void MenuPrincipal::afficher()
 
 void MenuPrincipal::animation(std::string mess)
 {
-    if(mess == "MOUSEOVERPLAY")
+    /*if(mess == "MOUSEOVERPLAY")
     {
         _buttonPlay->SetSubRect(sf::IntRect(1*_image->GetWidth()/2,2*_image->GetHeight()/3, 2*_image->GetWidth()/2,3*_image->GetHeight()/3));
 
@@ -109,7 +109,7 @@ void MenuPrincipal::animation(std::string mess)
     if(mess == "MOUSEQUITPLAY")
     {
         _buttonPlay->SetSubRect(sf::IntRect(73,350, 193,398));
-    }
+    }*/
 }
 
 float MenuPrincipal::jouerSon(std::string nom)
@@ -125,8 +125,7 @@ void MenuPrincipal::jouerMusique(std::string nom)
 
 void MenuPrincipal::stopperMusique()
 {
-    _zone->events_ZoneTexte();
-    //_music->Stop();
+    _music->Stop();
 }
 
 sf::Sprite* MenuPrincipal::get_sprite(std::string nom)

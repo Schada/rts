@@ -26,7 +26,7 @@ void Gestionnaire_Sons::initGestionnaire()
 {
     _nom = "Defaut";
     _lienFichier = Core::fichierMod;
-    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Sons");
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Sons") + FIN_DOSSIER;
 
     creerGestionnaire("[Sons]");
 }

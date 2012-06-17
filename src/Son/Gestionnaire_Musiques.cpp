@@ -25,7 +25,7 @@ void Gestionnaire_Musiques::initGestionnaire()
 {
     _nom = "Defaut";
     _lienFichier = Core::fichierMod;
-    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Musiques");
+    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(_lienFichier, "[General]", "Musiques") + FIN_DOSSIER;
 
     creerGestionnaire("[Musiques]");
 }

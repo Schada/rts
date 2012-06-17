@@ -7,9 +7,9 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../bin/Debug/rts" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../bin/Debug" />
-				<Option object_output="../obj/Debug" />
+				<Option output="..\bin\Debug\rts" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\bin\Debug" />
+				<Option object_output="..\obj\Debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -22,13 +22,12 @@
 					<Add option="-lsfml-graphics" />
 					<Add option="-lsfml-window" />
 					<Add option="-lsfml-system" />
-					<Add option="-lX11" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="../bin/Release/rts" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="../bin/Release/" />
-				<Option object_output="../obj/Release/" />
+				<Option output="..\bin\Release\rts" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="..\bin\Release\" />
+				<Option object_output="..\obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -46,49 +45,53 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Base/Core.cpp" />
-		<Unit filename="Base/Core.h" />
-		<Unit filename="Base/Engine.cpp" />
-		<Unit filename="Base/Engine.h" />
-		<Unit filename="Base/Engine_Event.cpp" />
-		<Unit filename="Base/Engine_Event.h" />
-		<Unit filename="Base/Gestionnaire.cpp" />
-		<Unit filename="Base/Gestionnaire.h" />
-		<Unit filename="Base/constantes.h" />
-		<Unit filename="Base/main.cpp" />
-		<Unit filename="Gfx/Engine_Graphics.cpp" />
-		<Unit filename="Gfx/Engine_Graphics.h" />
-		<Unit filename="Gfx/Gestionnaire_Images.cpp" />
-		<Unit filename="Gfx/Gestionnaire_Images.h" />
-		<Unit filename="Interface/ZoneTexte.cpp" />
-		<Unit filename="Interface/ZoneTexte.h" />
-		<Unit filename="Jeu/Engine_Game.cpp" />
-		<Unit filename="Jeu/Engine_Game.h" />
-		<Unit filename="Ressources/CaseValidation.h" />
-		<Unit filename="Ressources/Civilisation.cpp" />
-		<Unit filename="Ressources/Civilisation.h" />
-		<Unit filename="Ressources/Entite_Active.cpp" />
-		<Unit filename="Ressources/Entite_Active.h" />
-		<Unit filename="Ressources/Entite_Schema.cpp" />
-		<Unit filename="Ressources/Entite_Schema.h" />
-		<Unit filename="Ressources/Gestionnaire_Entites.cpp" />
-		<Unit filename="Ressources/Gestionnaire_Entites.h" />
-		<Unit filename="Scenes/Chargement.cpp" />
-		<Unit filename="Scenes/Chargement.h" />
-		<Unit filename="Scenes/Jeu.cpp" />
-		<Unit filename="Scenes/Jeu.h" />
-		<Unit filename="Scenes/MenuPrincipal.cpp" />
-		<Unit filename="Scenes/MenuPrincipal.h" />
-		<Unit filename="Scenes/Options.cpp" />
-		<Unit filename="Scenes/Options.h" />
-		<Unit filename="Scenes/Scene.cpp" />
-		<Unit filename="Scenes/Scene.h" />
-		<Unit filename="Son/Engine_Sound.cpp" />
-		<Unit filename="Son/Engine_Sound.h" />
-		<Unit filename="Son/Gestionnaire_Musiques.cpp" />
-		<Unit filename="Son/Gestionnaire_Musiques.h" />
-		<Unit filename="Son/Gestionnaire_Sons.cpp" />
-		<Unit filename="Son/Gestionnaire_Sons.h" />
+		<Unit filename="Base\Core.cpp" />
+		<Unit filename="Base\Core.h" />
+		<Unit filename="Base\Engine.cpp" />
+		<Unit filename="Base\Engine.h" />
+		<Unit filename="Base\Engine_Event.cpp" />
+		<Unit filename="Base\Engine_Event.h" />
+		<Unit filename="Base\Gestionnaire.cpp" />
+		<Unit filename="Base\Gestionnaire.h" />
+		<Unit filename="Base\constantes.h" />
+		<Unit filename="Base\main.cpp" />
+		<Unit filename="Gfx\Engine_Graphics.cpp" />
+		<Unit filename="Gfx\Engine_Graphics.h" />
+		<Unit filename="Gfx\Gestionnaire_Images.cpp" />
+		<Unit filename="Gfx\Gestionnaire_Images.h" />
+		<Unit filename="Interface\IEBloquant.cpp" />
+		<Unit filename="Interface\IEBloquant.h" />
+		<Unit filename="Interface\IElement.cpp" />
+		<Unit filename="Interface\IElement.h" />
+		<Unit filename="Interface\ZoneTexte.cpp" />
+		<Unit filename="Interface\ZoneTexte.h" />
+		<Unit filename="Jeu\Engine_Game.cpp" />
+		<Unit filename="Jeu\Engine_Game.h" />
+		<Unit filename="Ressources\CaseValidation.h" />
+		<Unit filename="Ressources\Civilisation.cpp" />
+		<Unit filename="Ressources\Civilisation.h" />
+		<Unit filename="Ressources\Entite_Active.cpp" />
+		<Unit filename="Ressources\Entite_Active.h" />
+		<Unit filename="Ressources\Entite_Schema.cpp" />
+		<Unit filename="Ressources\Entite_Schema.h" />
+		<Unit filename="Ressources\Gestionnaire_Entites.cpp" />
+		<Unit filename="Ressources\Gestionnaire_Entites.h" />
+		<Unit filename="Scenes\Chargement.cpp" />
+		<Unit filename="Scenes\Chargement.h" />
+		<Unit filename="Scenes\Jeu.cpp" />
+		<Unit filename="Scenes\Jeu.h" />
+		<Unit filename="Scenes\MenuPrincipal.cpp" />
+		<Unit filename="Scenes\MenuPrincipal.h" />
+		<Unit filename="Scenes\Options.cpp" />
+		<Unit filename="Scenes\Options.h" />
+		<Unit filename="Scenes\Scene.cpp" />
+		<Unit filename="Scenes\Scene.h" />
+		<Unit filename="Son\Engine_Sound.cpp" />
+		<Unit filename="Son\Engine_Sound.h" />
+		<Unit filename="Son\Gestionnaire_Musiques.cpp" />
+		<Unit filename="Son\Gestionnaire_Musiques.h" />
+		<Unit filename="Son\Gestionnaire_Sons.cpp" />
+		<Unit filename="Son\Gestionnaire_Sons.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

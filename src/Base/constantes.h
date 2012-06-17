@@ -15,8 +15,8 @@
 #define FICHIER_MOD "Mod.dat"
 #define IMG_DOSSIER "img"FIN_DOSSIER
 
-
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, OPTIONS, CONSOLE, ALL};
 enum Event_Type {MOUSE, CLICK, KEY, LOAD, MUSIQUE, CHANGE, QUIT};
