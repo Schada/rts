@@ -10,6 +10,8 @@
 
 #include "constantes.h"
 #include "../Scenes/Scene.h"
+#include "../Scenes/Scene_Globale.h"
+#include "../Scenes/Scene_Locale.h"
 #include "../Scenes/MenuPrincipal.h"
 #include "../Scenes/Jeu.h"
 #include "../Scenes/Chargement.h"
@@ -44,6 +46,8 @@ class Core
         */
         void changerScene(int scene, bool all);
 
+        void changerScene(std::string nom);
+
         /**
         * Permet de recuperer un pointeur sur la scene actuelle
         */
@@ -59,22 +63,35 @@ class Core
         */
         static std::string RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne);
 
+        static void RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne, std::string** pointeur);
+
         /**
         * Permet de recuperer la valeur contenu à la ligne numeroLigne dans la balise "balise" du fichier à ladresse "lienFichier"
         */
         static std::string RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne);
 
+        static void RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne, std::string** pointeur);
+
         /**
         * Renvoi True si le nom "nom" de la balise "balise" dans le fichier à l'adresse "lienFichier" existe
         */
-        static bool VerifExistanceNom(std::string lienFichier, std::string nom, std::string balise);
+        static bool VerifExistanceNom(std::string lienFichier, std::string balise, std::string nom);
 
         /**
         * Indique si une ligne "nomLigne" dans la balise "balise" a pour valeur "val" dans le fichier à l'adresse "lienFchier"
         * Renvoit true si la valeur existe
         * Renvoit false pour tout les autres cas (ligne, balise introuvable ...)
         */
-        static bool VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise);
+        static bool VerifExistanceVal(std::string lienFichier, std::string balise, std::string nomLigne, std::string val);
+
+
+        static Scene* creerScene(sf::RenderWindow* app, std::string nom, Scene_Locale* console);
+
+        /**
+        * Permet de decouper le texte en un vector de std::string séparé à l'origine par des espaces.
+        */
+        static void decouperTexte(std::string texte, std::vector < std::string > * tab, size_t nb = 0);
+
 
         /**
         * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -86,6 +103,7 @@ class Core
         static const std::string dossierMod;
         static const std::string fichierMod;
 
+        static const std::string dossierScene;
 
         /**
         * Mutex de _app
@@ -118,6 +136,11 @@ class Core
         * Permet d'attendre que tous les moteurs n'ont plus acces a la scene actuelle pour proceder au changement de scene
         */
         void attendreFinScene();
+
+        /**
+        * Permet de créer la console du jeu
+        */
+        void creerConsole();
 
         /**
         * <------------------------------------------------------- Attributs Private ------------------------------------------------------->
@@ -154,6 +177,11 @@ class Core
         * Numero de la scene actuelle
         */
         int _numeroScene;
+
+        /**
+        * Pointeur sur la Console
+        */
+        Scene_Locale* _console;
 };
 
 #endif //CORE_H

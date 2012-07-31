@@ -6,12 +6,13 @@
 class IEBloquant : public IElement
 {
     public:
-        IEBloquant(sf::RenderWindow* app, float posX, float posY, int sizeX, int sizeY);
+        IEBloquant(sf::RenderWindow* app, float posX, float posY, int sizeX, int sizeY, std::string texte);
         virtual ~IEBloquant();
 
         void setActif(bool actif);
         bool getActif() const;
 
+        virtual void action(void* parametre) = 0;
 
     protected:
 

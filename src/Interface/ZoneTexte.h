@@ -2,16 +2,16 @@
 #define ZONETEXTE_H
 
 #include "../Base/constantes.h"
-#include "IEBloquant.h"
+#include "IElement.h"
 
 class Core;
 
-class ZoneTexte : public IEBloquant
+class ZoneTexte : public IElement
 {
     public:
-        ZoneTexte(sf::RenderWindow* app, float posX, float posY, int sizeX, int sizeY);
+        ZoneTexte(sf::RenderWindow* app, std::string nom);
         virtual ~ZoneTexte();
-
+        void action(void* paramatre);
         void modifTexte(char caractere);
 
     private:

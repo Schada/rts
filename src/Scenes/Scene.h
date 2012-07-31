@@ -11,7 +11,11 @@
 #include "../Gfx/Gestionnaire_Images.h"
 #include "../Son/Gestionnaire_Musiques.h"
 #include "../Son/Gestionnaire_Sons.h"
+#include "../Interface/IElement.h"
+#include "../Interface/ITexte.h"
 #include <iostream>
+
+class Core;
 
 class Scene
 {
@@ -23,30 +27,33 @@ class Scene
     /**
     * Constructeurs et Destructeur
     */
-    Scene(sf::RenderWindow* app);
+    Scene(sf::RenderWindow* app, std::string nom, std::string fond);
     virtual ~Scene();
 
     /**
     * Permet d'afficher la scene
     */
-    virtual void afficher() = 0;
+    virtual void afficher();
+
+
 
     /**
     *   Permet de gérer les animations
     */
-    virtual void animation(std::string mess) = 0;
+    //virtual void animation(std::string mess) = 0;
 
     /**
     * Fonctions gerant le son de la scene
     */
-    virtual float jouerSon(std::string nom) = 0;
-    virtual void jouerMusique(std::string nom) = 0;
-    virtual void stopperMusique() = 0;
+    //virtual float jouerSon(std::string nom) = 0;
+    //virtual void jouerMusique(std::string nom) = 0;
+    //virtual void stopperMusique() = 0;
 
     /**
     * Accesseurs
     */
-    virtual sf::Sprite* get_sprite(std::string nom) = 0;
+    //virtual sf::Sprite* get_sprite(std::string nom) = 0;
+
 
     /**
     * Setters
@@ -58,9 +65,9 @@ class Scene
     /**
     * Fonctions permettant d'initialiser la scene
     */
-    virtual void initGfx() = 0;
-    virtual void initSon() = 0;
-    virtual void initJeu() = 0;
+    virtual void initGfx();
+    virtual void initSon();
+    virtual void initJeu();
 
     /**
     * Permet de savoir si la scene est initialiser
@@ -71,6 +78,9 @@ class Scene
     * Renvoit le nombre de milisecondes ecoulees depuis la creation de la scene
     */
     float time();
+
+
+    bool existeElement(std::string nom);
 
     /**
     * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
@@ -93,9 +103,20 @@ class Scene
 
     sf::Clock _clock;
 
+    sf::Sprite* _fond;
+
+    std::string _nom;
+
+    std::vector < IElement* > _elements;
+
+    std::string _nomFond;
+    std::string _fichier;
+
     /**
-    * <------------------------------------------------------- Methodes Private ------------------------------------------------------->
+    * <------------------------------------------------------- Methodes Protected ------------------------------------------------------->
     */
+
+    void initInterface();
 
 };
 

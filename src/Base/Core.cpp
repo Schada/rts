@@ -2,20 +2,28 @@
 
 const std::string Core::dossierMod = DOSSIER_DONNEES + Core::RecupValeurLigne(FICHIER_DEFAUT, "[General]", "Mod") + FIN_DOSSIER;
 const std::string Core::fichierMod = Core::dossierMod + FICHIER_MOD;
+
+const std::string Core::dossierScene = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Scenes") + FIN_DOSSIER;
 sf::Mutex* Core::win_mu = new sf::Mutex();
 
 Core::Core() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _event(), _eng_event(ALL, QUIT, "", NULL), _scene(NULL), _numeroScene(0)
 {
+    std::cout << "TEST" << std::endl;
     /// Creation et configuration de la fenetre de jeu
     _app = new sf::RenderWindow(sf::VideoMode(800, 600, 32), "Land of Martyrs");
-    //_app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
+    _app->SetFramerateLimit(60); // Limite la fenêtre à 60 images par seconde
+    std::cout << "TEST2" << std::endl;
     _app->SetActive(false);
+
+
 
 
     // Creation des differents moteurs du jeu
     _eng_game = new Engine_Game(this, _app, "Game");
 	_eng_gfx = new Engine_Graphics(this, _app, "Graphics");
 	_eng_son = new Engine_Sound(this, _app, "Sound");
+
+	_console = NULL;
 
 
     // Permet de lier les moteurs entre eux
@@ -40,8 +48,14 @@ Core::Core() : _eng_game(NULL), _eng_gfx(NULL), _eng_son(NULL), _app(NULL), _eve
 	_eng_gfx->lancer();
 	_eng_son->lancer();
 
+
+
+	/// Créer la scene Console !
+    //creerConsole();
+
     // On lance la premiere scene du jeu
-    changerScene(MENU_PRINCIPAL, true);
+    changerScene(RecupValeurLigne(Core::fichierMod, "[General]", "PremiereScene"));
+    run();
 
 }
 
@@ -49,6 +63,8 @@ Core::~Core()
 {
     std::cout << "Debut Core FIN" << std::endl;
     delete _scene;
+    delete _console;
+
     delete _eng_game;
     delete _eng_gfx;
     delete _eng_son;
@@ -62,13 +78,15 @@ void Core::run()
     while (_app->IsOpened())
     {
         // On lock le mutex avant de recuperer les events
-        Core::win_mu->Lock();
+        //Core::win_mu->Lock();
         while (_app->GetEvent(_event))
         {
             // On unlock le mutex et on traite l'event recuperer en fonction de la scene
-            Core::win_mu->Unlock();
+            //Core::win_mu->Unlock();
 
-            switch(_numeroScene)
+            events_Chargement();
+
+            /*switch(_numeroScene)
             {
                 case MENU_PRINCIPAL:
                 events_MenuPrincipal();
@@ -88,13 +106,13 @@ void Core::run()
                 default:
                 std::cerr << "La Scene est invalide !" << std::endl;
                 exit(-1);
-            }
+            }*/
 
             // On lock pour recuperer l'event au prochain tour de boucle
-            Core::win_mu->Lock();
+            //Core::win_mu->Lock();
         }
         // On unlock dans le cas ou il n'y avait plus d'event
-        Core::win_mu->Unlock();
+        //Core::win_mu->Unlock();
 
     }
 }
@@ -117,7 +135,8 @@ void Core::changerScene(int scene, bool all)
         delete _scene;
         _scene = NULL;
     }
-    switch(scene)
+
+    /*switch(scene)
     {
         // Creer la nouvelle scene
         case MENU_PRINCIPAL:
@@ -137,7 +156,7 @@ void Core::changerScene(int scene, bool all)
         exit(-1);
     }
 
-    _numeroScene = scene;
+    _numeroScene = scene;*/
 
     if(all)
     {
@@ -152,6 +171,40 @@ void Core::changerScene(int scene, bool all)
         _eng_son->push_event(_eng_event);
     }
 }
+
+void Core::changerScene(std::string nom)
+{
+    if(Core::VerifExistanceNom(Core::fichierMod, "[Scenes]", nom))
+    {
+        std::cout << "Changement de scene : " << nom << std::endl;
+         // On demande aux moteurs de mettre leur pointeur de la scene a NULL
+        _eng_event.changerEvent(ALL, CHANGE, "NULL", NULL);
+        envoiMultiple();
+
+        // On attend que les moteurs aient fini
+        attendreFinScene();
+
+    if(_scene)
+    {
+        // On supprime la scene
+        delete _scene;
+        _scene = NULL;
+    }
+
+        _scene = new Scene_Globale(_app, _console, nom, "Fond");
+        // On demande aux moteurs de recuperer la nouvelle scene
+        _eng_event.changerEvent(ALL, CHANGE, "SCENE", NULL);
+        envoiMultiple();
+
+        // On attend que la scene soit initialiser avant de recuperer les evenements
+        while(_scene->isInit() == false);
+
+    }
+    std::cout << "Fin Changement de scene " << nom << std::endl;
+
+}
+
+
 void Core::attendreFinScene()
 {
     while(!_eng_game->sceneFinie());
@@ -179,6 +232,8 @@ void Core::envoiMultiple()
 
 std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
 {
+    std::cout << "Recup val ligne | Fichier : " << lienFichier << " | Balise : " << balise << " | Ligne : " << nomLigne << std::endl;
+
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
     {
@@ -201,11 +256,12 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
                 if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
                 {
 
-                    fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
+                    fichier >> vide;
+                    getline(fichier, valeur);
                     if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
                     {
                         fichier.close();
-                        return valeur;
+                        return valeur.substr(1);
                     }
 
                 }
@@ -235,8 +291,76 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
     return "";
 }
 
+void Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne, std::string** pointeur)
+{
+    std::cout << "Recup val ligne avec pointeur | Fichier : " << lienFichier << " | Balise : " << balise << " | Ligne : " << nomLigne << std::endl;
+
+    if(*pointeur != NULL)
+    {
+        delete (*pointeur);
+        *pointeur = NULL;
+    }
+
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom, vide, valeur;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                fichier >> nom;
+                if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+
+                    fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
+                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                    {
+                        fichier.close();
+                        *pointeur = new std::string(valeur);
+                        return;
+                    }
+
+                }
+
+
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            {
+                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+            }
+            else
+            {
+                std::cerr << "Ligne introuvable" << std::endl;
+            }
+
+        }
+        else // Si la balise consernée n'a pas été trouver
+        {
+            std::cerr << "Balise " + balise + " introuvable" << std::endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+}
+
 std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne)
 {
+    std::cout << "Recup val numero ligne | Fichier : " << lienFichier << " | Balise : " << balise << " | Numero : " << numeroLigne << std::endl;
+
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
     {
@@ -259,8 +383,9 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
                 i++;
                 getline(fichier, nom);
 
-                if(i == numeroLigne)// Si la ligne actuelle n'est pas la balise [Fin]
+                if(i == numeroLigne && (nom != "[Fin]"))// Si la ligne actuelle n'est pas la balise [Fin]
                 {
+                    std::cout << "Retour : " << nom << std::endl;
                     fichier.close();
                     return nom;
                 }
@@ -273,7 +398,9 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
             else
             {
                 std::cerr << "Ligne introuvable" << std::endl;
-                return nom;
+                fichier.close();
+                return "[FIN]";
+
             }
 
         }
@@ -290,8 +417,76 @@ std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string ba
     return "";
 }
 
-bool Core::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std::string balise)
+void Core::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne, std::string** pointeur)
 {
+    std::cout << "Recup val numero ligne avec pointeur | Fichier : " << lienFichier << " | Balise : " << balise << " | Numero : " << numeroLigne << std::endl;
+
+    if(*pointeur != NULL)
+    {
+        delete (*pointeur);
+        *pointeur = NULL;
+    }
+
+    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
+    if(fichier)
+    {
+        std::string ligne;
+
+         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
+        do
+        {
+        }while((getline(fichier, ligne)) && (ligne != balise));
+
+        if(ligne == balise) // Si la balise a été trouver
+        {
+            std::string nom;
+            int i = 0;
+
+             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+            do
+            {
+                i++;
+                getline(fichier, nom);
+
+                if(i == numeroLigne && (nom != "[Fin]"))// Si la ligne actuelle n'est pas la balise [Fin]
+                {
+                    fichier.close();
+                    *pointeur = new std::string(nom);
+                    return;
+                }
+
+            }while((!fichier.eof()) && (nom != "[Fin]"));
+            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+            {
+                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
+            }
+            else
+            {
+                std::cerr << "Ligne introuvable" << std::endl;
+                fichier.close();
+                *pointeur = new std::string("[FIN]");
+                return;
+
+            }
+
+        }
+        else // Si la balise consernée n'a pas été trouver
+        {
+            std::cerr << "Balise " + balise + " introuvable" << std::endl;
+        }
+        fichier.close();
+    }
+    else
+    {
+        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+    }
+}
+
+bool Core::VerifExistanceNom(std::string lienFichier, std::string balise, std::string nomLigne)
+{
+    std::cout << "Verif nom | Fichier : " << lienFichier << " | Balise : " << balise << " | Nom : " << nomLigne << std::endl;
+
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
     {
@@ -328,7 +523,7 @@ bool Core::VerifExistanceNom(std::string lienFichier, std::string nomLigne, std:
     return false;
 }
 
-bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std::string val, std::string balise)
+bool Core::VerifExistanceVal(std::string lienFichier, std::string balise, std::string nomLigne, std::string val)
 {
     std::ifstream fichier(lienFichier.c_str(), std::ios::in);
     if(fichier)
@@ -390,14 +585,38 @@ bool Core::VerifExistanceVal(std::string lienFichier, std::string nomLigne, std:
     return false;
 }
 
+Scene* Core::creerScene(sf::RenderWindow* app, std::string nom, Scene_Locale* console)
+{
+    std::string lien = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Scenes") + FIN_DOSSIER + nom + ".scene";
+
+    std::string fond = Core::RecupValeurLigne(lien, "[General]", "Fond");
+    std::string globale = Core::RecupValeurLigne(lien, "[General]", "Globale");
+
+
+
+    if(globale[0] == '1')
+    {
+        return new Scene_Globale(app, console, nom, fond);
+    }
+    else
+    {
+        std::string deplacer = Core::RecupValeurLigne(lien, "[General]", "Deplacer");
+        std::string tete = Core::RecupValeurLigne(lien, "[General]", "Tete");
+        return new Scene_Locale(app, nom, fond, (deplacer[0] == '1'), (tete[0] == '1'));
+    }
+
+}
+
+/**
+
 void Core::events_MenuPrincipal()
 {
-    sf::Vector2f PlaySize = (_scene->get_sprite("Play"))->GetSize();
-    sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
-    sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
-    sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
-    sf::Vector2f ZoneSize = (_scene->get_sprite("Zone"))->GetSize();
-    sf::Vector2f ZonePos = (_scene->get_sprite("Zone"))->GetPosition();
+    //sf::Vector2f PlaySize = (_scene->get_sprite("Play"))->GetSize();
+    //sf::Vector2f PlayPos = (_scene->get_sprite("Play"))->GetPosition();
+    //sf::Vector2f QuitSize = (_scene->get_sprite("Quit"))->GetSize();
+    //sf::Vector2f QuitPos = (_scene->get_sprite("Quit"))->GetPosition();
+    //sf::Vector2f ZoneSize = (_scene->get_sprite("Zone"))->GetSize();
+    //sf::Vector2f ZonePos = (_scene->get_sprite("Zone"))->GetPosition();
 
     int MouseX = _event.MouseButton.X;
     int MouseY = _event.MouseButton.Y;
@@ -414,8 +633,8 @@ void Core::events_MenuPrincipal()
     }
     if (_event.Type == sf::Event::MouseMoved)
     {
-        //_eng_event.changerEvent(MENU_PRINCIPAL, MOUSE, "MOUSEMOVE", &_event);
-        //envoiMultiple();
+        _eng_event.changerEvent(MENU_PRINCIPAL, MOUSE, "MOUSEMOVE", &_event);
+        envoiMultiple();
     }
     if(_event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left)
     {
@@ -445,6 +664,7 @@ void Core::events_MenuPrincipal()
     }
 }
 
+
 void Core::events_Jeu()
 {
     if (_event.Type == sf::Event::Closed)
@@ -458,7 +678,7 @@ void Core::events_Jeu()
         _numeroScene = ALL;
     }
 }
-
+*/
 void Core::events_Chargement()
 {
     if (_event.Type == sf::Event::Closed)
@@ -472,7 +692,7 @@ void Core::events_Chargement()
         _numeroScene = ALL;
     }
 }
-
+/**
 void Core::events_Options()
 {
     if (_event.Type == sf::Event::Closed)
@@ -498,5 +718,40 @@ void Core::events_All()
         _eng_gfx->Wait();
         _eng_son->Wait();
         _numeroScene = ALL;
+    }
+}
+**/
+
+void Core::creerConsole()
+{
+    if(_console == NULL)
+    {
+        Core::creerScene(_app, "Console", NULL);
+        //initConsole();
+
+    }
+    else
+    {
+        std::cerr << "La console est déjà créée" << std::endl;
+    }
+}
+
+void Core::decouperTexte(std::string texte, std::vector < std::string > * tab, size_t nb)
+{
+    size_t found;
+    unsigned int i = 0;
+
+    do
+    {
+        found=texte.find_first_of(" ");
+
+        tab->push_back(texte.substr(0,found));
+        texte = texte.substr(found+1);
+        i++;
+
+    }while((found != std::string::npos) && (i != nb));
+    if(nb == i)
+    {
+        tab->push_back(texte);
     }
 }

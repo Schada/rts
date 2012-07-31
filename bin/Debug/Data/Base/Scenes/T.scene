@@ -1,0 +1,14 @@
+[General]
+Fond = NULL
+Globale = 1
+Deplacer = 0
+Tete = 0
+[Fin]
+[Elements]
+TEXTE texte1 0 0 100 100 Test numero 1
+ZONETEXTE zone1 0 100 100 100 Entrez un truc
+BOUTONPUSH bout1 0 200 100 10 Mon bouton
+[Fin]
+[Actions]
+bout1 = QUIT
+[Fin]

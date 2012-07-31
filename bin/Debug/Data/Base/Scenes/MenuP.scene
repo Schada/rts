@@ -1,0 +1,21 @@
+[General]
+Fond = Fond
+Globale = 1
+Deplacer = 0
+Tete = 0
+[Fin]
+[Elements]
+TEXTE texte1 250 200 100 100 Test numero 1
+TEXTE texte2 250 300 100 100 Test numero 2
+TEXTE texte3 250 100 100 100 Test numero 3
+ZONETEXTE zone1 0 100 100 100 Entrez un truc
+X MAchin truc
+[Fin]
+[Actions]
+bout1 = QUIT
+[Fin]
+[Sprites]
+texte1 = Buttons 0 0
+texte2 = Buttons 0 1
+texte3 = Buttons 0 2
+[Fin]

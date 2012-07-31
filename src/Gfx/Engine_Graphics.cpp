@@ -40,9 +40,9 @@ void Engine_Graphics::Run()
             *Si une scene est active alors on exécute son methode run
             */
 
-            Core::win_mu->Lock();
+            //Core::win_mu->Lock();
             _sceneActive->afficher();
-            Core::win_mu->Unlock();
+            //Core::win_mu->Unlock();
 
         }
         process_queue();
@@ -50,22 +50,23 @@ void Engine_Graphics::Run()
     std::cout << "Fin GFX" << std::endl;
 }
 
+
 void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
 {
     switch(e.get_type())
     {
         case MOUSE:
         {
-        /** <---------------------------------------- Déclaration variables début ------------------------------------------->*/
+        // <---------------------------------------- Déclaration variables début ------------------------------------------->
 
-            sf::Vector2f PlaySize = (_sceneActive->get_sprite("Play"))->GetSize();
-            sf::Vector2f PlayPos = (_sceneActive->get_sprite("Play"))->GetPosition();
-            sf::Vector2f QuitPos = (_sceneActive->get_sprite("Quit"))->GetPosition();
+            //sf::Vector2f PlaySize = (_sceneActive->get_sprite("Play"))->GetSize();
+            //sf::Vector2f PlayPos = (_sceneActive->get_sprite("Play"))->GetPosition();
+           // sf::Vector2f QuitPos = (_sceneActive->get_sprite("Quit"))->GetPosition();
 
             int MouseX = e.get_event()->MouseButton.X;
             int MouseY = e.get_event()->MouseButton.Y;
-        /** <---------------------------------------- Déclaration variables fin ------------------------------------------->*/
-            if( MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
+        // <---------------------------------------- Déclaration variables fin ------------------------------------------->
+            /*if( MouseX > PlayPos.x && MouseX < PlayPos.x + PlaySize.x && MouseY > PlayPos.y && MouseY < PlayPos.y + PlaySize.y )
             {
                 _sceneActive->animation("MOUSEOVERPLAY");
             }else
@@ -78,15 +79,15 @@ void Engine_Graphics::event_MenuPrincipal(Engine_Event& e)
             }else
             {
                 _sceneActive->animation("MOUSEQUITQUIT");
-            }
+            }*/
         }
         break;
         case CLICK:
             if(e.get_nom() == "QUIT" && ((e.get_event()))->MouseButton.Button == sf::Mouse::Left)
             {
-                /**
-                * On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter
-                */
+
+                //On supprime la scene active, on ferme la fenetre de rendu et on demande au moteur de s'arréter
+
                 _app->Close();
                 _sceneActive = NULL;
                 _encours = false;
@@ -189,9 +190,9 @@ void Engine_Graphics::event_All(Engine_Event& e)
         case QUIT:
         _app->Close();
         _sceneActive = NULL;
-        /**
-        * On demande au moteur de s'arréter
-        */
+
+        // On demande au moteur de s'arréter
+
         _encours = false;
         break;
         default:

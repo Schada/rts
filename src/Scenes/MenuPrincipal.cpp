@@ -60,7 +60,7 @@ void MenuPrincipal::initGfx()
     _buttonPlay->SetPosition(sf::Vector2f(x/2 - _image->GetWidth()/4, y/2 - _image->GetHeight()/3));
     _buttonQuit->SetPosition(sf::Vector2f(x/2 - _image->GetWidth()/4, y/2 ));
 
-    _zone = new ZoneTexte(_app, 0.f, 0.f, 100, 50);
+    //_zone = new ZoneTexte(_app, 0.f, 0.f, 100, 50, "Entrez un texte");
 
     _gfxInit = true;
 
@@ -87,7 +87,7 @@ void MenuPrincipal::afficher()
     _app->Draw(*_fondEcran);
     _app->Draw(*_buttonPlay);
     _app->Draw(*_buttonQuit);
-    _zone->afficher();
+    //_zone->afficher();
     _app->Display();
 }
 
@@ -140,7 +140,7 @@ sf::Sprite* MenuPrincipal::get_sprite(std::string nom)
     }
     else if(nom == "Zone")
     {
-        return _zone->get_sprite();
+        return NULL;//_zone->get_sprite();
     }
 
     return NULL;

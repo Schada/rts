@@ -66,11 +66,11 @@ void Engine_Sound::event_MenuPrincipal(Engine_Event& e)
         case MUSIQUE:
             if(e.get_nom() == "NULL")
             {
-                _sceneActive->stopperMusique();
+                //_sceneActive->stopperMusique();
             }
             else
             {
-                _sceneActive->jouerMusique(e.get_nom());
+                //_sceneActive->jouerMusique(e.get_nom());
             }
 
         break;

@@ -1,6 +1,6 @@
 #include "IEBloquant.h"
 
-IEBloquant::IEBloquant(sf::RenderWindow* app, float posX, float posY, int sizeX, int sizeY) : IElement(_app, posX, posY, sizeX, sizeY)
+IEBloquant::IEBloquant(sf::RenderWindow* app, float posX, float posY, int sizeX, int sizeY, std::string texte = "") : IElement(_app, posX, posY, sizeX, sizeY, texte)
 {
 
 }

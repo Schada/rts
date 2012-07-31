@@ -12,16 +12,16 @@
 				<Option object_output="..\obj\Debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add option="-lX11" />
 				</Compiler>
 				<Linker>
-					<Add option="-lsfml-audio" />
-					<Add option="-lsfml-graphics" />
-					<Add option="-lsfml-window" />
-					<Add option="-lsfml-system" />
+					<Add option="-lsfml-audio-s-d" />
+					<Add option="-lsfml-graphics-s-d" />
+					<Add option="-lsfml-window-s-d" />
+					<Add option="-lsfml-system-s-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -35,10 +35,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add option="-lsfml-audio" />
-					<Add option="-lsfml-graphics" />
-					<Add option="-lsfml-window" />
-					<Add option="-lsfml-system" />
+					<Add option="-lsfml-audio-s" />
+					<Add option="-lsfml-graphics-s" />
+					<Add option="-lsfml-window-s" />
+					<Add option="-lsfml-system-s" />
 				</Linker>
 			</Target>
 		</Build>
@@ -59,10 +59,10 @@
 		<Unit filename="Gfx\Engine_Graphics.h" />
 		<Unit filename="Gfx\Gestionnaire_Images.cpp" />
 		<Unit filename="Gfx\Gestionnaire_Images.h" />
-		<Unit filename="Interface\IEBloquant.cpp" />
-		<Unit filename="Interface\IEBloquant.h" />
 		<Unit filename="Interface\IElement.cpp" />
 		<Unit filename="Interface\IElement.h" />
+		<Unit filename="Interface\ITexte.cpp" />
+		<Unit filename="Interface\ITexte.h" />
 		<Unit filename="Interface\ZoneTexte.cpp" />
 		<Unit filename="Interface\ZoneTexte.h" />
 		<Unit filename="Jeu\Engine_Game.cpp" />
@@ -76,16 +76,12 @@
 		<Unit filename="Ressources\Entite_Schema.h" />
 		<Unit filename="Ressources\Gestionnaire_Entites.cpp" />
 		<Unit filename="Ressources\Gestionnaire_Entites.h" />
-		<Unit filename="Scenes\Chargement.cpp" />
-		<Unit filename="Scenes\Chargement.h" />
-		<Unit filename="Scenes\Jeu.cpp" />
-		<Unit filename="Scenes\Jeu.h" />
-		<Unit filename="Scenes\MenuPrincipal.cpp" />
-		<Unit filename="Scenes\MenuPrincipal.h" />
-		<Unit filename="Scenes\Options.cpp" />
-		<Unit filename="Scenes\Options.h" />
 		<Unit filename="Scenes\Scene.cpp" />
 		<Unit filename="Scenes\Scene.h" />
+		<Unit filename="Scenes\Scene_Globale.cpp" />
+		<Unit filename="Scenes\Scene_Globale.h" />
+		<Unit filename="Scenes\Scene_Locale.cpp" />
+		<Unit filename="Scenes\Scene_Locale.h" />
 		<Unit filename="Son\Engine_Sound.cpp" />
 		<Unit filename="Son\Engine_Sound.h" />
 		<Unit filename="Son\Gestionnaire_Musiques.cpp" />

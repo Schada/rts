@@ -4,6 +4,8 @@ Sons = Sons
 Musiques = Musiques
 Civilisations = Civilisations
 Entites = Entites
+Scenes = Scenes
+PremiereScene = MenuP
 [Fin]
 [Civilisations]
 Gaia
@@ -22,4 +24,7 @@ t
 [Musiques]
 Ambiance
 test
+[Fin]
+[Scenes]
+MenuP
 [Fin]
