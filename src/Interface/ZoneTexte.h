@@ -11,7 +11,7 @@ class ZoneTexte : public IBloquant
         ZoneTexte(sf::RenderWindow* app, Scene* parent, std::string nom);
         virtual ~ZoneTexte();
         void action(sf::Event event);
-        void modifTexte(char caractere);
+        void modifTexte(sf::Event event);
 
 
         void afficherActif();
@@ -19,7 +19,10 @@ class ZoneTexte : public IBloquant
 
         std::string type();
 
+        std::string getStock() const;
+
     private:
+        std::string _stock;
 
 
 };

@@ -586,7 +586,7 @@ void Core::events_Chargement()
         actif->action(_event);
 
     }
-    else if(_event.Type == sf::Event::KeyPressed && _event.Key.Alt == false && _event.Key.Control == false)
+    else if(_event.Type == sf::Event::KeyPressed && _event.Key.Control == false)
     {
 
         if(actif != NULL && actif->type() == "ZONETEXTE")
