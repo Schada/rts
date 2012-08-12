@@ -1,0 +1,15 @@
+[General]
+Fond = Fond
+Globale = 1
+Deplacer = 0
+Tete = 0
+[Fin]
+[Elements]
+TEXTE texte1 250 200 100 100 Scene Jeu
+[Fin]
+[Actions]
+texte1 = SCENE MenuP
+[Fin]
+[Sprites]
+texte1 = Soldat 0 0
+[Fin]

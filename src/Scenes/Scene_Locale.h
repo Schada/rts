@@ -3,7 +3,6 @@
 
 #include "Scene.h"
 
-
 class Scene_Locale : public Scene
 {
     public:

@@ -11,8 +11,9 @@
 #include "../Gfx/Gestionnaire_Images.h"
 #include "../Son/Gestionnaire_Musiques.h"
 #include "../Son/Gestionnaire_Sons.h"
-#include "../Interface/IElement.h"
+#include "../Interface/IBloquant.h"
 #include "../Interface/ITexte.h"
+#include "../Interface/ZoneTexte.h"
 #include <iostream>
 
 class Core;
@@ -82,6 +83,11 @@ class Scene
 
     bool existeElement(std::string nom);
 
+    std::string verifEvents(sf::Event event);
+
+    IBloquant* getActif() const;
+    void setActif(IBloquant* zone);
+
     /**
     * <------------------------------------------------------- Attributs Public ------------------------------------------------------->
     */
@@ -111,6 +117,8 @@ class Scene
 
     std::string _nomFond;
     std::string _fichier;
+
+    IBloquant* _actif;
 
     /**
     * <------------------------------------------------------- Methodes Protected ------------------------------------------------------->

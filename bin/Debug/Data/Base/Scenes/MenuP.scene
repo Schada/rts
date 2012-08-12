@@ -5,14 +5,16 @@ Deplacer = 0
 Tete = 0
 [Fin]
 [Elements]
-TEXTE texte1 250 200 100 100 Test numero 1
-TEXTE texte2 250 300 100 100 Test numero 2
-TEXTE texte3 250 100 100 100 Test numero 3
+TEXTE texte1 250 200 100 100 Charger
+TEXTE texte2 250 300 100 100 Quitter
+TEXTE texte3 250 100 100 100 Jouer
 ZONETEXTE zone1 0 100 100 100 Entrez un truc
 X MAchin truc
 [Fin]
 [Actions]
-bout1 = QUIT
+texte1 = SCENE Charger
+texte2 = QUIT
+texte3 = SCENE Jeu
 [Fin]
 [Sprites]
 texte1 = Buttons 0 0

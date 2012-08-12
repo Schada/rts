@@ -6,10 +6,12 @@
 class ITexte : public IElement
 {
     public:
-        ITexte(sf::RenderWindow* app, std::string nom);
+        ITexte(sf::RenderWindow* app, Scene* parent, std::string nom);
         virtual ~ITexte();
 
-        virtual std::string type();
+        std::string type();
+
+        bool verifAction(sf::Event event);
     protected:
     private:
 };

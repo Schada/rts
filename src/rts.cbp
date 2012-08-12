@@ -59,6 +59,8 @@
 		<Unit filename="Gfx\Engine_Graphics.h" />
 		<Unit filename="Gfx\Gestionnaire_Images.cpp" />
 		<Unit filename="Gfx\Gestionnaire_Images.h" />
+		<Unit filename="Interface\IBloquant.cpp" />
+		<Unit filename="Interface\IBloquant.h" />
 		<Unit filename="Interface\IElement.cpp" />
 		<Unit filename="Interface\IElement.h" />
 		<Unit filename="Interface\ITexte.cpp" />

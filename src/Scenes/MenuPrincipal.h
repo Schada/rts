@@ -74,7 +74,7 @@ class MenuPrincipal : public Scene
     sf::SoundBuffer* _buffer;
     sf::Music* _music;
 
-    ZoneTexte* _zone;
+    IBloquant* _zone;
 
     /**
     * <------------------------------------------------------- Methodes Private ------------------------------------------------------->

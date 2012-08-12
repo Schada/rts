@@ -17,6 +17,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <fstream>
+
+struct Struct_File
+{
+    std::string nom;
+    std::ifstream fichier;
+
+};
 
 enum Event_Scene {MENU_PRINCIPAL, CHARGEMENT, JEU, OPTIONS, CONSOLE, ALL};
 enum Event_Type {MOUSE, CLICK, KEY, LOAD, MUSIQUE, CHANGE, QUIT};

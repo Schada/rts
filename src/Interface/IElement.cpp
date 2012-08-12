@@ -1,9 +1,11 @@
 #include "IElement.h"
+#include "../Scenes/Scene.h"
 
-IElement::IElement(sf::RenderWindow* app, std::string nom)
+IElement::IElement(sf::RenderWindow* app, Scene* parent, std::string nom)
 {
     _app = app;
     _nom = nom;
+    _parent = parent;
 
     _texteActif = false;
     _spriteActif = false;
@@ -22,11 +24,14 @@ IElement::IElement(sf::RenderWindow* app, std::string nom)
     _texte.SetPosition(0, 0);
     _sprite.SetPosition(0, 0);
 
+    _action = "";
+
 }
 
 IElement::~IElement()
 {
      _app = NULL;
+     _parent = NULL;
 }
 
 void IElement::setPositionTexte(float posX, float posY)
@@ -123,4 +128,65 @@ sf::Sprite* IElement::get_sprite()
 std::string IElement::getNom() const
 {
     return _nom;
+}
+
+void IElement::setAction(std::string action)
+{
+    std::cout << " Nom : " << _nom << " Nouvelle action : " << action << std::endl;
+    _action = action;
+}
+
+std::string IElement::getAction() const
+{
+    return _action;
+}
+
+
+
+int IElement::get_X1()
+{
+    if(_spriteActif)
+    {
+        std::cout << " Nom : " << _nom << " X : " << (_sprite.GetPosition()).x << std::endl;
+
+        return (_sprite.GetPosition()).x;
+    }
+    return -1;
+
+}
+
+int IElement::get_X2()
+{
+    if(_spriteActif)
+    {
+        int x = (_sprite.GetPosition()).x + (_sprite.GetSize()).x;
+        std::cout << " Nom : " << _nom << " X : " << x << std::endl;
+
+        return x;
+    }
+    return -1;
+
+}
+
+int IElement::get_Y1()
+{
+    if(_spriteActif)
+    {
+        std::cout << " Nom : " << _nom << " Y : " << (_sprite.GetPosition()).y << std::endl;
+
+        return (_sprite.GetPosition()).y;
+    }
+    return -1;
+}
+
+int IElement::get_Y2()
+{
+    if(_spriteActif)
+    {
+        int y = (_sprite.GetPosition()).y + (_sprite.GetSize()).y;
+        std::cout << " Nom : " << _nom << " Y : " << y << std::endl;
+
+        return y;
+    }
+    return -1;
 }

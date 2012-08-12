@@ -1,0 +1,16 @@
+[General]
+Fond = Fond
+Globale = 1
+Deplacer = 0
+Tete = 0
+[Fin]
+[Elements]
+TEXTE texte1 500 475 100 100 Scene Charger
+ZONETEXTE zone 200 100 100 100 Texte
+[Fin]
+[Actions]
+texte1 = SCENE MenuP
+[Fin]
+[Sprites]
+texte1 = Buttons 0 1
+[Fin]

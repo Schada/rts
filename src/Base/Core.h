@@ -68,9 +68,19 @@ class Core
         /**
         * Permet de recuperer la valeur contenu à la ligne numeroLigne dans la balise "balise" du fichier à ladresse "lienFichier"
         */
-        static std::string RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne);
 
-        static void RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne, std::string** pointeur);
+        /// Obsolète voir la fonction DeplacementFichier
+        //static std::string RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne);
+
+        //static void RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne, std::string** pointeur);
+
+        /**
+        * Permet de se positionner au debut de la balise "balise" dans le fichier envoyer en parametre
+        * Cette fonction remplace les fonctions RecupValeurNumeroLigne après l'appel de la fonction faire des getline() jusqu'a trouver la balise [Fin]
+        * Les fonctions RecupValeurNumeroLigne etait trop lourdes car elle ouvraient et fermaient le fichier a chaque utilisation.
+        * En utilisant cette fonction ne pas oublier d'ouvrir et fermer le fichier après utilisation.
+        */
+        static bool DeplacementFichier(Struct_File* sfile, std::string balise);
 
         /**
         * Renvoi True si le nom "nom" de la balise "balise" dans le fichier à l'adresse "lienFichier" existe
@@ -125,6 +135,8 @@ class Core
         void events_Chargement();
         void events_Options();
         void events_All();
+
+        void events(std::string action);
 
 
         /**

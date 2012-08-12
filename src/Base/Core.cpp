@@ -233,41 +233,36 @@ void Core::envoiMultiple()
 std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::string nomLigne)
 {
     std::cout << "Recup val ligne | Fichier : " << lienFichier << " | Balise : " << balise << " | Ligne : " << nomLigne << std::endl;
+    Struct_File sfile;
+    sfile.nom = lienFichier;
+    (sfile.fichier).open(lienFichier.c_str(), std::ios::in);
 
-    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
-    if(fichier)
+    if(sfile.fichier)
     {
-        std::string ligne;
-
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
-        do
-        {
-        }while((getline(fichier, ligne)) && (ligne != balise));
-
-        if(ligne == balise) // Si la balise a été trouver
+        if(Core::DeplacementFichier(&sfile, balise))
         {
             std::string nom, vide, valeur;
 
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
-
+            //On parcourt les lignes de la balise jusqu'à la balise [Fin]
             do
             {
-                fichier >> nom;
+                sfile.fichier >> nom;
+                std::cout << "Nom trouve : " << nom << std::endl;
                 if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
                 {
 
-                    fichier >> vide;
-                    getline(fichier, valeur);
+                    sfile.fichier >> vide;
+                    getline(sfile.fichier, valeur);
                     if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
                     {
-                        fichier.close();
+                        sfile.fichier.close();
                         return valeur.substr(1);
                     }
 
                 }
 
 
-            }while((!fichier.eof()) && (nom != "[Fin]"));
+            }while((!sfile.fichier.eof()) && (nom != "[Fin]"));
             if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
             {
                 std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
@@ -278,11 +273,8 @@ std::string Core::RecupValeurLigne(std::string lienFichier, std::string balise, 
             }
 
         }
-        else // Si la balise consernée n'a pas été trouver
-        {
-            std::cerr << "Balise " + balise + " introuvable" << std::endl;
-        }
-        fichier.close();
+
+        (sfile.fichier).close();
     }
     else
     {
@@ -301,55 +293,58 @@ void Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::st
         *pointeur = NULL;
     }
 
-    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
-    if(fichier)
+    Struct_File sfile;
+    sfile.nom = lienFichier;
+    (sfile.fichier).open(lienFichier.c_str(), std::ios::in);
+
+    if(sfile.fichier)
     {
-        std::string ligne;
-
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
-        do
+        if(Core::DeplacementFichier(&sfile, balise))
         {
-        }while((getline(fichier, ligne)) && (ligne != balise));
+            std::string ligne;
 
-        if(ligne == balise) // Si la balise a été trouver
-        {
-            std::string nom, vide, valeur;
-
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
-
+             // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
             do
             {
-                fichier >> nom;
-                if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
-                {
+            }while((getline(sfile.fichier, ligne)) && (ligne != balise));
 
-                    fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
-                    if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+            if(ligne == balise) // Si la balise a été trouver
+            {
+                std::string nom, vide, valeur;
+
+                 //On parcourt les lignes de la balise jusqu'à la balise [Fin]
+
+                do
+                {
+                    sfile.fichier >> nom;
+                    if(nom != "[Fin]")// Si la ligne actuelle n'est pas la balise [Fin]
                     {
-                        fichier.close();
-                        *pointeur = new std::string(valeur);
-                        return;
+
+                        sfile.fichier >> vide >> valeur; // On recupere le egale et la valeur de la ligne
+                        if(nom == nomLigne) // SI la ligne porte le nom recherché on renvoit la valeur de cette ligne
+                        {
+                            sfile.fichier.close();
+                            *pointeur = new std::string(valeur);
+                            return;
+                        }
+
                     }
 
+
+                }while((!sfile.fichier.eof()) && (nom != "[Fin]"));
+                if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
+                {
+                    std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
                 }
-
-
-            }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
-            {
-                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
-            }
-            else
-            {
-                std::cerr << "Ligne introuvable" << std::endl;
+                else
+                {
+                    std::cerr << "Ligne introuvable" << std::endl;
+                }
             }
 
         }
-        else // Si la balise consernée n'a pas été trouver
-        {
-            std::cerr << "Balise " + balise + " introuvable" << std::endl;
-        }
-        fichier.close();
+
+        (sfile.fichier).close();
     }
     else
     {
@@ -357,130 +352,34 @@ void Core::RecupValeurLigne(std::string lienFichier, std::string balise, std::st
     }
 }
 
-std::string Core::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne)
+bool Core::DeplacementFichier(Struct_File* sfile, std::string balise)
 {
-    std::cout << "Recup val numero ligne | Fichier : " << lienFichier << " | Balise : " << balise << " | Numero : " << numeroLigne << std::endl;
+    std::cout << "DeplacementFichier | Fichier : " << sfile->nom << " | Balise : " << balise << std::endl;
 
-    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
-    if(fichier)
+    if(sfile->fichier)
     {
         std::string ligne;
 
          // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
         do
         {
-        }while((getline(fichier, ligne)) && (ligne != balise));
+        }while((getline(sfile->fichier, ligne)) && (ligne != balise));
 
         if(ligne == balise) // Si la balise a été trouver
         {
-            std::string nom;
-            int i = 0;
-
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
-
-            do
-            {
-                i++;
-                getline(fichier, nom);
-
-                if(i == numeroLigne && (nom != "[Fin]"))// Si la ligne actuelle n'est pas la balise [Fin]
-                {
-                    std::cout << "Retour : " << nom << std::endl;
-                    fichier.close();
-                    return nom;
-                }
-
-            }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
-            {
-                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
-            }
-            else
-            {
-                std::cerr << "Ligne introuvable" << std::endl;
-                fichier.close();
-                return "[FIN]";
-
-            }
-
+            std::cout << "Position Atteinte" << std::endl;
+            return true;
         }
         else // Si la balise consernée n'a pas été trouver
         {
             std::cerr << "Balise " + balise + " introuvable" << std::endl;
         }
-        fichier.close();
     }
     else
     {
-        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
+        std::cerr << "Le fichier " << sfile->nom << " est introuvable." << std::endl;
     }
-    return "";
-}
-
-void Core::RecupValeurNumeroLigne(std::string lienFichier, std::string balise, int numeroLigne, std::string** pointeur)
-{
-    std::cout << "Recup val numero ligne avec pointeur | Fichier : " << lienFichier << " | Balise : " << balise << " | Numero : " << numeroLigne << std::endl;
-
-    if(*pointeur != NULL)
-    {
-        delete (*pointeur);
-        *pointeur = NULL;
-    }
-
-    std::ifstream fichier(lienFichier.c_str(), std::ios::in);
-    if(fichier)
-    {
-        std::string ligne;
-
-         // Parcourt le fichier jusqu'à trouver la balise ou la fin du fichier
-        do
-        {
-        }while((getline(fichier, ligne)) && (ligne != balise));
-
-        if(ligne == balise) // Si la balise a été trouver
-        {
-            std::string nom;
-            int i = 0;
-
-             //On parcourt les lignes de la balise jusqu'à la balise [Fin]
-
-            do
-            {
-                i++;
-                getline(fichier, nom);
-
-                if(i == numeroLigne && (nom != "[Fin]"))// Si la ligne actuelle n'est pas la balise [Fin]
-                {
-                    fichier.close();
-                    *pointeur = new std::string(nom);
-                    return;
-                }
-
-            }while((!fichier.eof()) && (nom != "[Fin]"));
-            if(nom != "[Fin]") // Si la balise [Fin] n'a pas été trouver
-            {
-                std::cerr << "Balise [Fin] de " + balise + " introuvable" << std::endl;
-            }
-            else
-            {
-                std::cerr << "Ligne introuvable" << std::endl;
-                fichier.close();
-                *pointeur = new std::string("[FIN]");
-                return;
-
-            }
-
-        }
-        else // Si la balise consernée n'a pas été trouver
-        {
-            std::cerr << "Balise " + balise + " introuvable" << std::endl;
-        }
-        fichier.close();
-    }
-    else
-    {
-        std::cerr << "Le fichier " << lienFichier << " est introuvable." << std::endl;
-    }
+    return false;
 }
 
 bool Core::VerifExistanceNom(std::string lienFichier, std::string balise, std::string nomLigne)
@@ -681,7 +580,29 @@ void Core::events_Jeu()
 */
 void Core::events_Chargement()
 {
-    if (_event.Type == sf::Event::Closed)
+    IBloquant* actif = _scene->getActif();
+    if(actif != NULL && actif->type() == "MENUDEROULANT" && (_event.Type == sf::Event::MouseMoved || ( _event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left && actif->verifActif(_event))))
+    {
+        actif->action(_event);
+
+    }
+    else if(_event.Type == sf::Event::KeyPressed && _event.Key.Alt == false && _event.Key.Control == false)
+    {
+
+        if(actif != NULL && actif->type() == "ZONETEXTE")
+        {
+            actif->action(_event);
+        }
+    }
+    else if(_event.Type == sf::Event::MouseButtonPressed && _event.MouseButton.Button == sf::Mouse::Left)
+    {
+        std::string action = _scene->verifEvents(_event);
+        if(action != "")
+        {
+            events(action);
+        }
+    }
+    else if(_event.Type == sf::Event::Closed)
     {
         _eng_event.changerEvent(ALL, QUIT, "", NULL);
         envoiMultiple();
@@ -692,6 +613,32 @@ void Core::events_Chargement()
         _numeroScene = ALL;
     }
 }
+
+void Core::events(std::string action)
+{
+    std::cout << "Events de l'action : |" << action << "|" << std::endl;
+    std::vector< std::string > *tab = new std::vector< std::string >;
+    Core::decouperTexte(action, tab);
+
+    if(tab->at(0) == "QUIT")
+    {
+        _eng_event.changerEvent(ALL, QUIT, "", NULL);
+        envoiMultiple();
+
+        _eng_game->Wait();
+        _eng_gfx->Wait();
+        _eng_son->Wait();
+        _numeroScene = ALL;
+    }
+    else if (tab->at(0) == "SCENE")
+    {
+        if(tab->size() >= 2)
+        {
+            changerScene(tab->at(1));
+        }
+    }
+}
+
 /**
 void Core::events_Options()
 {

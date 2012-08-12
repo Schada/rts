@@ -25,15 +25,35 @@ Entite_Schema* Gestionnaire_Entites::get_contenu(std::string nom)
 
 void Gestionnaire_Entites::initGestionnaire()
 {
-    int i = 1;
-    _lienDossier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Entites") + FIN_DOSSIER;
+    std::string valeur;
+    Struct_File sfile;
+    sfile.nom = Core::fichierMod;
+    (sfile.fichier).open((sfile.nom).c_str(), std::ios::in);
 
-    while(Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) != "[Fin]")
+    if(sfile.fichier)
     {
-        _lienFichier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Civilisations") + FIN_DOSSIER + Core::RecupValeurNumeroLigne(Core::fichierMod, "[Civilisations]", i) + ".dat";
-        creerGestionnaire("[Entites]");
-        i++;
+        std::string dossier_civ = Core::RecupValeurLigne(Core::fichierMod, "[General]", "Civilisations");
+        _lienDossier = Core::dossierMod + Core::RecupValeurLigne(Core::fichierMod, "[General]", "Entites") + FIN_DOSSIER;
+
+
+        if(Core::DeplacementFichier(&sfile, "[Civilisations]"))
+        {
+            getline(sfile.fichier, valeur);
+            while((!sfile.fichier.eof()) && (valeur != "[Fin]"))
+            {
+                _lienFichier = Core::dossierMod + dossier_civ + FIN_DOSSIER + valeur + ".dat";
+                creerGestionnaire("[Entites]");
+                getline(sfile.fichier, valeur);
+            }
+        }
+
+        (sfile.fichier).close();
     }
+    else
+    {
+        std::cerr << "Le fichier " << sfile.nom << " est introuvable." << std::endl;
+    }
+
 
 }
 
